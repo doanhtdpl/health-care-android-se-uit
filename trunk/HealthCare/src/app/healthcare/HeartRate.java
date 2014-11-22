@@ -1,34 +1,14 @@
 package app.healthcare;
 
-import java.util.ArrayList;
-import java.util.concurrent.atomic.AtomicBoolean;
-
-import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.GraphViewSeries;
-import com.jjoe64.graphview.LineGraphView;
-import com.jjoe64.graphview.GraphView.GraphViewData;
-import com.jjoe64.graphview.GraphViewSeries.GraphViewSeriesStyle;
 import android.app.Fragment;
-import android.content.Context;
-import android.graphics.Color;
-import android.hardware.Camera;
-import android.hardware.Camera.PreviewCallback;
 import android.os.Bundle;
-import android.os.PowerManager;
-import android.os.PowerManager.WakeLock;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.SurfaceHolder;
-import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import app.healthcare.heartrate.ImageProcessing;
 
 public class HeartRate extends Fragment {
 	
-	private static final String TAG = "HeartRateMonitor";
+	/*private static final String TAG = "HeartRateMonitor";
 	private static final AtomicBoolean processing = new AtomicBoolean(false);
 	private static final int RATE_CYCLE = 10;
 
@@ -64,7 +44,7 @@ public class HeartRate extends Fragment {
 	// for graph
 	static ArrayList<GraphViewData> listData = new ArrayList<GraphView.GraphViewData>();
 	static GraphView graphView;
-	static GraphViewSeries graphViewSeries;
+	static GraphViewSeries graphViewSeries;*/
 
 	
 	public HeartRate() {
@@ -74,7 +54,7 @@ public class HeartRate extends Fragment {
 			Bundle savedInstanceState) {
 
 		View rootView = inflater.inflate(R.layout.fragment_heart_rate, container, false);
-		initGraph();
+		/*initGraph();
 
 		preview = (SurfaceView) this.getActivity().findViewById(R.id.preview);
 		previewHolder = preview.getHolder();
@@ -85,10 +65,11 @@ public class HeartRate extends Fragment {
 		text = (TextView) this.getActivity().findViewById(R.id.text);
 
 		PowerManager pm = (PowerManager) this.getActivity().getSystemService(Context.POWER_SERVICE);
-		wakeLock = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK, "DoNotDimScreen");
+		wakeLock = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK, "DoNotDimScreen");*/
 		return rootView;
 	}
-	
+}
+	/*
 	private void initGraph() {
 
 		graphView = new LineGraphView(this.getActivity(), "Graph");
@@ -119,9 +100,9 @@ public class HeartRate extends Fragment {
 	
 	private static PreviewCallback previewCallback = new PreviewCallback() {
 
-		/**
+		*//**
 		 * {@inheritDoc}
-		 */
+		 *//*
 		@Override
 		public void onPreviewFrame(byte[] data, Camera cam) {
 			if (data == null)
@@ -257,9 +238,9 @@ public class HeartRate extends Fragment {
 
 	private static SurfaceHolder.Callback surfaceCallback = new SurfaceHolder.Callback() {
 
-		/**
+		*//**
 		 * {@inheritDoc}
-		 */
+		 *//*
 		@Override
 		public void surfaceCreated(SurfaceHolder holder) {
 			try {
@@ -271,9 +252,9 @@ public class HeartRate extends Fragment {
 			}
 		}
 
-		/**
+		*//**
 		 * {@inheritDoc}
-		 */
+		 *//*
 		@Override
 		public void surfaceChanged(SurfaceHolder holder, int format, int width,
 				int height) {
@@ -288,9 +269,9 @@ public class HeartRate extends Fragment {
 			camera.startPreview();
 		}
 
-		/**
+		*//**
 		 * {@inheritDoc}
-		 */
+		 *//*
 		@Override
 		public void surfaceDestroyed(SurfaceHolder holder) {
 			// Ignore
@@ -318,3 +299,4 @@ public class HeartRate extends Fragment {
 		return result;
 	}
 }
+*/
