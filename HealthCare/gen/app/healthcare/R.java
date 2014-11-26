@@ -32,27 +32,50 @@ public final class R {
         public static final int counter_bg=0x7f020001;
         public static final int exit_icon=0x7f020002;
         public static final int healthcare=0x7f020003;
-        public static final int heartrate_icon=0x7f020004;
-        public static final int ic_drawer=0x7f020005;
-        public static final int ic_launcher=0x7f020006;
-        public static final int icon175x175=0x7f020007;
-        public static final int list_item_bg_normal=0x7f020008;
-        public static final int list_item_bg_pressed=0x7f020009;
-        public static final int list_selector=0x7f02000a;
-        public static final int run_icon=0x7f02000b;
-        public static final int sleeptime_icon=0x7f02000c;
-        public static final int timetable_icon=0x7f02000d;
-        public static final int whr_icon=0x7f02000e;
+        public static final int heart_off=0x7f020004;
+        public static final int heart_on=0x7f020005;
+        public static final int heartrate_icon=0x7f020006;
+        public static final int ic_drawer=0x7f020007;
+        public static final int ic_launcher=0x7f020008;
+        public static final int icon175x175=0x7f020009;
+        public static final int list_item_bg_normal=0x7f02000a;
+        public static final int list_item_bg_pressed=0x7f02000b;
+        public static final int list_selector=0x7f02000c;
+        public static final int run_icon=0x7f02000d;
+        public static final int sleeptime_icon=0x7f02000e;
+        public static final int timetable_icon=0x7f02000f;
+        public static final int whr_icon=0x7f020010;
     }
     public static final class id {
-        public static final int action_settings=0x7f090007;
+        public static final int action_settings=0x7f09001c;
+        public static final int btnCalculate=0x7f09001a;
+        public static final int btnCalculateBMI=0x7f090013;
+        public static final int btnReinput=0x7f090015;
+        public static final int cbFeMale=0x7f090018;
+        public static final int cbMale=0x7f090019;
         public static final int counter=0x7f090005;
         public static final int drawer_layout=0x7f090000;
         public static final int frame_container=0x7f090001;
         public static final int icon=0x7f090003;
+        public static final int layout=0x7f090006;
         public static final int list_slidermenu=0x7f090002;
+        public static final int radioButton1=0x7f090014;
+        public static final int rbIDIAndWPRO=0x7f090012;
+        public static final int rbWHO=0x7f090011;
+        public static final int tbxCe=0x7f090016;
+        public static final int tbxCm=0x7f090017;
+        public static final int tbxHeight=0x7f09000b;
+        public static final int tbxImpact=0x7f09000f;
+        public static final int tbxNoteBMI=0x7f09000d;
+        public static final int tbxNoteWHR=0x7f09001b;
+        public static final int tbxResultWHR=0x7f09000e;
+        public static final int tbxWeight=0x7f09000a;
+        public static final int textView1=0x7f090008;
+        public static final int textView2=0x7f090009;
+        public static final int textView3=0x7f09000c;
+        public static final int textView4=0x7f090010;
         public static final int title=0x7f090004;
-        public static final int txtLabel=0x7f090006;
+        public static final int txtLabel=0x7f090007;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
@@ -71,12 +94,35 @@ public final class R {
     public static final class string {
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
-        /**  Content Description 
+        public static final int btnCalculateBMIString=0x7f050014;
+        public static final int btnCalculateWHRString=0x7f05000b;
+        public static final int btnReinputString=0x7f05000c;
+        public static final int cbFeMaleString=0x7f05000a;
+        public static final int cbMaleString=0x7f050009;
+        public static final int default_text_heart_rate=0x7f050005;
+        /**  whr 
          */
-        public static final int desc_list_item_icon=0x7f050005;
+        public static final int desc_list_item_icon=0x7f050006;
         public static final int drawer_close=0x7f050004;
         public static final int drawer_open=0x7f050003;
         public static final int hello_world=0x7f050002;
+        public static final int lbCeString=0x7f050007;
+        public static final int lbCmString=0x7f050008;
+        /**  bmi 
+         */
+        public static final int lbHeightString=0x7f050012;
+        public static final int lbNoteBMIString=0x7f05001a;
+        public static final int lbNoteWHRString=0x7f050010;
+        public static final int lbTitleBMIString=0x7f050015;
+        public static final int lbTitleResultBMIString=0x7f050017;
+        public static final int lbTitleResultWHRString=0x7f05000f;
+        public static final int lbTitleWHRString=0x7f05000d;
+        public static final int lbWeightString=0x7f050013;
+        public static final int rbIDIAndWPROString=0x7f050019;
+        public static final int rbWHOString=0x7f050018;
+        public static final int tbxImpactString=0x7f050011;
+        public static final int tbxResultBMIString=0x7f050016;
+        public static final int tbxResultWHRString=0x7f05000e;
     }
     public static final class style {
         /** 
