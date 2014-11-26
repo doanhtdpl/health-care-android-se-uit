@@ -32,6 +32,28 @@
         <item>@drawable/sleeptime_icon</item>
         <item>@drawable/exit_icon</item>
     </array>
-    <!-- Content Description -->
+    <!-- whr -->
     <string name="desc_list_item_icon">Item Icon</string>
+    <string name="lbCeString">Vòng eo (cm)</string>
+    <string name="lbCmString">Vòng mông (cm)</string>
+    <string name="cbMaleString">Nam</string>
+    <string name="cbFeMaleString">Nữ</string>
+    <string name="btnCalculateWHRString">Tính WHR</string>
+    <string name="btnReinputString">Nhập lại</string>
+    <string name="lbTitleWHRString">WHR</string>
+    <string name="tbxResultWHRString">WHR</string>
+    <string name="lbTitleResultWHRString">WHR của bạn:</string>
+    <string name="lbNoteWHRString">Chú ý:\nSố đó vòng eo (bụng) được đo ở nơi nhỏ nhất của bụng, vòng mông được đo tại nơi to nhất của mông</string>
+    <string name="tbxImpactString">Mức độ ảnh hưởng</string>
+     <!-- bmi -->
+    <string name="lbHeightString">Chiều cao (m)</string>
+    <string name="lbWeightString">Cân nặng (kg)</string>
+    <string name="btnCalculateBMIString">Tính WHR</string>
+    <string name="lbTitleBMIString">BMI</string>
+    <string name="tbxResultBMIString">BMI</string>
+    <string name="lbTitleResultBMIString">BMI của bạn:</string>
+    <string name="cbwWHOString">WHO</string>
+    <string name="cbIDIAndWPROString">IDI And WPRO</string>
+    <string name="lbNoteBMIString">Chú ý:\nChỉ số BMI không áp dụng cho người mới ốm dậy, phụ nữ mang thai và vận động viên thể hình</string>
+    
 </resources>

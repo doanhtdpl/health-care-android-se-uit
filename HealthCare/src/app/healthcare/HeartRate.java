@@ -1,14 +1,32 @@
 package app.healthcare;
 
+import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicBoolean;
+
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.GraphView.GraphViewData;
+import com.jjoe64.graphview.GraphViewSeries;
+import com.jjoe64.graphview.LineGraphView;
+
 import android.app.Fragment;
+import android.content.Context;
+import android.hardware.Camera;
+import android.hardware.Camera.PreviewCallback;
 import android.os.Bundle;
+import android.os.PowerManager;
+import android.os.PowerManager.WakeLock;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.SurfaceHolder;
+import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class HeartRate extends Fragment {
 	
-	/*private static final String TAG = "HeartRateMonitor";
+	private static final String TAG = "HeartRateMonitor";
 	private static final AtomicBoolean processing = new AtomicBoolean(false);
 	private static final int RATE_CYCLE = 10;
 
@@ -44,7 +62,7 @@ public class HeartRate extends Fragment {
 	// for graph
 	static ArrayList<GraphViewData> listData = new ArrayList<GraphView.GraphViewData>();
 	static GraphView graphView;
-	static GraphViewSeries graphViewSeries;*/
+	static GraphViewSeries graphViewSeries;
 
 	
 	public HeartRate() {
@@ -68,7 +86,7 @@ public class HeartRate extends Fragment {
 		wakeLock = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK, "DoNotDimScreen");*/
 		return rootView;
 	}
-}
+
 	/*
 	private void initGraph() {
 
@@ -100,9 +118,6 @@ public class HeartRate extends Fragment {
 	
 	private static PreviewCallback previewCallback = new PreviewCallback() {
 
-		*//**
-		 * {@inheritDoc}
-		 *//*
 		@Override
 		public void onPreviewFrame(byte[] data, Camera cam) {
 			if (data == null)
@@ -238,9 +253,6 @@ public class HeartRate extends Fragment {
 
 	private static SurfaceHolder.Callback surfaceCallback = new SurfaceHolder.Callback() {
 
-		*//**
-		 * {@inheritDoc}
-		 *//*
 		@Override
 		public void surfaceCreated(SurfaceHolder holder) {
 			try {
@@ -252,9 +264,7 @@ public class HeartRate extends Fragment {
 			}
 		}
 
-		*//**
-		 * {@inheritDoc}
-		 *//*
+
 		@Override
 		public void surfaceChanged(SurfaceHolder holder, int format, int width,
 				int height) {
@@ -269,9 +279,7 @@ public class HeartRate extends Fragment {
 			camera.startPreview();
 		}
 
-		*//**
-		 * {@inheritDoc}
-		 *//*
+	
 		@Override
 		public void surfaceDestroyed(SurfaceHolder holder) {
 			// Ignore
@@ -297,6 +305,5 @@ public class HeartRate extends Fragment {
 		}
 
 		return result;
-	}
+	}*/
 }
-*/

@@ -4,19 +4,122 @@
     android:layout_height="match_parent" >
 
     <TextView
-        android:id="@+id/txtLabel"
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Home View"
-        android:textSize="16dp" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="62dp"
+        android:layout_marginLeft="20dp"
+        android:text="@string/lbCeString" />
 
-    <ImageView
+    <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/txtLabel"
+        android:layout_alignBottom="@+id/tbxCe"
+        android:layout_alignLeft="@+id/textView1"
+        android:text="@string/lbCmString" />
+
+    <EditText
+        android:id="@+id/tbxCe"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tbxCm"
+        android:layout_below="@+id/tbxCm"
+        android:layout_marginTop="15dp"
+        android:ems="10" />
+
+    <EditText
+        android:id="@+id/tbxCm"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textView1"
+        android:layout_marginLeft="36dp"
+        android:layout_toRightOf="@+id/textView2"
+        android:ems="10" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tbxCm"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/whr_icon" />
+        android:text="@string/lbTitleWHRString"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <CheckBox
+        android:id="@+id/cbFeMale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tbxCe"
+        android:layout_below="@+id/tbxCe"
+        android:layout_marginTop="20dp"
+        android:text="@string/cbFeMaleString" />
+
+    <CheckBox
+        android:id="@+id/cbMale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/cbFeMale"
+        android:layout_alignBottom="@+id/cbFeMale"
+        android:layout_alignRight="@+id/tbxCe"
+        android:text="@string/cbMaleString" />
+
+    <Button
+        android:id="@+id/btnReinput"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cbFeMale"
+        android:layout_toLeftOf="@+id/textView3"
+        android:text="@string/btnReinputString" />
+
+    <Button
+        android:id="@+id/btnCalculate"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btnReinput"
+        android:layout_alignBottom="@+id/btnReinput"
+        android:layout_toRightOf="@+id/textView3"
+        android:text="@string/btnCalculateWHRString" />
+
+    <TextView
+        android:id="@+id/tbxNoteWHR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tbxResultWHR"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/tbxCe"
+        android:layout_marginBottom="14dp"
+        android:text="@string/lbNoteWHRString" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_below="@+id/btnReinput"
+        android:layout_marginTop="17dp"
+        android:text="@string/lbTitleResultWHRString" />
+
+    <TextView
+        android:id="@+id/tbxResultWHR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_below="@+id/textView4"
+        android:text="@string/tbxResultWHRString"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/tbxImpact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tbxResultWHR"
+        android:layout_below="@+id/tbxResultWHR"
+        android:text="@string/tbxImpactString"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
 </RelativeLayout>
