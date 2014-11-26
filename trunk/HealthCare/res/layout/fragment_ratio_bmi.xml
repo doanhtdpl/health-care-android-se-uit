@@ -4,19 +4,120 @@
     android:layout_height="match_parent" >
 
     <TextView
-        android:id="@+id/txtLabel"
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Home View"
-        android:textSize="16dp" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="62dp"
+        android:layout_marginLeft="20dp"
+        android:text="@string/lbHeightString" />
 
-    <ImageView
+    <TextView
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/txtLabel"
+        android:layout_alignBottom="@+id/tbxWeight"
+        android:layout_alignLeft="@+id/textView1"
+        android:text="@string/lbWeightString" />
+
+    <EditText
+        android:id="@+id/tbxWeight"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tbxHeight"
+        android:layout_below="@+id/tbxHeight"
+        android:layout_marginTop="15dp"
+        android:ems="10" />
+
+    <EditText
+        android:id="@+id/tbxHeight"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textView1"
+        android:layout_marginLeft="36dp"
+        android:layout_toRightOf="@+id/textView2"
+        android:ems="10" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tbxHeight"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/bmi_icon" />
+        android:text="@string/lbTitleBMIString"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/tbxNoteBMI"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tbxResultWHR"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/tbxWeight"
+        android:layout_marginBottom="14dp"
+        android:text="@string/lbNoteBMIString" />
+
+    <TextView
+        android:id="@+id/tbxImpact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tbxNoteBMI"
+        android:layout_alignLeft="@+id/tbxNoteBMI"
+        android:layout_marginBottom="21dp"
+        android:text="@string/tbxImpactString"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/tbxResultWHR"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tbxImpact"
+        android:layout_alignLeft="@+id/textView4"
+        android:text="@string/tbxResultBMIString"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tbxResultWHR"
+        android:layout_alignLeft="@+id/textView2"
+        android:text="@string/lbTitleResultBMIString" />
+
+    <CheckBox
+        android:id="@+id/cbIDIAndWPRO"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_below="@+id/cbWHO"
+        android:text="@string/cbIDIAndWPROString" />
+
+    <Button
+        android:id="@+id/btnCalculateBMI"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btnReinput"
+        android:layout_alignBottom="@+id/btnReinput"
+        android:layout_toRightOf="@+id/tbxImpact"
+        android:text="@string/btnCalculateBMIString" />
+
+    <CheckBox
+        android:id="@+id/cbWHO"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/cbIDIAndWPRO"
+        android:layout_below="@+id/tbxWeight"
+        android:text="@string/cbwWHOString" />
+
+    <Button
+        android:id="@+id/btnReinput"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cbIDIAndWPRO"
+        android:layout_toLeftOf="@+id/cbIDIAndWPRO"
+        android:text="@string/btnReinputString" />
 
 </RelativeLayout>

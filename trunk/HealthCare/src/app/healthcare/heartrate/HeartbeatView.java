@@ -11,7 +11,7 @@ import android.view.View;
 import app.healthcare.HeartRate;
 import app.healthcare.R;
 
-public class HeartbeatView{ /*extends View {
+public class HeartbeatView extends View {
 
     private static final Matrix matrix = new Matrix();
     private static final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -36,9 +36,6 @@ public class HeartbeatView{ /*extends View {
         redBitmap = BitmapFactory.decodeResource(getResources(), R.drawable.heart_on);
     }
 
-    *//**
-     * {@inheritDoc}
-     *//*
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
@@ -48,9 +45,6 @@ public class HeartbeatView{ /*extends View {
         setMeasuredDimension(parentWidth, parentHeight);
     }
 
-    *//**
-     * {@inheritDoc}
-     *//*
     @Override
     protected void onDraw(Canvas canvas) {
         if (canvas == null) throw new NullPointerException();
@@ -71,5 +65,5 @@ public class HeartbeatView{ /*extends View {
         matrix.reset();
         matrix.postTranslate(centerX, centerY);
         canvas.drawBitmap(bitmap, matrix, paint);
-    }*/
+    }
 }
