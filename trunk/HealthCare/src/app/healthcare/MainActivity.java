@@ -20,6 +20,7 @@ import app.slidingmenu.adapter.NavDrawerListAdapter;
 import app.slidingmenu.model.NavDrawerItem;
 
 public class MainActivity extends Activity {
+	
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
@@ -36,6 +37,9 @@ public class MainActivity extends Activity {
 
 	private ArrayList<NavDrawerItem> navDrawerItems;
 	private NavDrawerListAdapter adapter;
+	
+	public static final int FRAG_HEART_RATE = 0;
+	public static final int FRAG_TEM_BODY = 1;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -116,7 +120,7 @@ public class MainActivity extends Activity {
 
 		if (savedInstanceState == null) {
 			// on first time display view for first nav item
-			displayView(0);
+			displayView(FRAG_HEART_RATE);
 		}
 	}
 
@@ -172,26 +176,26 @@ public class MainActivity extends Activity {
 		// update the main content by replacing fragments
 		Fragment fragment = null;
 		switch (position) {
-		case 0:
-			fragment = new HeartRate();
+		case FRAG_HEART_RATE:
+			fragment = new HeartRateFragment();
 			break;
-		case 1:
+		case FRAG_TEM_BODY:
 			fragment = new TemperatureBody();
 			break;
 		case 2:
-			fragment = new RatioWHR();
+			fragment = new RatioWHRFragment();
 			break;
 		case 3:
-			fragment = new RatioBMI();
+			fragment = new RatioBMIFragment();
 			break;
 		case 4:
-			fragment = new TimeTableTake();
+			fragment = new TimeTableTakeFragment();
 			break;
 		case 5:
-			fragment = new MeasureStepRun();
+			fragment = new MeasureStepRunFragment();
 			break;
 		case 6:
-			fragment = new SleepTime();
+			fragment = new SleepTimeFragment();
 			break;
 		case 7:
 			this.finish();
