@@ -24,7 +24,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-public class HeartRate extends Fragment {
+public class HeartRateFragment extends Fragment {
 	
 	private static final String TAG = "HeartRateMonitor";
 	private static final AtomicBoolean processing = new AtomicBoolean(false);
@@ -65,7 +65,7 @@ public class HeartRate extends Fragment {
 	static GraphViewSeries graphViewSeries;
 
 	
-	public HeartRate() {
+	public HeartRateFragment() {
 	}
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,

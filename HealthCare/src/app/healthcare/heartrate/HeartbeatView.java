@@ -8,7 +8,7 @@ import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
-import app.healthcare.HeartRate;
+import app.healthcare.HeartRateFragment;
 import app.healthcare.R;
 
 public class HeartbeatView extends View {
@@ -50,7 +50,7 @@ public class HeartbeatView extends View {
         if (canvas == null) throw new NullPointerException();
 
         Bitmap bitmap = null;
-        if (HeartRate.getCurrent() == HeartRate.TYPE.GREEN) bitmap = greenBitmap;
+        if (HeartRateFragment.getCurrent() == HeartRateFragment.TYPE.GREEN) bitmap = greenBitmap;
         else bitmap = redBitmap;
 
         int bitmapX = bitmap.getWidth() / 2;
