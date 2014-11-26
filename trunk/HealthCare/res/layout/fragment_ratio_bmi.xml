@@ -9,8 +9,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="62dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="62dp"
         android:text="@string/lbHeightString" />
 
     <TextView
@@ -85,39 +85,39 @@
         android:layout_alignLeft="@+id/textView2"
         android:text="@string/lbTitleResultBMIString" />
 
-    <CheckBox
-        android:id="@+id/cbIDIAndWPRO"
+    <RadioButton
+        android:id="@+id/rbWHO"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView3"
-        android:layout_below="@+id/cbWHO"
-        android:text="@string/cbIDIAndWPROString" />
+        android:layout_below="@+id/tbxWeight"
+        android:text="@string/rbWHOString" />
+
+    <RadioButton
+        android:id="@+id/rbIDIAndWPRO"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/rbWHO"
+        android:layout_below="@+id/rbWHO"
+        android:text="@string/rbIDIAndWPROString" />
 
     <Button
         android:id="@+id/btnCalculateBMI"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/btnReinput"
-        android:layout_alignBottom="@+id/btnReinput"
-        android:layout_toRightOf="@+id/tbxImpact"
+        android:layout_below="@+id/radioButton1"
+        android:layout_toLeftOf="@+id/radioButton1"
         android:text="@string/btnCalculateBMIString" />
-
-    <CheckBox
-        android:id="@+id/cbWHO"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/cbIDIAndWPRO"
-        android:layout_below="@+id/tbxWeight"
-        android:text="@string/cbwWHOString" />
 
     <Button
         android:id="@+id/btnReinput"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/cbIDIAndWPRO"
-        android:layout_toLeftOf="@+id/cbIDIAndWPRO"
+        android:layout_alignBaseline="@+id/btnCalculateBMI"
+        android:layout_alignBottom="@+id/btnCalculateBMI"
+        android:layout_alignLeft="@+id/tbxWeight"
         android:text="@string/btnReinputString" />
 
 </RelativeLayout>

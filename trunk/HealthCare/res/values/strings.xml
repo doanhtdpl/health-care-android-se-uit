@@ -48,12 +48,12 @@
      <!-- bmi -->
     <string name="lbHeightString">Chiều cao (m)</string>
     <string name="lbWeightString">Cân nặng (kg)</string>
-    <string name="btnCalculateBMIString">Tính WHR</string>
+    <string name="btnCalculateBMIString">Tính BMI</string>
     <string name="lbTitleBMIString">BMI</string>
     <string name="tbxResultBMIString">BMI</string>
     <string name="lbTitleResultBMIString">BMI của bạn:</string>
-    <string name="cbwWHOString">WHO</string>
-    <string name="cbIDIAndWPROString">IDI And WPRO</string>
+    <string name="rbWHOString">WHO</string>
+    <string name="rbIDIAndWPROString">IDI And WPRO</string>
     <string name="lbNoteBMIString">Chú ý:\nChỉ số BMI không áp dụng cho người mới ốm dậy, phụ nữ mang thai và vận động viên thể hình</string>
     
 </resources>
