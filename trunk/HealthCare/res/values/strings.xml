@@ -55,5 +55,7 @@
     <string name="rbWHOString">WHO</string>
     <string name="rbIDIAndWPROString">IDI And WPRO</string>
     <string name="lbNoteBMIString">Chú ý:\nChỉ số BMI không áp dụng cho người mới ốm dậy, phụ nữ mang thai và vận động viên thể hình</string>
+    <string name="tbvCoutString">Phần mềm chăm sóc sức khỏe xin chào các bạn\n
+        chọn chức năng bên trái để sử dụng phần mềm</string>
     
 </resources>
