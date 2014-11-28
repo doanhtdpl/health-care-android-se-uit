@@ -38,9 +38,9 @@ public class MainActivity extends Activity {
 	private ArrayList<NavDrawerItem> navDrawerItems;
 	private NavDrawerListAdapter adapter;
 	
-	public static final int FRAG_HEART_RATE = 0;
-	public static final int FRAG_TEM_BODY = 1;
-
+	
+	public static final int FRAG_TEM_BODY = 0;
+	public static final int FRAG_HEART_RATE = 1;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -61,11 +61,11 @@ public class MainActivity extends Activity {
 		navDrawerItems = new ArrayList<NavDrawerItem>();
 
 		// adding nav drawer items to array
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons
-				.getResourceId(0, -1)));
-		// Find People
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons
 				.getResourceId(1, -1)));
+		// Find People
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons
+				.getResourceId(0, -1)));
 		// Photos
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons
 				.getResourceId(2, -1)));
@@ -120,7 +120,7 @@ public class MainActivity extends Activity {
 
 		if (savedInstanceState == null) {
 			// on first time display view for first nav item
-			displayView(FRAG_HEART_RATE);
+			displayView(FRAG_TEM_BODY);
 		}
 	}
 
@@ -176,11 +176,11 @@ public class MainActivity extends Activity {
 		// update the main content by replacing fragments
 		Fragment fragment = null;
 		switch (position) {
-		case FRAG_HEART_RATE:
-			fragment = new HeartRateFragment();
-			break;
 		case FRAG_TEM_BODY:
 			fragment = new TemperatureBody();
+			break;
+		case FRAG_HEART_RATE:
+			fragment = new HeartRateFragment();
 			break;
 		case 2:
 			fragment = new RatioWHRFragment();

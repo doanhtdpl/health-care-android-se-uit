@@ -3,13 +3,10 @@ package app.healthcare;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import com.jjoe64.graphview.GraphView;
-import com.jjoe64.graphview.GraphView.GraphViewData;
-import com.jjoe64.graphview.GraphViewSeries;
-import com.jjoe64.graphview.LineGraphView;
-
 import android.app.Fragment;
 import android.content.Context;
+import android.content.res.Configuration;
+import android.graphics.Color;
 import android.hardware.Camera;
 import android.hardware.Camera.PreviewCallback;
 import android.os.Bundle;
@@ -23,6 +20,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import app.healthcare.heartrate.ImageProcessing;
+
+import com.jjoe64.graphview.GraphView;
+import com.jjoe64.graphview.GraphView.GraphViewData;
+import com.jjoe64.graphview.GraphViewSeries;
+import com.jjoe64.graphview.GraphViewSeries.GraphViewSeriesStyle;
+import com.jjoe64.graphview.LineGraphView;
 
 public class HeartRateFragment extends Fragment {
 	
@@ -64,33 +68,59 @@ public class HeartRateFragment extends Fragment {
 	static GraphView graphView;
 	static GraphViewSeries graphViewSeries;
 
-	
-	public HeartRateFragment() {
-	}
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
 		View rootView = inflater.inflate(R.layout.fragment_heart_rate, container, false);
-		/*initGraph();
+		initGraph(rootView);
+		initView(rootView);
+		return rootView;
+	}
+	
+	@Override
+	public void onResume() {
+		super.onResume();
+		wakeLock.acquire();
 
-		preview = (SurfaceView) this.getActivity().findViewById(R.id.preview);
+		camera = Camera.open();
+
+		startTime = System.currentTimeMillis();
+	}
+	
+	@Override
+	public void onPause() {
+		super.onPause();
+		wakeLock.release();
+
+		camera.setPreviewCallback(null);
+		camera.stopPreview();
+		camera.release();
+		camera = null;
+	}
+	
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+		// TODO Auto-generated method stub
+		super.onConfigurationChanged(newConfig);
+	}
+
+	private void initView(View rootView) {
+		preview = (SurfaceView) rootView.findViewById(R.id.preview);
 		previewHolder = preview.getHolder();
 		previewHolder.addCallback(surfaceCallback);
 		previewHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
 
-		image = this.getActivity().findViewById(R.id.image);
-		text = (TextView) this.getActivity().findViewById(R.id.text);
+		image = rootView.findViewById(R.id.image);
+		text = (TextView) rootView.findViewById(R.id.text);
 
-		PowerManager pm = (PowerManager) this.getActivity().getSystemService(Context.POWER_SERVICE);
-		wakeLock = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK, "DoNotDimScreen");*/
-		return rootView;
+		PowerManager pm = (PowerManager) getActivity().getSystemService(Context.POWER_SERVICE);
+		wakeLock = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK, "DoNotDimScreen");
 	}
+	
+	private void initGraph(View rootView) {
 
-	/*
-	private void initGraph() {
-
-		graphView = new LineGraphView(this.getActivity(), "Graph");
+		graphView = new LineGraphView(getActivity(), "Graph");
 
 		listData = new ArrayList<GraphView.GraphViewData>();
 		GraphViewData[] data = new GraphViewData[listData.size()];
@@ -112,7 +142,7 @@ public class HeartRateFragment extends Fragment {
 		graphView.setShowHorizontalLabels(false);
 		graphView.setShowVerticalLabels(false);
 
-		LinearLayout layout = (LinearLayout) this.getActivity().findViewById(R.id.graphLayout);
+		LinearLayout layout = (LinearLayout) rootView.findViewById(R.id.graphLayout);
 		layout.addView(graphView);
 	}
 	
@@ -305,5 +335,5 @@ public class HeartRateFragment extends Fragment {
 		}
 
 		return result;
-	}*/
+	}
 }

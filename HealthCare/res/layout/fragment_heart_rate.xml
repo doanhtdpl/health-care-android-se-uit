@@ -6,22 +6,6 @@
     android:orientation="vertical"
     android:weightSum="2" >
 
-    <TextView
-        android:id="@+id/txtLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Heart rate"
-        android:textSize="16dp" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/txtLabel"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:src="@drawable/heartrate_icon" />
-    <!--
     <LinearLayout
         android:id="@+id/top"
         android:layout_width="fill_parent"
@@ -34,7 +18,7 @@
             android:id="@+id/text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/default_text_heart_rate"
+            android:text="hello"
             android:textSize="32dp" >
         </TextView>
 
@@ -43,12 +27,12 @@
             android:layout_height="fill_parent"
             android:orientation="horizontal" >
 
-            <com.jwetherell.heart_rate_monitor.HeartbeatView
+            <app.healthcare.heartrate.HeartbeatView
                 android:id="@+id/image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true" >
-            </com.jwetherell.heart_rate_monitor.HeartbeatView>
+            </app.healthcare.heartrate.HeartbeatView>
         </RelativeLayout>
     </LinearLayout>
 
@@ -68,6 +52,5 @@
         android:layout_height="0dp"
         android:layout_weight="1" >
     </SurfaceView>
-    -->
 
 </LinearLayout>
