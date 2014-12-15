@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
@@ -14,10 +15,13 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import app.slidingmenu.adapter.NavDrawerListAdapter;
 import app.slidingmenu.model.NavDrawerItem;
+
 
 public class MainActivity extends Activity {
 	
@@ -122,6 +126,8 @@ public class MainActivity extends Activity {
 			// on first time display view for first nav item
 			displayView(FRAG_TEM_BODY);
 		}
+		
+		
 	}
 
 	/**
