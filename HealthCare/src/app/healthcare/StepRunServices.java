@@ -8,14 +8,12 @@ import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.IBinder;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class StepRunServices extends Service implements SensorEventListener{
 	private SensorManager sensorManager;
 	private boolean color = false;
 	private long lastUpdate;
-	private Context mContext;
 	public int step=0;
 	@Override
 	public IBinder onBind(Intent arg0) {
@@ -26,20 +24,21 @@ public class StepRunServices extends Service implements SensorEventListener{
 	public void onCreate(){
 		super.onCreate();
 		
+		
+	}
+	@Override
+	public int onStartCommand(Intent intent, int flags, int startId){
 		sensorManager = (SensorManager) this.getSystemService(Context.SENSOR_SERVICE);
 		sensorManager.registerListener(this,
 				sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
 				SensorManager.SENSOR_DELAY_NORMAL);
 		lastUpdate = System.currentTimeMillis();
-	}
-	@Override
-	public int onStartCommand(Intent intent, int flags, int startId){
 		return startId;
 	}
 	@Override
 	public void onDestroy(){
 		super.onDestroy();
-		//sensorManager.unregisterListener(this);
+		sensorManager.unregisterListener(this);
 	}
 	
 	@Override
