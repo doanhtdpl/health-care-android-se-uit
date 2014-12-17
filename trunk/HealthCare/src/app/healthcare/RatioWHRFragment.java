@@ -23,35 +23,43 @@ public class RatioWHRFragment extends Fragment {
 	TextView tbxImpact;
 	TextView tbxResult;
 	Button btnReinphut;
-	Button btnCalculateBMI;
+	Button btnCalculateWHR;
 
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		this.getActivity().setContentView(R.layout.fragment_ratio_whr);
-		cbMale = (CheckBox) this.getActivity().findViewById(R.id.cbMale);
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		View rootView = inflater.inflate(R.layout.fragment_ratio_whr,
+				container, false);
+		
+		
+		initView(rootView);
+		return rootView;
+	}
+
+	public void initView(View rootView)
+	{
+		cbMale = (CheckBox) rootView.findViewById(R.id.cbMale);
 		cbMale.setOnCheckedChangeListener(listener);
-		cbFeMale = (CheckBox) this.getActivity().findViewById(R.id.cbFeMale);
+		cbFeMale = (CheckBox) rootView.findViewById(R.id.cbFeMale);
 		cbFeMale.setChecked(true);
 		cbMale.setOnCheckedChangeListener(listener);
-		tbxCe = (EditText) this.getActivity().findViewById(R.id.tbxCe);
-		tbxCm = (EditText) this.getActivity().findViewById(R.id.tbxCm);
-		btnCalculateBMI = (Button) this.getActivity().findViewById(R.id.btnCalculateBMI);
-		btnCalculateBMI.setOnClickListener(new View.OnClickListener() {
+		tbxCe = (EditText) rootView.findViewById(R.id.tbxCe);
+		tbxCm = (EditText) rootView.findViewById(R.id.tbxCm);
+		btnCalculateWHR = (Button) rootView.findViewById(R.id.btnCalculateWHR);
+		btnCalculateWHR.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				calculateWHR();
 			}
 		});
-		btnReinphut = (Button) this.getActivity().findViewById(R.id.btnReinput);
+		btnReinphut = (Button) rootView.findViewById(R.id.btnReinput);
 		btnReinphut.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				reInput();
 			}
 		});
-		tbxResult = (TextView) this.getActivity().findViewById(R.id.tbxResultBMI);
-		tbxImpact = (TextView) this.getActivity().findViewById(R.id.tbxImpact);
+		tbxResult = (TextView) rootView.findViewById(R.id.tbxResultWHR);
+		tbxImpact = (TextView) rootView.findViewById(R.id.tbxImpact);
 	}
-
 	protected void calculateWHR() {
 		float ce = Float.parseFloat(tbxCe.getText().toString());
 		float cm = Float.parseFloat(tbxCm.getText().toString());
