@@ -32,7 +32,7 @@
         <item>@drawable/sleeptime_icon</item>
         <item>@drawable/exit_icon</item>
     </array>
-    <!-- whr -->
+   <!-- whr -->
     <string name="desc_list_item_icon">Item Icon</string>
     <string name="lbCeString">Vòng eo (cm)</string>
     <string name="lbCmString">Vòng mông (cm)</string>
@@ -52,8 +52,8 @@
     <string name="lbTitleBMIString">BMI</string>
     <string name="tbxResultBMIString">BMI</string>
     <string name="lbTitleResultBMIString">BMI của bạn:</string>
-    <string name="rbWHOString">WHO</string>
-    <string name="rbIDIAndWPROString">IDI And WPRO</string>
+    <string name="cbWHOString">WHO</string>
+    <string name="cbIDIAndWPROString">IDI And WPRO</string>
     <string name="lbNoteBMIString">Chú ý:\nChỉ số BMI không áp dụng cho người mới ốm dậy, phụ nữ mang thai và vận động viên thể hình</string>
     <string name="tbvCoutString">Phần mềm chăm sóc sức khỏe xin chào các bạn\n
         chọn chức năng bên trái để sử dụng phần mềm</string>
