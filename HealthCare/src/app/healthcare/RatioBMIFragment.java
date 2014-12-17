@@ -26,30 +26,41 @@ public class RatioBMIFragment extends Fragment {
 	Button btnCalculateBMI;
 
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		this.getActivity().setContentView(R.layout.fragment_ratio_bmi);
-		cbIDIAndWPRO = (CheckBox) this.getActivity().findViewById(R.id.cbIDIAndWPRO);
+	public View onCreateView(LayoutInflater inflater, ViewGroup container,
+			Bundle savedInstanceState) {
+		View rootView = inflater.inflate(R.layout.fragment_ratio_bmi,
+				container, false);
+		
+		
+		initView(rootView);
+		
+		
+		return rootView;
+	}
+	
+	private void initView(View rootView) {
+		cbIDIAndWPRO = (CheckBox) rootView.findViewById(R.id.cbIDIAndWPRO);
 		cbIDIAndWPRO.setOnCheckedChangeListener(listener);
-		cbWHO = (CheckBox) this.getActivity().findViewById(R.id.cbWHO);
+		cbWHO = (CheckBox) rootView.findViewById(R.id.cbWHO);
 		cbWHO.setChecked(true);
 		cbWHO.setOnCheckedChangeListener(listener);
-		tbxHeight = (EditText) this.getActivity().findViewById(R.id.tbxHeight);
-		tbxWeight = (EditText) this.getActivity().findViewById(R.id.tbxWeight);
-		btnCalculateBMI = (Button) this.getActivity().findViewById(R.id.btnCalculateBMI);
+		tbxHeight = (EditText) rootView.findViewById(R.id.tbxHeight);
+		tbxWeight = (EditText) rootView.findViewById(R.id.tbxWeight);
+		btnCalculateBMI = (Button) rootView.findViewById(R.id.btnCalculateBMI);
 		btnCalculateBMI.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	calculateBMI();
             }
         });
-		btnReinphut = (Button) this.getActivity().findViewById(R.id.btnReinput);
+		btnReinphut = (Button) rootView.findViewById(R.id.btnReinput);
 		btnReinphut.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	
             }
         });
-		tbxResult = (TextView)this.getActivity().findViewById(R.id.tbxResultBMI);
-		tbxImpact = (TextView)this.getActivity().findViewById(R.id.tbxImpact);
+		tbxResult = (TextView)rootView.findViewById(R.id.tbxResultBMI);
+		tbxImpact = (TextView)rootView.findViewById(R.id.tbxImpact);
+
 	}
 
 	public void reInput(){
