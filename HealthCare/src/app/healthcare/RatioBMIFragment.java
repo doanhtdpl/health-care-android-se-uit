@@ -14,7 +14,7 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class RatioBMI extends Activity {
+public class RatioBMIFragment extends Fragment {
 	CheckBox cbWHO;
 	CheckBox cbIDIAndWPRO;
 	EditText tbxHeight;
@@ -28,34 +28,34 @@ public class RatioBMI extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.fragment_ratio_bmi);
-		cbIDIAndWPRO = (CheckBox) findViewById(R.id.cbIDIAndWPRO);
+		this.getActivity().setContentView(R.layout.fragment_ratio_bmi);
+		cbIDIAndWPRO = (CheckBox) this.getActivity().findViewById(R.id.cbIDIAndWPRO);
 		cbIDIAndWPRO.setOnCheckedChangeListener(listener);
-		cbWHO = (CheckBox) findViewById(R.id.cbWHO);
+		cbWHO = (CheckBox) this.getActivity().findViewById(R.id.cbWHO);
 		cbWHO.setChecked(true);
 		cbWHO.setOnCheckedChangeListener(listener);
-		tbxHeight = (EditText) findViewById(R.id.tbxHeight);
-		tbxWeight = (EditText) findViewById(R.id.tbxWeight);
-		btnCalculateBMI = (Button) findViewById(R.id.btnCalculateBMI);
+		tbxHeight = (EditText) this.getActivity().findViewById(R.id.tbxHeight);
+		tbxWeight = (EditText) this.getActivity().findViewById(R.id.tbxWeight);
+		btnCalculateBMI = (Button) this.getActivity().findViewById(R.id.btnCalculateBMI);
 		btnCalculateBMI.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	calculateBMI();
             }
         });
-		btnReinphut = (Button) findViewById(R.id.btnReinput);
+		btnReinphut = (Button) this.getActivity().findViewById(R.id.btnReinput);
 		btnReinphut.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
             	
             }
         });
-		tbxResult = (TextView)findViewById(R.id.tbxResultBMI);
-		tbxImpact = (TextView)findViewById(R.id.tbxImpact);
+		tbxResult = (TextView)this.getActivity().findViewById(R.id.tbxResultBMI);
+		tbxImpact = (TextView)this.getActivity().findViewById(R.id.tbxImpact);
 	}
 
 	public void reInput(){
 		tbxHeight.setText("");
 		tbxWeight.setText("");
-		tbxImpact.setText("Mức độ ảnh hưởng"); 
+		tbxImpact.setText("Má»©c Ä‘á»™ áº£nh hÆ°á»Ÿng"); 
 		tbxResult.setText("BMI");
 		
 	}
@@ -67,110 +67,110 @@ public class RatioBMI extends Activity {
 		String result;
 		if (cbWHO.isChecked()) {
 			if (ratioBMI < 18.5) {
-				result = "Thể trạng gầy, thiếu năng lượng";
-				/*result = "Cân nặng thấp (Thể trạng gầy, thiếu năng lượng trường diễn):\n"
-						+ "Bạn ốm quá.\n Chương trình khuyên bạn cố gắng ăn uống 5 - 8 bữa "
-						+ "(3 bữa chính + 3 - 4 bữa phụ)/ ngày.\n"
-						+ "Uống sữa cao năng lượng + nước 2 lít/ ngày. Nhớ tập thể hình hợp lý để tăng cân nhé!\n"
-						+ "Quan trọng là đừng thức khuya nha.\n"
-						+ "Chúc bạn sớm tăng cân nhé.";*/
+				result = "Thá»ƒ tráº¡ng gáº§y, thiáº¿u nÄƒng lÆ°á»£ng";
+				/*result = "CĂ¢n náº·ng tháº¥p (Thá»ƒ tráº¡ng gáº§y, thiáº¿u nÄƒng lÆ°á»£ng trÆ°á»�ng diá»…n):\n"
+						+ "Báº¡n á»‘m quĂ¡.\n ChÆ°Æ¡ng trĂ¬nh khuyĂªn báº¡n cá»‘ gáº¯ng Äƒn uá»‘ng 5 - 8 bá»¯a "
+						+ "(3 bá»¯a chĂ­nh + 3 - 4 bá»¯a phá»¥)/ ngĂ y.\n"
+						+ "Uá»‘ng sá»¯a cao nÄƒng lÆ°á»£ng + nÆ°á»›c 2 lĂ­t/ ngĂ y. Nhá»› táº­p thá»ƒ hĂ¬nh há»£p lĂ½ Ä‘á»ƒ tÄƒng cĂ¢n nhĂ©!\n"
+						+ "Quan trá»�ng lĂ  Ä‘á»«ng thá»©c khuya nha.\n"
+						+ "ChĂºc báº¡n sá»›m tÄƒng cĂ¢n nhĂ©.";*/
 			} else if (ratioBMI == 25) {
-				result = "Bạn đang thừa cân";
+				result = "Báº¡n Ä‘ang thá»«a cĂ¢n";
 			} else if (ratioBMI >= 18.5 && ratioBMI < 25) {
-				result = "Thân hình bình thường";
-				/*result = "Bình thường:\nBạn có chỉ số cơ thể bình thường. Chúc mừng bạn nhé.\n"
-						+ "Chương trình khuyên bạn hãy tiếp tục duy trì chế độ tập luyện và ăn uống hiện tại."
-						+ " Bạn hãy tập thêm các môn mang tính vận động cơ bắp nếu bạn muốn thể hình đẹp.\n"
-						+ "Chúc bạn có nhiều sức khỏe nhé.";*/
+				result = "ThĂ¢n hĂ¬nh bĂ¬nh thÆ°á»�ng";
+				/*result = "BĂ¬nh thÆ°á»�ng:\nBáº¡n cĂ³ chá»‰ sá»‘ cÆ¡ thá»ƒ bĂ¬nh thÆ°á»�ng. ChĂºc má»«ng báº¡n nhĂ©.\n"
+						+ "ChÆ°Æ¡ng trĂ¬nh khuyĂªn báº¡n hĂ£y tiáº¿p tá»¥c duy trĂ¬ cháº¿ Ä‘á»™ táº­p luyá»‡n vĂ  Äƒn uá»‘ng hiá»‡n táº¡i."
+						+ " Báº¡n hĂ£y táº­p thĂªm cĂ¡c mĂ´n mang tĂ­nh váº­n Ä‘á»™ng cÆ¡ báº¯p náº¿u báº¡n muá»‘n thá»ƒ hĂ¬nh Ä‘áº¹p.\n"
+						+ "ChĂºc báº¡n cĂ³ nhiá»�u sá»©c khá»�e nhĂ©.";*/
 			} else if (ratioBMI > 25 && ratioBMI < 30) {
-				result = "Thừa cân - Tiền béo phì";
-				/*result = "Thừa cân - Tiền béo phì:\n"
-						+ "Bạn đang trong giai đoạn tiền béo phì rồi. Đừng lo nhé."
-						+ " Chương trình khuyên bạn nên kết hợp tập thể hình với việc chạy bộ, nhảy dây."
-						+ " Mục đích của việc này giúp giảm mỡ "
-						+ "và tăng khối lượng cơ bắp, giúp săn chắc cơ bắp. "
-						+ "Bạn cũng nên ăn nhiều rau, hạn chế dầu mỡ và uống nhiều nước nhé."
-						+ "Nếu bạn tập thể hình thì bình thường "
-						+ "(vì lúc này khối lượng cơ luôn nặng hơn mỡ nên BMI luôn >=25).";*/
+				result = "Thá»«a cĂ¢n - Tiá»�n bĂ©o phĂ¬";
+				/*result = "Thá»«a cĂ¢n - Tiá»�n bĂ©o phĂ¬:\n"
+						+ "Báº¡n Ä‘ang trong giai Ä‘oáº¡n tiá»�n bĂ©o phĂ¬ rá»“i. Ä�á»«ng lo nhĂ©."
+						+ " ChÆ°Æ¡ng trĂ¬nh khuyĂªn báº¡n nĂªn káº¿t há»£p táº­p thá»ƒ hĂ¬nh vá»›i viá»‡c cháº¡y bá»™, nháº£y dĂ¢y."
+						+ " Má»¥c Ä‘Ă­ch cá»§a viá»‡c nĂ y giĂºp giáº£m má»¡ "
+						+ "vĂ  tÄƒng khá»‘i lÆ°á»£ng cÆ¡ báº¯p, giĂºp sÄƒn cháº¯c cÆ¡ báº¯p. "
+						+ "Báº¡n cÅ©ng nĂªn Äƒn nhiá»�u rau, háº¡n cháº¿ dáº§u má»¡ vĂ  uá»‘ng nhiá»�u nÆ°á»›c nhĂ©."
+						+ "Náº¿u báº¡n táº­p thá»ƒ hĂ¬nh thĂ¬ bĂ¬nh thÆ°á»�ng "
+						+ "(vĂ¬ lĂºc nĂ y khá»‘i lÆ°á»£ng cÆ¡ luĂ´n náº·ng hÆ¡n má»¡ nĂªn BMI luĂ´n >=25).";*/
 			} else if (ratioBMI >= 30 && ratioBMI < 35) {
-				result = "Béo phì độ I";/*:\n"
-						+ "Đừng buồn bạn à. Bạn nên tham mưu BS chuyên khoa để có thể giúp bạn tốt hơn."
-						+ " Chương trình chỉ khuyên bạn nên tập chạy bộ, nhảy dây thôi ..."
-						+ " Ngoài ra, bạn nên uống nhiều nước, ăn đồ hấp luộc để giảm bớt thèm ăn, ăn nhiều rau xanh,"
-						+ " hoa quả có tính chua ..."
-						+ "\nNếu bạn tập thể hình thì bình thường"
-						+ " (vì lúc này khối lượng cơ luôn nặng hơn mỡ nên BMI luôn >=25).";*/
+				result = "BĂ©o phĂ¬ Ä‘á»™ I";/*:\n"
+						+ "Ä�á»«ng buá»“n báº¡n Ă . Báº¡n nĂªn tham mÆ°u BS chuyĂªn khoa Ä‘á»ƒ cĂ³ thá»ƒ giĂºp báº¡n tá»‘t hÆ¡n."
+						+ " ChÆ°Æ¡ng trĂ¬nh chá»‰ khuyĂªn báº¡n nĂªn táº­p cháº¡y bá»™, nháº£y dĂ¢y thĂ´i ..."
+						+ " NgoĂ i ra, báº¡n nĂªn uá»‘ng nhiá»�u nÆ°á»›c, Äƒn Ä‘á»“ háº¥p luá»™c Ä‘á»ƒ giáº£m bá»›t thĂ¨m Äƒn, Äƒn nhiá»�u rau xanh,"
+						+ " hoa quáº£ cĂ³ tĂ­nh chua ..."
+						+ "\nNáº¿u báº¡n táº­p thá»ƒ hĂ¬nh thĂ¬ bĂ¬nh thÆ°á»�ng"
+						+ " (vĂ¬ lĂºc nĂ y khá»‘i lÆ°á»£ng cÆ¡ luĂ´n náº·ng hÆ¡n má»¡ nĂªn BMI luĂ´n >=25).";*/
 			} else if (ratioBMI >= 35 && ratioBMI < 40) {
-				result = "Béo phì độ II";/*:\n"
-						+ "Đừng chán nản bạn à. "
-						+ "Bạn hãy tích cực vận động thể lực như đi bộ, bơi lội, nếu được, bạn có thể chạy bộ ..."
-						+ " Nếu có điều kiện hãy nhờ BS và HLV Thể thao tư vấn thêm nhé. "
-						+ "Chế độ ăn nên cắt giảm các món ăn chiên xào, ngọt ... "
-						+ "Nếu dùng thuốc giảm béo cũng nên tham khảo ý kiến BS nhé ..."
-						+ "\nNếu bạn tập thể hình thì bình thường (vì lúc này khối lượng cơ luôn nặng hơn mỡ nên"
-						+ " BMI luôn >=25).";*/
+				result = "BĂ©o phĂ¬ Ä‘á»™ II";/*:\n"
+						+ "Ä�á»«ng chĂ¡n náº£n báº¡n Ă . "
+						+ "Báº¡n hĂ£y tĂ­ch cá»±c váº­n Ä‘á»™ng thá»ƒ lá»±c nhÆ° Ä‘i bá»™, bÆ¡i lá»™i, náº¿u Ä‘Æ°á»£c, báº¡n cĂ³ thá»ƒ cháº¡y bá»™ ..."
+						+ " Náº¿u cĂ³ Ä‘iá»�u kiá»‡n hĂ£y nhá»� BS vĂ  HLV Thá»ƒ thao tÆ° váº¥n thĂªm nhĂ©. "
+						+ "Cháº¿ Ä‘á»™ Äƒn nĂªn cáº¯t giáº£m cĂ¡c mĂ³n Äƒn chiĂªn xĂ o, ngá»�t ... "
+						+ "Náº¿u dĂ¹ng thuá»‘c giáº£m bĂ©o cÅ©ng nĂªn tham kháº£o Ă½ kiáº¿n BS nhĂ© ..."
+						+ "\nNáº¿u báº¡n táº­p thá»ƒ hĂ¬nh thĂ¬ bĂ¬nh thÆ°á»�ng (vĂ¬ lĂºc nĂ y khá»‘i lÆ°á»£ng cÆ¡ luĂ´n náº·ng hÆ¡n má»¡ nĂªn"
+						+ " BMI luĂ´n >=25).";*/
 			} else {
-				result = "Béo phì độ III";/*:\n"
-						+ "Cố lên bạn ơi! Có lẽ, BS sẽ giúp bạn tốt hơn."
-						+ " Chương trình khuyên bạn nên tập luyện đi bộ, bơi lội ..."
-						+ " Bạn nên tham mưu HLV Thể thao thêm nhé. Bạn cố gắng ăn nhiều rau xanh, "
-						+ "hoa quả chua, uống nhiều nước, sử dụng đồ ăn hấp luộc để no lâu và giúp giảm giác "
-						+ "thèm ăn nữa đó ... "
-						+ "\nNếu bạn tập thể hình thì bình thường (vì lúc này khối lượng cơ luôn nặng hơn "
-						+ "mỡ nên BMI luôn >=25).";*/
+				result = "BĂ©o phĂ¬ Ä‘á»™ III";/*:\n"
+						+ "Cá»‘ lĂªn báº¡n Æ¡i! CĂ³ láº½, BS sáº½ giĂºp báº¡n tá»‘t hÆ¡n."
+						+ " ChÆ°Æ¡ng trĂ¬nh khuyĂªn báº¡n nĂªn táº­p luyá»‡n Ä‘i bá»™, bÆ¡i lá»™i ..."
+						+ " Báº¡n nĂªn tham mÆ°u HLV Thá»ƒ thao thĂªm nhĂ©. Báº¡n cá»‘ gáº¯ng Äƒn nhiá»�u rau xanh, "
+						+ "hoa quáº£ chua, uá»‘ng nhiá»�u nÆ°á»›c, sá»­ dá»¥ng Ä‘á»“ Äƒn háº¥p luá»™c Ä‘á»ƒ no lĂ¢u vĂ  giĂºp giáº£m giĂ¡c "
+						+ "thĂ¨m Äƒn ná»¯a Ä‘Ă³ ... "
+						+ "\nNáº¿u báº¡n táº­p thá»ƒ hĂ¬nh thĂ¬ bĂ¬nh thÆ°á»�ng (vĂ¬ lĂºc nĂ y khá»‘i lÆ°á»£ng cÆ¡ luĂ´n náº·ng hÆ¡n "
+						+ "má»¡ nĂªn BMI luĂ´n >=25).";*/
 			}
 		} else {
 			if (ratioBMI < 18.5) {
-				result = "Thể trạng gầy, thiếu năng lượng";
-				/*result = "Cân nặng thấp (Thể trạng gầy, thiếu năng lượng trường diễn):\n"
-						+ "Bạn ốm quá.\n Chương trình khuyên bạn cố gắng ăn uống 5 - 8 bữa "
-						+ "(3 bữa chính + 3 - 4 bữa phụ)/ ngày.\n"
-						+ "Uống sữa cao năng lượng + nước 2 lít/ ngày. Nhớ tập thể hình hợp lý để tăng cân nhé!\n"
-						+ "Quan trọng là đừng thức khuya nha.\n"
-						+ "Chúc bạn sớm tăng cân nhé.";*/
+				result = "Thá»ƒ tráº¡ng gáº§y, thiáº¿u nÄƒng lÆ°á»£ng";
+				/*result = "CĂ¢n náº·ng tháº¥p (Thá»ƒ tráº¡ng gáº§y, thiáº¿u nÄƒng lÆ°á»£ng trÆ°á»�ng diá»…n):\n"
+						+ "Báº¡n á»‘m quĂ¡.\n ChÆ°Æ¡ng trĂ¬nh khuyĂªn báº¡n cá»‘ gáº¯ng Äƒn uá»‘ng 5 - 8 bá»¯a "
+						+ "(3 bá»¯a chĂ­nh + 3 - 4 bá»¯a phá»¥)/ ngĂ y.\n"
+						+ "Uá»‘ng sá»¯a cao nÄƒng lÆ°á»£ng + nÆ°á»›c 2 lĂ­t/ ngĂ y. Nhá»› táº­p thá»ƒ hĂ¬nh há»£p lĂ½ Ä‘á»ƒ tÄƒng cĂ¢n nhĂ©!\n"
+						+ "Quan trá»�ng lĂ  Ä‘á»«ng thá»©c khuya nha.\n"
+						+ "ChĂºc báº¡n sá»›m tÄƒng cĂ¢n nhĂ©.";*/
 			} else if (ratioBMI == 23) {
-				result = "Bạn đang thừa cân";
+				result = "Báº¡n Ä‘ang thá»«a cĂ¢n";
 			} else if (ratioBMI >= 18.5 && ratioBMI < 23) {
-				result = "Thân hình bình thường";
-				/*result = "Bình thường:\nBạn có chỉ số cơ thể bình thường. Chúc mừng bạn nhé.\n"
-						+ "Chương trình khuyên bạn hãy tiếp tục duy trì chế độ tập luyện và ăn uống hiện tại."
-						+ " Bạn hãy tập thêm các môn mang tính vận động cơ bắp nếu bạn muốn thể hình đẹp.\n"
-						+ "Chúc bạn có nhiều sức khỏe nhé.";*/
+				result = "ThĂ¢n hĂ¬nh bĂ¬nh thÆ°á»�ng";
+				/*result = "BĂ¬nh thÆ°á»�ng:\nBáº¡n cĂ³ chá»‰ sá»‘ cÆ¡ thá»ƒ bĂ¬nh thÆ°á»�ng. ChĂºc má»«ng báº¡n nhĂ©.\n"
+						+ "ChÆ°Æ¡ng trĂ¬nh khuyĂªn báº¡n hĂ£y tiáº¿p tá»¥c duy trĂ¬ cháº¿ Ä‘á»™ táº­p luyá»‡n vĂ  Äƒn uá»‘ng hiá»‡n táº¡i."
+						+ " Báº¡n hĂ£y táº­p thĂªm cĂ¡c mĂ´n mang tĂ­nh váº­n Ä‘á»™ng cÆ¡ báº¯p náº¿u báº¡n muá»‘n thá»ƒ hĂ¬nh Ä‘áº¹p.\n"
+						+ "ChĂºc báº¡n cĂ³ nhiá»�u sá»©c khá»�e nhĂ©.";*/
 			} else if (ratioBMI > 23 && ratioBMI < 25) {
-				result = "Thừa cân - Tiền béo phì";/*:\n"
-						+ "Bạn đang trong giai đoạn tiền béo phì rồi. Đừng lo nhé."
-						+ " Chương trình khuyên bạn nên kết hợp tập thể hình với việc chạy bộ, nhảy dây."
-						+ " Mục đích của việc này giúp giảm mỡ "
-						+ "và tăng khối lượng cơ bắp, giúp săn chắc cơ bắp. "
-						+ "Bạn cũng nên ăn nhiều rau, hạn chế dầu mỡ và uống nhiều nước nhé."
-						+ "Nếu bạn tập thể hình thì bình thường "
-						+ "(vì lúc này khối lượng cơ luôn nặng hơn mỡ nên BMI luôn >=25).";*/
+				result = "Thá»«a cĂ¢n - Tiá»�n bĂ©o phĂ¬";/*:\n"
+						+ "Báº¡n Ä‘ang trong giai Ä‘oáº¡n tiá»�n bĂ©o phĂ¬ rá»“i. Ä�á»«ng lo nhĂ©."
+						+ " ChÆ°Æ¡ng trĂ¬nh khuyĂªn báº¡n nĂªn káº¿t há»£p táº­p thá»ƒ hĂ¬nh vá»›i viá»‡c cháº¡y bá»™, nháº£y dĂ¢y."
+						+ " Má»¥c Ä‘Ă­ch cá»§a viá»‡c nĂ y giĂºp giáº£m má»¡ "
+						+ "vĂ  tÄƒng khá»‘i lÆ°á»£ng cÆ¡ báº¯p, giĂºp sÄƒn cháº¯c cÆ¡ báº¯p. "
+						+ "Báº¡n cÅ©ng nĂªn Äƒn nhiá»�u rau, háº¡n cháº¿ dáº§u má»¡ vĂ  uá»‘ng nhiá»�u nÆ°á»›c nhĂ©."
+						+ "Náº¿u báº¡n táº­p thá»ƒ hĂ¬nh thĂ¬ bĂ¬nh thÆ°á»�ng "
+						+ "(vĂ¬ lĂºc nĂ y khá»‘i lÆ°á»£ng cÆ¡ luĂ´n náº·ng hÆ¡n má»¡ nĂªn BMI luĂ´n >=25).";*/
 			} else if (ratioBMI >= 25 && ratioBMI < 30) {
-				result = "Béo phì độ I";/*:\n"
-						+ "Đừng buồn bạn à. Bạn nên tham mưu BS chuyên khoa để có thể giúp bạn tốt hơn."
-						+ " Chương trình chỉ khuyên bạn nên tập chạy bộ, nhảy dây thôi ..."
-						+ " Ngoài ra, bạn nên uống nhiều nước, ăn đồ hấp luộc để giảm bớt thèm ăn, ăn nhiều rau xanh,"
-						+ " hoa quả có tính chua ..."
-						+ "\nNếu bạn tập thể hình thì bình thường"
-						+ " (vì lúc này khối lượng cơ luôn nặng hơn mỡ nên BMI luôn >=25).";*/
+				result = "BĂ©o phĂ¬ Ä‘á»™ I";/*:\n"
+						+ "Ä�á»«ng buá»“n báº¡n Ă . Báº¡n nĂªn tham mÆ°u BS chuyĂªn khoa Ä‘á»ƒ cĂ³ thá»ƒ giĂºp báº¡n tá»‘t hÆ¡n."
+						+ " ChÆ°Æ¡ng trĂ¬nh chá»‰ khuyĂªn báº¡n nĂªn táº­p cháº¡y bá»™, nháº£y dĂ¢y thĂ´i ..."
+						+ " NgoĂ i ra, báº¡n nĂªn uá»‘ng nhiá»�u nÆ°á»›c, Äƒn Ä‘á»“ háº¥p luá»™c Ä‘á»ƒ giáº£m bá»›t thĂ¨m Äƒn, Äƒn nhiá»�u rau xanh,"
+						+ " hoa quáº£ cĂ³ tĂ­nh chua ..."
+						+ "\nNáº¿u báº¡n táº­p thá»ƒ hĂ¬nh thĂ¬ bĂ¬nh thÆ°á»�ng"
+						+ " (vĂ¬ lĂºc nĂ y khá»‘i lÆ°á»£ng cÆ¡ luĂ´n náº·ng hÆ¡n má»¡ nĂªn BMI luĂ´n >=25).";*/
 			} else if (ratioBMI == 30) {
-				result = "Béo phì độ II";/*:\n"
-						+ "Đừng chán nản bạn à. "
-						+ "Bạn hãy tích cực vận động thể lực như đi bộ, bơi lội, nếu được, bạn có thể chạy bộ ..."
-						+ " Nếu có điều kiện hãy nhờ BS và HLV Thể thao tư vấn thêm nhé. "
-						+ "Chế độ ăn nên cắt giảm các món ăn chiên xào, ngọt ... "
-						+ "Nếu dùng thuốc giảm béo cũng nên tham khảo ý kiến BS nhé ..."
-						+ "\nNếu bạn tập thể hình thì bình thường (vì lúc này khối lượng cơ luôn nặng hơn mỡ nên"
-						+ " BMI luôn >=25).";*/
+				result = "BĂ©o phĂ¬ Ä‘á»™ II";/*:\n"
+						+ "Ä�á»«ng chĂ¡n náº£n báº¡n Ă . "
+						+ "Báº¡n hĂ£y tĂ­ch cá»±c váº­n Ä‘á»™ng thá»ƒ lá»±c nhÆ° Ä‘i bá»™, bÆ¡i lá»™i, náº¿u Ä‘Æ°á»£c, báº¡n cĂ³ thá»ƒ cháº¡y bá»™ ..."
+						+ " Náº¿u cĂ³ Ä‘iá»�u kiá»‡n hĂ£y nhá»� BS vĂ  HLV Thá»ƒ thao tÆ° váº¥n thĂªm nhĂ©. "
+						+ "Cháº¿ Ä‘á»™ Äƒn nĂªn cáº¯t giáº£m cĂ¡c mĂ³n Äƒn chiĂªn xĂ o, ngá»�t ... "
+						+ "Náº¿u dĂ¹ng thuá»‘c giáº£m bĂ©o cÅ©ng nĂªn tham kháº£o Ă½ kiáº¿n BS nhĂ© ..."
+						+ "\nNáº¿u báº¡n táº­p thá»ƒ hĂ¬nh thĂ¬ bĂ¬nh thÆ°á»�ng (vĂ¬ lĂºc nĂ y khá»‘i lÆ°á»£ng cÆ¡ luĂ´n náº·ng hÆ¡n má»¡ nĂªn"
+						+ " BMI luĂ´n >=25).";*/
 			} else {
-				result = "Béo phì độ III";/*:\n"
-						+ "Cố lên bạn ơi! Có lẽ, BS sẽ giúp bạn tốt hơn."
-						+ " Chương trình khuyên bạn nên tập luyện đi bộ, bơi lội ..."
-						+ " Bạn nên tham mưu HLV Thể thao thêm nhé. Bạn cố gắng ăn nhiều rau xanh, "
-						+ "hoa quả chua, uống nhiều nước, sử dụng đồ ăn hấp luộc để no lâu và giúp giảm giác "
-						+ "thèm ăn nữa đó ... "
-						+ "\nNếu bạn tập thể hình thì bình thường (vì lúc này khối lượng cơ luôn nặng hơn "
-						+ "mỡ nên BMI luôn >=25).";*/
+				result = "BĂ©o phĂ¬ Ä‘á»™ III";/*:\n"
+						+ "Cá»‘ lĂªn báº¡n Æ¡i! CĂ³ láº½, BS sáº½ giĂºp báº¡n tá»‘t hÆ¡n."
+						+ " ChÆ°Æ¡ng trĂ¬nh khuyĂªn báº¡n nĂªn táº­p luyá»‡n Ä‘i bá»™, bÆ¡i lá»™i ..."
+						+ " Báº¡n nĂªn tham mÆ°u HLV Thá»ƒ thao thĂªm nhĂ©. Báº¡n cá»‘ gáº¯ng Äƒn nhiá»�u rau xanh, "
+						+ "hoa quáº£ chua, uá»‘ng nhiá»�u nÆ°á»›c, sá»­ dá»¥ng Ä‘á»“ Äƒn háº¥p luá»™c Ä‘á»ƒ no lĂ¢u vĂ  giĂºp giáº£m giĂ¡c "
+						+ "thĂ¨m Äƒn ná»¯a Ä‘Ă³ ... "
+						+ "\nNáº¿u báº¡n táº­p thá»ƒ hĂ¬nh thĂ¬ bĂ¬nh thÆ°á»�ng (vĂ¬ lĂºc nĂ y khá»‘i lÆ°á»£ng cÆ¡ luĂ´n náº·ng hÆ¡n "
+						+ "má»¡ nĂªn BMI luĂ´n >=25).";*/
 			}
 		}
 		tbxResult.setText(String.valueOf(ratioBMI));

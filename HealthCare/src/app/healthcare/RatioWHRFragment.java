@@ -28,28 +28,28 @@ public class RatioWHRFragment extends Fragment {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.fragment_ratio_whr);
-		cbMale = (CheckBox) findViewById(R.id.cbMale);
+		this.getActivity().setContentView(R.layout.fragment_ratio_whr);
+		cbMale = (CheckBox) this.getActivity().findViewById(R.id.cbMale);
 		cbMale.setOnCheckedChangeListener(listener);
-		cbFeMale = (CheckBox) findViewById(R.id.cbFeMale);
+		cbFeMale = (CheckBox) this.getActivity().findViewById(R.id.cbFeMale);
 		cbFeMale.setChecked(true);
 		cbMale.setOnCheckedChangeListener(listener);
-		tbxCe = (EditText) findViewById(R.id.tbxCe);
-		tbxCm = (EditText) findViewById(R.id.tbxCm);
-		btnCalculateBMI = (Button) findViewById(R.id.btnCalculateBMI);
+		tbxCe = (EditText) this.getActivity().findViewById(R.id.tbxCe);
+		tbxCm = (EditText) this.getActivity().findViewById(R.id.tbxCm);
+		btnCalculateBMI = (Button) this.getActivity().findViewById(R.id.btnCalculateBMI);
 		btnCalculateBMI.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				calculateWHR();
 			}
 		});
-		btnReinphut = (Button) findViewById(R.id.btnReinput);
+		btnReinphut = (Button) this.getActivity().findViewById(R.id.btnReinput);
 		btnReinphut.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				reInput();
 			}
 		});
-		tbxResult = (TextView) findViewById(R.id.tbxResultBMI);
-		tbxImpact = (TextView) findViewById(R.id.tbxImpact);
+		tbxResult = (TextView) this.getActivity().findViewById(R.id.tbxResultBMI);
+		tbxImpact = (TextView) this.getActivity().findViewById(R.id.tbxImpact);
 	}
 
 	protected void calculateWHR() {

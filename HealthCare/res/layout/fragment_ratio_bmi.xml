@@ -52,7 +52,7 @@
         android:id="@+id/tbxNoteBMI"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tbxResultWHR"
+        android:layout_alignLeft="@+id/tbxResultBMI"
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/tbxWeight"
         android:layout_marginBottom="14dp"
@@ -65,11 +65,10 @@
         android:layout_above="@+id/tbxNoteBMI"
         android:layout_alignLeft="@+id/tbxNoteBMI"
         android:layout_marginBottom="21dp"
-        android:text="@string/tbxImpactString"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:text="@string/tbxImpactString" />
 
     <TextView
-        android:id="@+id/tbxResultWHR"
+        android:id="@+id/tbxResultBMI"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/tbxImpact"
@@ -81,33 +80,34 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/tbxResultWHR"
+        android:layout_above="@+id/tbxResultBMI"
         android:layout_alignLeft="@+id/textView2"
         android:text="@string/lbTitleResultBMIString" />
 
-    <RadioButton
-        android:id="@+id/rbWHO"
+    <CheckBox
+        android:id="@+id/cbWHO"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView3"
         android:layout_below="@+id/tbxWeight"
-        android:text="@string/rbWHOString" />
+        android:text="@string/cbWHOString" />
 
-    <RadioButton
-        android:id="@+id/rbIDIAndWPRO"
+    <CheckBox
+        android:id="@+id/cbIDIAndWPRO"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/rbWHO"
-        android:layout_below="@+id/rbWHO"
-        android:text="@string/rbIDIAndWPROString" />
+        android:layout_alignLeft="@+id/cbWHO"
+        android:layout_below="@+id/cbWHO"
+        android:text="@string/cbIDIAndWPROString" />
 
     <Button
         android:id="@+id/btnCalculateBMI"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/radioButton1"
-        android:layout_toLeftOf="@+id/radioButton1"
+        android:layout_alignBaseline="@+id/btnReinput"
+        android:layout_alignBottom="@+id/btnReinput"
+        android:layout_toLeftOf="@+id/tbxWeight"
         android:text="@string/btnCalculateBMIString" />
 
     <Button
@@ -115,9 +115,9 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/btnCalculateBMI"
-        android:layout_alignBottom="@+id/btnCalculateBMI"
         android:layout_alignLeft="@+id/tbxWeight"
+        android:layout_below="@+id/cbIDIAndWPRO"
+        android:layout_marginLeft="21dp"
         android:text="@string/btnReinputString" />
 
 </RelativeLayout>
