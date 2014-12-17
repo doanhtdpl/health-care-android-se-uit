@@ -3,18 +3,21 @@ package app.healthcare;
 import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.IBinder;
+import android.preference.PreferenceManager;
 import android.widget.Toast;
 
 public class StepRunServices extends Service implements SensorEventListener{
 	private SensorManager sensorManager;
 	private boolean color = false;
 	private long lastUpdate;
-	public int step=0;
+	public int step;
+	SharedPreferences prefs;
 	@Override
 	public IBinder onBind(Intent arg0) {
 		// TODO Auto-generated method stub
@@ -23,8 +26,8 @@ public class StepRunServices extends Service implements SensorEventListener{
 	@Override
 	public void onCreate(){
 		super.onCreate();
-		
-		
+		prefs = PreferenceManager.getDefaultSharedPreferences(this);
+		step = getHighScore();
 	}
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId){
@@ -52,6 +55,16 @@ public class StepRunServices extends Service implements SensorEventListener{
 		getAccelerometer(arg0);
 		
 	}
+	
+	public void setHighScore(int score) {
+		SharedPreferences.Editor settingsEditor = prefs.edit();
+		settingsEditor.putInt(Constants.KEY_HISCORE, score);
+		settingsEditor.commit();
+	}
+
+	public int getHighScore() {
+		return prefs.getInt(Constants.KEY_HISCORE, 0);
+	}
 	private void getAccelerometer(SensorEvent event) {
 		float[] values = event.values;
 		// Movement
@@ -71,12 +84,16 @@ public class StepRunServices extends Service implements SensorEventListener{
 			
 			if (color) {
 				//tvText.setBackgroundColor(getResources().getColor(android.R.color.holo_blue_bright));
-				Toast.makeText(this, "zo roi ne", Toast.LENGTH_SHORT).show();
+				
 			} else {
 				//tvText.setBackgroundColor(getResources().getColor(android.R.color.holo_red_light));
 				step+=1;
+				setHighScore(step);
 				//tvcountStep.setText(String.valueOf(step));
-				Toast.makeText(this, "aaaaaaaaaaaanua roi ne", Toast.LENGTH_SHORT).show();
+				Intent intent = new Intent(Constants.INTENT_GET_BEAT);
+				intent.putExtra(Constants.ActionReceiver.ACTION_RECEIVER, Constants.ActionReceiver.SHOW_TEXT);
+				intent.putExtra(Constants.ActionReceiver.ACTION_VALUE, step);
+				getBaseContext().sendBroadcast(intent);
 			}
 			color = !color;
 		}
