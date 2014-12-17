@@ -28,6 +28,7 @@
         android:layout_alignLeft="@+id/tbxCm"
         android:layout_below="@+id/tbxCm"
         android:layout_marginTop="15dp"
+        android:numeric="decimal"
         android:ems="10" />
 
     <EditText
@@ -36,6 +37,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textView1"
         android:layout_marginLeft="36dp"
+        android:numeric="decimal"
         android:layout_toRightOf="@+id/textView2"
         android:ems="10" />
 
