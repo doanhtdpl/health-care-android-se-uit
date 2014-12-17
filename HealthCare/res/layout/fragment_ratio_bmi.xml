@@ -19,6 +19,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/tbxWeight"
         android:layout_alignLeft="@+id/textView1"
+        
         android:text="@string/lbWeightString" />
 
     <EditText
@@ -28,11 +29,13 @@
         android:layout_alignLeft="@+id/tbxHeight"
         android:layout_below="@+id/tbxHeight"
         android:layout_marginTop="15dp"
+        android:numeric="decimal"
         android:ems="10" />
 
     <EditText
         android:id="@+id/tbxHeight"
         android:layout_width="130dp"
+        android:numeric="decimal"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/textView1"
         android:layout_marginLeft="36dp"

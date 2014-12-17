@@ -1,5 +1,6 @@
 package app.healthcare;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.Toast;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -48,7 +50,16 @@ public class RatioBMIFragment extends Fragment {
 		tbxWeight = (EditText) rootView.findViewById(R.id.tbxWeight);
 		btnCalculateBMI = (Button) rootView.findViewById(R.id.btnCalculateBMI);
 		btnCalculateBMI.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+            @SuppressLint("ShowToast")
+			public void onClick(View v) {
+            	if(tbxHeight.getText().length()==0){
+					Toast.makeText(getActivity(), "Nhập thông số Chiều cao", Toast.LENGTH_SHORT).show();
+				return;
+				}
+            	if(tbxWeight.getText().length()==0){
+					Toast.makeText(getActivity(), "Nhập thông số cân nặng", Toast.LENGTH_SHORT).show();
+					return;
+				}
             	calculateBMI();
             }
         });

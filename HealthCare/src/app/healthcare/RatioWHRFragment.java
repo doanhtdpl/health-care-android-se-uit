@@ -1,8 +1,10 @@
 package app.healthcare;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
+import android.text.InputFilter.LengthFilter;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 
 public class RatioWHRFragment extends Fragment {
@@ -47,13 +50,23 @@ public class RatioWHRFragment extends Fragment {
 		tbxCm = (EditText) rootView.findViewById(R.id.tbxCm);
 		btnCalculateWHR = (Button) rootView.findViewById(R.id.btnCalculateWHR);
 		btnCalculateWHR.setOnClickListener(new View.OnClickListener() {
+			@SuppressLint("ShowToast")
 			public void onClick(View v) {
+				if(tbxCe.getText().length()==0){
+					Toast.makeText(getActivity(), "Nhập thông số vòng eo", Toast.LENGTH_SHORT).show();
+					return;
+				}
+				if(tbxCm.getText().length()==0){
+					Toast.makeText(getActivity(), "Nhập thông số vòng mông", Toast.LENGTH_SHORT).show();
+					return;
+				}
 				calculateWHR();
 			}
 		});
 		btnReinphut = (Button) rootView.findViewById(R.id.btnReinput);
 		btnReinphut.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
+				
 				reInput();
 			}
 		});
