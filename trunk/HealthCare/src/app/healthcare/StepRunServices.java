@@ -92,7 +92,7 @@ public class StepRunServices extends Service implements SensorEventListener{
 				//tvcountStep.setText(String.valueOf(step));
 				Intent intent = new Intent(Constants.INTENT_GET_BEAT);
 				intent.putExtra(Constants.ActionReceiver.ACTION_RECEIVER, Constants.ActionReceiver.SHOW_TEXT);
-				intent.putExtra(Constants.ActionReceiver.ACTION_VALUE, step);
+				intent.putExtra(Constants.ActionReceiver.ACTION_VALUE, getHighScore());
 				getBaseContext().sendBroadcast(intent);
 			}
 			color = !color;

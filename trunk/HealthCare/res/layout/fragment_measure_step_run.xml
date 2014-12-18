@@ -1,34 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical" >
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/TextView03"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="Hôm qua"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/tbxYesterday"
+        android:layout_width="196dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:textAlignment="center"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/tbxChiTieu"
+        android:layout_width="196dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/TextView05"
+        android:layout_marginTop="24dp"
+        android:textAlignment="center"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/TextView02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tbxChiTieu"
+        android:layout_alignBottom="@+id/tbxChiTieu"
+        android:layout_alignParentLeft="true"
+        android:text="Chỉ Tiêu"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TextView
+        android:id="@+id/TextView05"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tbxCountStepRun"
+        android:layout_alignBottom="@+id/tbxCountStepRun"
+        android:layout_alignParentLeft="true"
+        android:text="Hôm nay"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
         android:id="@+id/tbxCountStepRun"
-        android:layout_width="match_parent"
+        android:layout_width="196dp"
         android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/tbxYesterday"
+        android:layout_marginTop="24dp"
         android:textAlignment="center"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <Button
         android:id="@+id/btnStartService"
-        android:layout_width="wrap_content"
+        android:layout_width="79dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
+        android:layout_alignLeft="@+id/tbxChiTieu"
+        android:layout_below="@+id/tbxChiTieu"
+        android:layout_marginTop="49dp"
         android:text="Start" />
 
     <Button
         android:id="@+id/btnStopService"
+        android:layout_width="77dp"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/btnStartService"
+        android:layout_below="@+id/btnReset"
+        android:layout_marginTop="25dp"
+        android:text="Stop" />
+
+    <Button
+        android:id="@+id/btnReset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Stop" />
-	
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Shake to get a toast and to switch color" />
+        android:layout_alignLeft="@+id/btnStopService"
+        android:layout_below="@+id/btnStartService"
+        android:layout_marginTop="22dp"
+        android:text="Reset" />
 
-</LinearLayout>
+</RelativeLayout>
