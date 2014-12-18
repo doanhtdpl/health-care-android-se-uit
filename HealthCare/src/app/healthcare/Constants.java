@@ -4,7 +4,7 @@ public class Constants {
 	public static final String KEY_HISCORE = "hiscore";
 	
 	public static final String INTENT_GET_BEAT = "INTENT_GET_BEAT";
-	
+	public static final int CHI_TIEU = 1500;
 	public static class ActionReceiver {
 		public static final String ACTION_RECEIVER = "ACTION_RECEIVER";
 		public static final String ACTION_VALUE = "ACTION_VALUE";
