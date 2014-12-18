@@ -1,21 +1,18 @@
 package app.healthcare;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
-import android.text.InputFilter.LengthFilter;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.widget.CompoundButton.OnCheckedChangeListener;
 
 public class RatioWHRFragment extends Fragment {
 
@@ -82,28 +79,28 @@ public class RatioWHRFragment extends Fragment {
 		{
 			if (ratioWHR <= 0.9)
 			{
-				result = "Sá»©c khá»�e tá»‘t";
+				result = "Sức khỏe tốt";
 			}
 			else if (ratioWHR>0.9&&ratioWHR<=0.95){
-				result = "Ă�t nguy hiá»ƒm";
+				result = "Ít nguy hiểm";
 			}
 			else if (ratioWHR>0.95&&ratioWHR<1){
-				result = "Má»©c Ä‘á»™ nguy hiá»ƒm trung bĂ¬nh";
+				result = "Mức độ nguy hiểm trung bình";
 			}else {
-				result = "Má»©c Ä‘á»™ nguy hiá»ƒm cao";
+				result = "Rất nguy hiểm";
 			}
 		}else {
 			if (ratioWHR <= 0.7)
 			{
-				result = "Sá»©c khá»�e tá»‘t";
+				result = "Sức khỏe tốt";
 			}
 			else if (ratioWHR>0.7&&ratioWHR<=0.8){
-				result = "Ă�t nguy hiá»ƒm";
+				result = "Ít nguy hiểm";
 			}
 			else if (ratioWHR>0.8&&ratioWHR<0.85){
-				result = "Má»©c Ä‘á»™ nguy hiá»ƒm trung bĂ¬nh";
+				result = "Mức độ nguy hiểm trung bình";
 			}else {
-				result = "Má»©c Ä‘á»™ nguy hiá»ƒm cao";
+				result = "Rất nguy hiểm";
 			}
 		}
 		tbxResult.setText(String.valueOf(ratioWHR));
@@ -113,7 +110,7 @@ public class RatioWHRFragment extends Fragment {
 	public void reInput() {
 		tbxCe.setText("");
 		tbxCm.setText("");
-		tbxImpact.setText("Má»©c Ä‘á»™ áº£nh hÆ°á»Ÿng");
+		tbxImpact.setText("Mức độ ảnh hưởng");
 		tbxResult.setText("WHR");
 
 	}
