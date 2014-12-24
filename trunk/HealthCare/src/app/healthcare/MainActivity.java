@@ -180,7 +180,7 @@ public class MainActivity extends Activity {
 		Fragment fragment = null;
 		switch (position) {
 		case FRAG_TEM_BODY:
-			fragment = new TemperatureBody();
+			fragment = new StartAppScreen();
 			break;
 		case FRAG_HEART_RATE:
 			fragment = new HeartRateFragment();

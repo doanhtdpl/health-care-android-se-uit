@@ -34,10 +34,11 @@
         android:layout_centerHorizontal="true"
         android:text="@string/lbTitleBMIString"
         android:textColor="#0066CC"
+        android:layout_marginTop="10dp"
         android:textStyle="bold"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <TextView
+    <!-- <TextView
         android:id="@+id/tbxNoteBMI"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -47,38 +48,7 @@
         android:layout_marginBottom="14dp"
         android:text="@string/lbNoteBMIString"
         android:textStyle="italic"
-        android:textColor="#0066CC" />
-
-    <TextView
-        android:id="@+id/tbxImpact"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/tbxNoteBMI"
-        android:layout_alignLeft="@+id/tbxNoteBMI"
-        android:layout_marginBottom="21dp"
-        android:text="@string/tbxImpactString"
-        android:textStyle="italic"
-        android:textColor="#FF3333" />
-
-    <TextView
-        android:id="@+id/tbxResultBMI"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/tbxImpact"
-        android:layout_alignLeft="@+id/textView4"
-        android:text="@string/tbxResultBMIString"
-        android:textColor="#FF3333"
-        android:textStyle="bold"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/tbxResultBMI"
-        android:layout_alignLeft="@+id/textView2"
-        android:textColor="#0066CC"
-        android:text="@string/lbTitleResultBMIString" />
+        android:textColor="#0066CC" /> -->
 
     <CheckBox
         android:id="@+id/cbIDIAndWPRO"
@@ -95,30 +65,9 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView3"
         android:layout_below="@+id/tbxWeight"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="5dp"
         android:button="@drawable/checkbox_style"
         android:text="@string/cbWHOString" />
-
-    <Button
-        android:id="@+id/btnCalculateBMI"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/btnReinput"
-        android:layout_alignBottom="@+id/btnReinput"
-        android:layout_toLeftOf="@+id/cbIDIAndWPRO"
-        android:background="@drawable/button_style"
-        android:text="@string/btnCalculateBMIString" />
-
-    <Button
-        android:id="@+id/btnReinput"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toRightOf="@+id/textView3"
-        android:background="@drawable/button_style"
-        android:text="@string/btnReinputString" />
 
     <EditText
         android:id="@+id/tbxHeight"
@@ -142,5 +91,72 @@
         android:layout_alignLeft="@+id/textView1"
         android:textColor="#0066CC"
         android:text="@string/lbWeightString" />
+
+    <Button
+        android:id="@+id/btnCalculateBMI"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/cbIDIAndWPRO"
+        android:layout_toLeftOf="@+id/cbIDIAndWPRO"
+        android:background="@drawable/button_style"
+        android:layout_marginTop="5dp"
+        android:text="@string/btnCalculateBMIString" />
+
+    <Button
+        android:id="@+id/btnReinput"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_alignBaseline="@+id/btnCalculateBMI"
+        android:layout_alignBottom="@+id/btnCalculateBMI"
+        android:layout_alignRight="@+id/cbIDIAndWPRO"
+        android:background="@drawable/button_style"
+        android:text="@string/btnReinputString" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_below="@+id/btnCalculateBMI"
+        android:text="@string/lbTitleResultBMIString"
+        android:layout_marginTop="5dp"
+        android:textColor="#0066CC" />
+
+    <TextView
+        android:id="@+id/tbxResultBMI"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView4"
+        android:layout_toLeftOf="@+id/btnCalculateBMI"
+        android:text="@string/tbxResultBMIString"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#FF3333"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tbxImpact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tbxResultBMI"
+        android:layout_toLeftOf="@+id/cbIDIAndWPRO"
+        android:text="@string/tbxImpactString"
+        android:textColor="#FF3333"
+        android:textStyle="italic" />
+
+    <GridView
+        android:id="@+id/gridView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tbxImpact"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:numColumns="3" >
+    </GridView>
 
 </RelativeLayout>
