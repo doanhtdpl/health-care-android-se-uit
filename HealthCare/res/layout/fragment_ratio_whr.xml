@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="@drawable/whr" 
+    >
 
     <TextView
         android:id="@+id/textView1"
@@ -11,15 +13,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="62dp"
         android:layout_marginLeft="20dp"
+        android:textColor="#0066CC"
         android:text="@string/lbCeString" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/tbxCm"
-        android:layout_alignLeft="@+id/textView1"
-        android:text="@string/lbCmString" />
 
     <EditText
         android:id="@+id/tbxCm"
@@ -29,16 +24,7 @@
         android:layout_below="@+id/tbxCe"
         android:layout_marginTop="15dp"
         android:numeric="decimal"
-        android:ems="10" />
-
-    <EditText
-        android:id="@+id/tbxCe"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView1"
-        android:layout_marginLeft="36dp"
-        android:numeric="decimal"
-        android:layout_toRightOf="@+id/textView2"
+        android:background="@drawable/rounded_edittext"
         android:ems="10" />
 
     <TextView
@@ -48,16 +34,9 @@
         android:layout_above="@+id/tbxCe"
         android:layout_centerHorizontal="true"
         android:text="@string/lbTitleWHRString"
+        android:textStyle="bold"
+        android:textColor="#0066CC"
         android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <CheckBox
-        android:id="@+id/cbFeMale"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tbxCm"
-        android:layout_below="@+id/tbxCm"
-        android:layout_marginTop="20dp"
-        android:text="@string/cbFeMaleString" />
 
     <CheckBox
         android:id="@+id/cbMale"
@@ -66,9 +45,10 @@
         android:layout_alignBaseline="@+id/cbFeMale"
         android:layout_alignBottom="@+id/cbFeMale"
         android:layout_alignRight="@+id/tbxCm"
+        android:button="@drawable/checkbox_style"
         android:text="@string/cbMaleString" />
 
-    <TextView
+    <!-- <TextView
         android:id="@+id/tbxNoteWHR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -76,7 +56,9 @@
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/tbxCm"
         android:layout_marginBottom="14dp"
-        android:text="@string/lbNoteWHRString" />
+        android:text="@string/lbNoteWHRString" 
+        android:textStyle="italic"
+        android:textColor="#0066CC"/> -->
 
     <TextView
         android:id="@+id/textView4"
@@ -84,7 +66,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView2"
         android:layout_below="@+id/btnReinput"
-        android:layout_marginTop="17dp"
+        android:layout_marginTop="5dp"
+        android:textColor="#0066CC"
         android:text="@string/lbTitleResultWHRString" />
 
     <TextView
@@ -94,6 +77,8 @@
         android:layout_alignLeft="@+id/textView4"
         android:layout_below="@+id/textView4"
         android:text="@string/tbxResultWHRString"
+        android:textColor="#FF3333"
+        android:textStyle="bold"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -102,7 +87,44 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/tbxResultWHR"
         android:layout_below="@+id/tbxResultWHR"
-        android:text="@string/tbxImpactString"/>
+        android:textColor="#FF3333"
+        android:text="@string/tbxImpactString"
+        android:textStyle="italic"/>
+
+    <EditText
+        android:id="@+id/tbxCe"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView1"
+        android:layout_alignBottom="@+id/textView1"
+        android:layout_marginLeft="23dp"
+        android:layout_toRightOf="@+id/tbxImpact"
+        android:background="@drawable/rounded_edittext"
+        android:ems="10"
+        android:numeric="decimal" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tbxCm"
+        android:layout_alignBottom="@+id/tbxCm"
+        android:layout_alignLeft="@+id/textView1"
+        android:textColor="#0066CC"
+        android:text="@string/lbCmString" />
+
+    <CheckBox
+        android:id="@+id/cbFeMale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tbxCm"
+        android:layout_below="@+id/tbxCm"
+        android:layout_marginTop="5dp"
+        android:button="@drawable/checkbox_style"
+        android:text="@string/cbFeMaleString" />
 
     <Button
         android:id="@+id/btnCalculateWHR"
@@ -110,7 +132,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/cbFeMale"
-        android:layout_toLeftOf="@+id/textView3"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@+id/tbxResultWHR"
+        android:background="@drawable/button_style"
         android:text="@string/btnCalculateWHRString" />
 
     <Button
@@ -118,8 +142,24 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/cbFeMale"
-        android:layout_toRightOf="@+id/textView3"
+        android:layout_alignBaseline="@+id/btnCalculateWHR"
+        android:layout_alignBottom="@+id/btnCalculateWHR"
+        android:layout_toLeftOf="@+id/cbMale"
+        android:background="@drawable/button_style"
         android:text="@string/btnReinputString" />
+
+    <GridView
+        android:id="@+id/gridDataWHR"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tbxImpact"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        android:numColumns="3" >
+
+    </GridView>
 
 </RelativeLayout>

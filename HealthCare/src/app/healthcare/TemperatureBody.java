@@ -11,7 +11,7 @@ public class TemperatureBody extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		View rootView = inflater.inflate(R.layout.fragment_temperature_body, container, false);
+		View rootView = inflater.inflate(R.layout.hello_app, container, false);
 
 		return rootView;
 	}

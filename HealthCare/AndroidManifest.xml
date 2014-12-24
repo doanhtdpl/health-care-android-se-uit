@@ -29,16 +29,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.androidhive.loginandregister.LoginActivity"
-            android:label="Login to your Account" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
         <!-- Entry for RegisterActivity.class -->
   <service
       android:name=".StepRunServices"
