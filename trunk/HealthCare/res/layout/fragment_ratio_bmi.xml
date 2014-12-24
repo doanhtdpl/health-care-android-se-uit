@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:background="@drawable/bmi" >
 
     <TextView
         android:id="@+id/textView1"
@@ -11,16 +12,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="62dp"
+        android:textColor="#0066CC"
         android:text="@string/lbHeightString" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/tbxWeight"
-        android:layout_alignLeft="@+id/textView1"
-        
-        android:text="@string/lbWeightString" />
 
     <EditText
         android:id="@+id/tbxWeight"
@@ -29,17 +22,8 @@
         android:layout_alignLeft="@+id/tbxHeight"
         android:layout_below="@+id/tbxHeight"
         android:layout_marginTop="15dp"
+        android:background="@drawable/rounded_edittext"
         android:numeric="decimal"
-        android:ems="10" />
-
-    <EditText
-        android:id="@+id/tbxHeight"
-        android:layout_width="130dp"
-        android:numeric="decimal"
-        android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView1"
-        android:layout_marginLeft="36dp"
-        android:layout_toRightOf="@+id/textView2"
         android:ems="10" />
 
     <TextView
@@ -49,6 +33,8 @@
         android:layout_above="@+id/tbxHeight"
         android:layout_centerHorizontal="true"
         android:text="@string/lbTitleBMIString"
+        android:textColor="#0066CC"
+        android:textStyle="bold"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -59,7 +45,9 @@
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@+id/tbxWeight"
         android:layout_marginBottom="14dp"
-        android:text="@string/lbNoteBMIString" />
+        android:text="@string/lbNoteBMIString"
+        android:textStyle="italic"
+        android:textColor="#0066CC" />
 
     <TextView
         android:id="@+id/tbxImpact"
@@ -68,7 +56,9 @@
         android:layout_above="@+id/tbxNoteBMI"
         android:layout_alignLeft="@+id/tbxNoteBMI"
         android:layout_marginBottom="21dp"
-        android:text="@string/tbxImpactString" />
+        android:text="@string/tbxImpactString"
+        android:textStyle="italic"
+        android:textColor="#FF3333" />
 
     <TextView
         android:id="@+id/tbxResultBMI"
@@ -77,6 +67,8 @@
         android:layout_above="@+id/tbxImpact"
         android:layout_alignLeft="@+id/textView4"
         android:text="@string/tbxResultBMIString"
+        android:textColor="#FF3333"
+        android:textStyle="bold"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
     <TextView
@@ -85,15 +77,8 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/tbxResultBMI"
         android:layout_alignLeft="@+id/textView2"
+        android:textColor="#0066CC"
         android:text="@string/lbTitleResultBMIString" />
-
-    <CheckBox
-        android:id="@+id/cbWHO"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView3"
-        android:layout_below="@+id/tbxWeight"
-        android:text="@string/cbWHOString" />
 
     <CheckBox
         android:id="@+id/cbIDIAndWPRO"
@@ -101,7 +86,18 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/cbWHO"
         android:layout_below="@+id/cbWHO"
+        android:button="@drawable/checkbox_style"
         android:text="@string/cbIDIAndWPROString" />
+
+    <CheckBox
+        android:id="@+id/cbWHO"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_below="@+id/tbxWeight"
+        android:layout_marginTop="18dp"
+        android:button="@drawable/checkbox_style"
+        android:text="@string/cbWHOString" />
 
     <Button
         android:id="@+id/btnCalculateBMI"
@@ -110,7 +106,8 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/btnReinput"
         android:layout_alignBottom="@+id/btnReinput"
-        android:layout_toLeftOf="@+id/tbxWeight"
+        android:layout_toLeftOf="@+id/cbIDIAndWPRO"
+        android:background="@drawable/button_style"
         android:text="@string/btnCalculateBMIString" />
 
     <Button
@@ -118,9 +115,32 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tbxWeight"
-        android:layout_below="@+id/cbIDIAndWPRO"
-        android:layout_marginLeft="21dp"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/textView3"
+        android:background="@drawable/button_style"
         android:text="@string/btnReinputString" />
+
+    <EditText
+        android:id="@+id/tbxHeight"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView1"
+        android:layout_alignBottom="@+id/textView1"
+        android:layout_alignLeft="@+id/textView3"
+        android:background="@drawable/rounded_edittext"
+        android:ems="10"
+        android:numeric="decimal" >
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tbxWeight"
+        android:layout_alignBottom="@+id/tbxWeight"
+        android:layout_alignLeft="@+id/textView1"
+        android:textColor="#0066CC"
+        android:text="@string/lbWeightString" />
 
 </RelativeLayout>
