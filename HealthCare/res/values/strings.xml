@@ -10,14 +10,14 @@
     
     <!-- Nav Drawer Menu Items -->
     <string-array name="nav_drawer_items">
-        <item >Heart Rate</item>
-        <item >Temperature Body</item>
-        <item >Ratio WHR</item>
-        <item >Ratio BMI</item>
-        <item >Time Table Take</item>
-        <item >Measure Step Run</item>
-        <item >Sleep Time</item>
-        <item >Exit</item>
+        <item >Đo nhịp tim</item>
+        <item >Trang chủ</item>
+        <item >Chỉ số WHR</item>
+        <item >Chỉ só BMI</item>
+        <item >Lập lịch uống thuôc</item>
+        <item >Đo số bước chạy</item>
+        <item >Tính thời gian ngủ</item>
+        <item >Thoát</item>
     </string-array>
     
     <!-- Nav Drawer List Item Icons -->
@@ -57,5 +57,13 @@
     <string name="lbNoteBMIString">Chú ý:\nChỉ số BMI không áp dụng cho người mới ốm dậy, phụ nữ mang thai và vận động viên thể hình</string>
     <string name="tbvCoutString">Phần mềm chăm sóc sức khỏe xin chào các bạn\n
         chọn chức năng bên trái để sử dụng phần mềm</string>
+    <!-- step run -->
+    <string name="btnStartCountStepRun">Bắt đầu</string>
+    <string name="btnStopCountStepRun">Dừng</string>
+    <string name="btnResetCountStepRun">Thiết lập lại</string>
+    <string name="txtHeartRateStatusString">Nhịp tim</string>
+    <string name="txtStepRunStatusString">Bước chạy</string>
+    <string name="txtBMIStatusString">Chỉ số BMI</string>
+    <string name="txtWHRStatusString">Chỉ số WHR</string>
     
 </resources>
