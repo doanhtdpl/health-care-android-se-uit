@@ -35,48 +35,6 @@
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <Button
-        android:id="@+id/btnStopService"
-        android:layout_width="77dp"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/btnStartService"
-        android:layout_alignBottom="@+id/btnStartService"
-        android:layout_alignLeft="@+id/tbxChiTieu"
-        android:background="@drawable/button_style"
-        android:text="Stop" />
-
-    <Button
-        android:id="@+id/btnStartService"
-        android:layout_width="79dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/TextView02"
-        android:layout_marginRight="16dp"
-        android:layout_marginTop="47dp"
-        android:layout_toLeftOf="@+id/btnStopService"
-        android:background="@drawable/button_style"
-        android:text="Start" />
-
-    <Button
-        android:id="@+id/btnReset"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/btnStopService"
-        android:layout_alignBottom="@+id/btnStopService"
-        android:layout_marginLeft="16dp"
-        android:layout_toRightOf="@+id/btnStopService"
-        android:background="@drawable/button_style"
-        android:text="Reset" />
-
-    <TextView
-        android:id="@+id/TextView03"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/tbxCountStepRun"
-        android:layout_alignLeft="@+id/btnStartService"
-        android:text="Hôm qua"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@android:color/white" />
-
     <TextView
         android:id="@+id/TextView05"
         android:layout_width="wrap_content"
@@ -111,5 +69,51 @@
         android:layout_marginTop="24dp"
         android:numColumns="3" >
     </GridView>
+
+    <TextView
+        android:id="@+id/TextView03"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/tbxYesterday"
+        android:text="Hôm qua"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/btnStopService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btnStartService"
+        android:layout_alignBottom="@+id/btnStartService"
+        android:layout_toLeftOf="@+id/btnReset"
+        android:layout_marginLeft="10dp"
+        
+        android:layout_marginTop="10dp"
+        android:background="@drawable/button_style"
+        android:text="@string/btnStopCountStepRun" />
+
+    <Button
+        android:id="@+id/btnReset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/btnStopService"
+        android:layout_alignBottom="@+id/btnStopService"
+        android:layout_alignRight="@+id/gridDataStepRun"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/button_style"
+        android:text="@string/btnResetCountStepRun" />
+
+    <Button
+        android:id="@+id/btnStartService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/TextView02"
+        android:layout_marginTop="23dp"
+        android:layout_toLeftOf="@+id/btnStopService"
+        android:background="@drawable/button_style"
+        android:text="@string/btnStartCountStepRun" />
 
 </RelativeLayout>

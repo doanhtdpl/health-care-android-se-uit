@@ -11,7 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 public class StartAppScreen extends Fragment {
-	ImageView background;
+	RelativeLayout background;
 	int i = 0;
 	final Handler mHandler = new Handler();
 	@Override
@@ -21,7 +21,7 @@ public class StartAppScreen extends Fragment {
 		View rootView = inflater.inflate(R.layout.hello_app, container, false);
 
 		
-		this.background = (ImageView) rootView.findViewById(R.id.backGround);
+		this.background = (RelativeLayout) rootView.findViewById(R.id.backGround);
 		Runnable runnable = new Runnable() {
 			@Override
 			public void run() {
