@@ -1,7 +1,7 @@
 package app.dto;
 
 public class RatioWHRDTO {
-	Integer ratioWHRid;
+	Integer ratioWHRId;
 	String time;
 	Integer ratio;
 	String status;
@@ -15,12 +15,12 @@ public class RatioWHRDTO {
 		this.userId = userId;
 	}
 
-	public Integer getRatioWHRid() {
-		return ratioWHRid;
+	public Integer getRatioWHRId() {
+		return ratioWHRId;
 	}
 
-	public void setRatioWHRid(Integer ratioWHRid) {
-		this.ratioWHRid = ratioWHRid;
+	public void setRatioWHRId(Integer ratioWHRid) {
+		this.ratioWHRId = ratioWHRid;
 	}
 
 	public String getTime() {
