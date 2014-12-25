@@ -7,7 +7,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
-import app.dto.HeartRateDTO;
 import app.dto.RatioBMIDTO;
 
 public class RatioBMIDAO extends Database {
@@ -40,7 +39,7 @@ public class RatioBMIDAO extends Database {
 	}
 
 	public ArrayList<RatioBMIDTO> getListRatioBMI(Integer userId) {
-		ArrayList<RatioBMIDTO> arrayListRatioBMI = new ArrayList();
+		ArrayList<RatioBMIDTO> arrayListRatioBMI = new ArrayList<RatioBMIDTO>();
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor res = db.rawQuery("select * from RATIOBMI where UserId = ",
 				new String[] { Integer.toString(userId) });
@@ -59,7 +58,7 @@ public class RatioBMIDAO extends Database {
 
 	public Integer getNewRatioBMIId() {
 		SQLiteDatabase db = this.getReadableDatabase();
-		Cursor res = db.rawQuery("select HeartRateId from HEARTRATE", null);
+		Cursor res = db.rawQuery("select RatioBMIId from RATIOBMI", null);
 		if (res != null) {
 			return res.getCount() + 1;
 		} else

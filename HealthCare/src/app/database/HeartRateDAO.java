@@ -39,7 +39,7 @@ public class HeartRateDAO extends Database {
 	}
 
 	public ArrayList<HeartRateDTO> getListHeartRate(Integer userId) {
-		ArrayList<HeartRateDTO> arrayListHeartRate = new ArrayList();
+		ArrayList<HeartRateDTO> arrayListHeartRate = new ArrayList<HeartRateDTO>();
 		SQLiteDatabase db = this.getReadableDatabase();
 		Cursor res = db.rawQuery("select * from HEARTRATE where UserId = ",
 				new String[] { Integer.toString(userId) });
