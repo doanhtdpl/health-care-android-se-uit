@@ -6,6 +6,8 @@ import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class Database extends SQLiteOpenHelper {
+	public static final String DATABASE_NAME = "DB_HealthCare";
+	public static final int DATABASE_VERSION = 1;
 
 	public Database(Context context, String dbName, CursorFactory factory,
 			int version) {
@@ -15,7 +17,7 @@ public class Database extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		db.execSQL("create table USER "
-				+ "(UserId integer primary key, UserId integer, Username text,TimeStart text)");
+				+ "(UserId integer primary key, Username text,TimeStart text)");
 		db.execSQL("create table RATIOBMI "
 				+ "(RatioBMIId integer primary key, UserId integer, Time text, Ratio text, Status text)");
 		db.execSQL("create table RATIOWHR "
@@ -27,7 +29,7 @@ public class Database extends SQLiteOpenHelper {
 		db.execSQL("create table TIMETABLETAKE "
 				+ "(TimeTableTakeId integer primary key, UserId integer, Sick text, Time text, Time text, Status text)");
 		db.execSQL("create table TIMETABLETAKEDETAIL "
-				+ "(TimeTableTakeDetailId integer primary key, TimeTableTakeId integer, Username text,TimeStart text)");
+				+ "(TimeTableTakeDetailId integer primary key, TimeTableTakeId integer, TimeStart text, CountTime integer, TimeSpacing text)");
 	}
 
 	@Override

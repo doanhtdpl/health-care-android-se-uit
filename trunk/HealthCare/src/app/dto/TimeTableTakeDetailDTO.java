@@ -1,11 +1,10 @@
 package app.dto;
 
-public class TimeTableTakeDetail {
+public class TimeTableTakeDetailDTO {
 	Integer timeTableTakeDetailId;
 	Integer timeTableTakeId;
-	Integer userId;
 	String timeStart;
-	String countTime;
+	Integer countTime;
 	String timeSpacing;
 
 	public Integer getTimeTableTakeDetailId() {
@@ -24,14 +23,6 @@ public class TimeTableTakeDetail {
 		this.timeTableTakeId = timeTableTakeId;
 	}
 
-	public Integer getUserId() {
-		return userId;
-	}
-
-	public void setUserId(Integer userId) {
-		this.userId = userId;
-	}
-
 	public String getTimeStart() {
 		return timeStart;
 	}
@@ -40,11 +31,11 @@ public class TimeTableTakeDetail {
 		this.timeStart = timeStart;
 	}
 
-	public String getCountTime() {
+	public Integer getCountTime() {
 		return countTime;
 	}
 
-	public void setCountTime(String countTime) {
+	public void setCountTime(Integer countTime) {
 		this.countTime = countTime;
 	}
 
