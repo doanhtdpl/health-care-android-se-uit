@@ -5,6 +5,14 @@ public class TimeTableTakeDTO {
 	String sick;
 	String time;
 	String status;
+	Integer userId;
+	
+	public Integer getUserId() {
+		return userId;
+	}
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
 	public Integer getTimeTableTakeId() {
 		return timeTableTakeId;
 	}
