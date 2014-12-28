@@ -1,6 +1,5 @@
 package app.healthcare;
 
-import android.R.string;
 import android.app.Fragment;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -14,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MeasureStepRunFragment extends Fragment {
 
@@ -25,15 +23,12 @@ public class MeasureStepRunFragment extends Fragment {
 	private Button btnStopStepRun;
 	private Button btnResetStepRun;
 	SharedPreferences prefs;
-	private boolean checkSensor;
-
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
 		View rootView = inflater.inflate(R.layout.fragment_measure_step_run,
 				container, false);
-		checkSensor = false;
 		prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
 		initView(rootView);
 		return rootView;
@@ -42,12 +37,6 @@ public class MeasureStepRunFragment extends Fragment {
 	@Override
 	public void onResume() {
 		super.onResume();
-		// register this class as a listener for the orientation and
-		// accelerometer sensors
-		// sensorManager.registerListener(this,
-		// sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER),
-		// SensorManager.SENSOR_DELAY_NORMAL);
-
 		IntentFilter intentFilter = new IntentFilter(Constants.INTENT_GET_BEAT);
 		getActivity().registerReceiver(mToturialReceiver, intentFilter);
 	}
@@ -84,7 +73,7 @@ public class MeasureStepRunFragment extends Fragment {
 		tvYesterdayStep = (TextView) view.findViewById(R.id.tbxYesterday);
 		tvYesterdayStep.setText(String.valueOf(1000));
 		tvChiTieu = (TextView) view.findViewById(R.id.tbxChiTieu);
-		tvChiTieu.setText(String.valueOf(Constants.CHI_TIEU));
+		tvChiTieu.setText(String.valueOf(Constants.getInstance().TARGETS));
 
 		btnStartStepRun = (Button) view.findViewById(R.id.btnStartService);
 		btnStartStepRun.setOnClickListener(new View.OnClickListener() {

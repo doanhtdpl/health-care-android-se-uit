@@ -5,11 +5,9 @@ import java.util.ArrayList;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import app.dto.StepRunDTO;
 
-public class StepRunDAO extends Database {
+public class StepRunDAO extends DbConnectionService {
 	public static final String STEPRUN_TABLE = "STEPRUN";
 	public static final String COLUMN_STEPRUN_ID = "StepRunId";
 	public static final String COLUMN_STEPRUN_USER_ID = "UserId";
@@ -17,14 +15,12 @@ public class StepRunDAO extends Database {
 	public static final String COLUMN_STEPRUN_TAGETS = "Tagets";
 	public static final String COLUMN_STEPRUN_TOTAL_RUN = "TotalRun";
 
-	public StepRunDAO(Context context, String dbName, CursorFactory factory,
-			int version) {
-		super(context, dbName, factory, version);
+	public StepRunDAO(Context context) {
+		super(context);
 	}
 
 	public boolean insertStepRun(StepRunDTO stepRunDTO) {
 		try {
-			SQLiteDatabase db = this.getWritableDatabase();
 			ContentValues contentValues = new ContentValues();
 			contentValues.put(COLUMN_STEPRUN_ID, this.getNewStepRunId());
 			contentValues.put(COLUMN_STEPRUN_USER_ID, stepRunDTO.getUserId());
@@ -33,7 +29,7 @@ public class StepRunDAO extends Database {
 			contentValues.put(COLUMN_STEPRUN_TAGETS, stepRunDTO.getTagets());
 			contentValues.put(COLUMN_STEPRUN_TOTAL_RUN,
 					stepRunDTO.getTotalRun());
-			db.insert(STEPRUN_TABLE, null, contentValues);
+			myDb.insert(STEPRUN_TABLE, null, contentValues);
 			return true;
 		} catch (Exception e) {
 			System.out.println(e.toString());
@@ -42,15 +38,13 @@ public class StepRunDAO extends Database {
 	}
 
 	public Integer deleteStepRun(Integer id) {
-		SQLiteDatabase db = this.getWritableDatabase();
-		return db.delete(STEPRUN_TABLE, COLUMN_STEPRUN_ID + " = ? ",
+		return myDb.delete(STEPRUN_TABLE, COLUMN_STEPRUN_ID + " = ? ",
 				new String[] { Integer.toString(id) });
 	}
 
 	public ArrayList<StepRunDTO> getListStepRun(Integer userId) {
 		ArrayList<StepRunDTO> arrayListStepRun = new ArrayList<StepRunDTO>();
-		SQLiteDatabase db = this.getReadableDatabase();
-		Cursor res = db.rawQuery("select * from " + STEPRUN_TABLE + " where "
+		Cursor res = myDb.rawQuery("select * from " + STEPRUN_TABLE + " where "
 				+ COLUMN_STEPRUN_USER_ID + " = ?",
 				new String[] { Integer.toString(userId) });
 		res.moveToFirst();
@@ -70,8 +64,7 @@ public class StepRunDAO extends Database {
 	}
 
 	public Integer getNewStepRunId() {
-		SQLiteDatabase db = this.getReadableDatabase();
-		Cursor res = db.rawQuery("select " + COLUMN_STEPRUN_ID + " from "
+		Cursor res = myDb.rawQuery("select " + COLUMN_STEPRUN_ID + " from "
 				+ STEPRUN_TABLE, null);
 		if (res != null) {
 			return res.getCount() + 1;

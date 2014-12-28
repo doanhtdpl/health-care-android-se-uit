@@ -13,6 +13,8 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+import app.database.RatioWHRDAO;
+import app.database.UserDAO;
 
 public class RatioWHRFragment extends Fragment {
 
@@ -24,6 +26,8 @@ public class RatioWHRFragment extends Fragment {
 	TextView tbxResult;
 	Button btnReinphut;
 	Button btnCalculateWHR;
+	UserDAO userdao;
+	RatioWHRDAO dao;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
