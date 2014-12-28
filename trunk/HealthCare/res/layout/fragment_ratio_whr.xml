@@ -23,7 +23,7 @@
         android:layout_alignLeft="@+id/tbxCe"
         android:layout_below="@+id/tbxCe"
         android:layout_marginTop="15dp"
-        android:numeric="decimal"
+        android:inputType="numberDecimal"
         android:background="@drawable/rounded_edittext"
         android:ems="10" />
 
@@ -48,17 +48,7 @@
         android:button="@drawable/checkbox_style"
         android:text="@string/cbMaleString" />
 
-    <!-- <TextView
-        android:id="@+id/tbxNoteWHR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tbxResultWHR"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/tbxCm"
-        android:layout_marginBottom="14dp"
-        android:text="@string/lbNoteWHRString" 
-        android:textStyle="italic"
-        android:textColor="#0066CC"/> -->
+
 
     <TextView
         android:id="@+id/textView4"
@@ -101,7 +91,7 @@
         android:layout_toRightOf="@+id/tbxImpact"
         android:background="@drawable/rounded_edittext"
         android:ems="10"
-        android:numeric="decimal" >
+        android:inputType="numberDecimal" >
 
         <requestFocus />
     </EditText>
@@ -147,19 +137,23 @@
         android:layout_toLeftOf="@+id/cbMale"
         android:background="@drawable/button_style"
         android:text="@string/btnReinputString" />
-
-    <GridView
-        android:id="@+id/gridDataWHR"
+    
+     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/tbxImpact"
-        android:layout_marginTop="5dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:numColumns="3" >
+        android:layout_margin="10dp"
+        android:layout_below="@+id/tbxImpact" >
 
-    </GridView>
-
+        <TableLayout
+            android:id="@+id/tableDataWHR"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:shrinkColumns="*"
+            android:stretchColumns="*"
+            android:background="@android:color/holo_purple" >
+        </TableLayout>
+    </ScrollView>
 </RelativeLayout>

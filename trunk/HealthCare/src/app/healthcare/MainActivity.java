@@ -5,9 +5,11 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
@@ -16,12 +18,14 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import app.database.Database;
+import app.database.UserDAO;
+import app.dto.UserDTO;
 import app.slidingmenu.adapter.NavDrawerListAdapter;
 import app.slidingmenu.model.NavDrawerItem;
 
-
 public class MainActivity extends Activity {
-	
+
 	private DrawerLayout mDrawerLayout;
 	private ListView mDrawerList;
 	private ActionBarDrawerToggle mDrawerToggle;
@@ -38,17 +42,35 @@ public class MainActivity extends Activity {
 
 	private ArrayList<NavDrawerItem> navDrawerItems;
 	private NavDrawerListAdapter adapter;
-	
-	
+
+	SharedPreferences checkCreateDatabase;
+
 	public static final int FRAG_TEM_BODY = 0;
 	public static final int FRAG_HEART_RATE = 1;
+	Database db;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
 		mTitle = mDrawerTitle = getTitle();
+		checkCreateDatabase = PreferenceManager
+				.getDefaultSharedPreferences(this);
+		if (getCheckData() == 0) {
 
+			db = new Database(this);
+			UserDAO user = new UserDAO(this);
+			UserDTO userDTO = new UserDTO();
+			userDTO.setUserId(1);
+			userDTO.setUserName("Thai-Thien");
+			Constants.getInstance().getTime().setToNow();
+			userDTO.setTimeStrat(Constants.getInstance().getTime().monthDay
+					+ "/" + Constants.getInstance().getTime().month + "/"
+					+ Constants.getInstance().getTime().year + "");
+			user.insertUSER(userDTO);
+			setCheckData(1);
+		}
 		// load slide menu items
 		navMenuTitles = getResources().getStringArray(R.array.nav_drawer_items);
 
@@ -123,8 +145,7 @@ public class MainActivity extends Activity {
 			// on first time display view for first nav item
 			displayView(FRAG_TEM_BODY);
 		}
-		
-		
+
 	}
 
 	/**
@@ -246,6 +267,16 @@ public class MainActivity extends Activity {
 		super.onConfigurationChanged(newConfig);
 		// Pass any configuration change to the drawer toggls
 		mDrawerToggle.onConfigurationChanged(newConfig);
+	}
+
+	public void setCheckData(int bool) {
+		SharedPreferences.Editor settingsEditor = checkCreateDatabase.edit();
+		settingsEditor.putInt(Constants.CHECK_DATA, bool);
+		settingsEditor.commit();
+	}
+
+	public int getCheckData() {
+		return checkCreateDatabase.getInt(Constants.CHECK_DATA, 0);
 	}
 
 }

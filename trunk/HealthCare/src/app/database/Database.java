@@ -2,16 +2,15 @@ package app.database;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class Database extends SQLiteOpenHelper {
 	public static final String DATABASE_NAME = "DB_HealthCare";
 	public static final int DATABASE_VERSION = 1;
 
-	public Database(Context context, String dbName, CursorFactory factory,
-			int version) {
-		super(context, dbName, factory, version);
+	public Database(Context context) {
+		super(context, DATABASE_NAME, null, DATABASE_VERSION);
+		
 	}
 
 	@Override
@@ -27,7 +26,7 @@ public class Database extends SQLiteOpenHelper {
 		db.execSQL("create table HEARTRATE "
 				+ "(HeartRateId integer primary key, UserId integer, Time text, HeartRate integer)");
 		db.execSQL("create table TIMETABLETAKE "
-				+ "(TimeTableTakeId integer primary key, UserId integer, Sick text, Time text, Time text, Status text)");
+				+ "(TimeTableTakeId integer primary key, UserId integer, Sick text, Time text, Status text)");
 		db.execSQL("create table TIMETABLETAKEDETAIL "
 				+ "(TimeTableTakeDetailId integer primary key, TimeTableTakeId integer, TimeStart text, CountTime integer, TimeSpacing text)");
 	}

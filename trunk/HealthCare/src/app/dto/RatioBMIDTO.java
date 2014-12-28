@@ -3,7 +3,7 @@ package app.dto;
 public class RatioBMIDTO {
 	Integer ratioBMIId;
 	String time;
-	Integer ratio;
+	String ratio;
 	String status;
 	Integer userId;
 
@@ -31,11 +31,11 @@ public class RatioBMIDTO {
 		this.time = time;
 	}
 
-	public Integer getRatio() {
+	public String getRatio() {
 		return ratio;
 	}
 
-	public void setRatio(Integer ratio) {
+	public void setRatio(String ratio) {
 		this.ratio = ratio;
 	}
 

@@ -23,7 +23,7 @@
         android:layout_below="@+id/tbxHeight"
         android:layout_marginTop="15dp"
         android:background="@drawable/rounded_edittext"
-        android:numeric="decimal"
+        android:inputType="numberDecimal" 
         android:ems="10" />
 
     <TextView
@@ -38,17 +38,7 @@
         android:textStyle="bold"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <!-- <TextView
-        android:id="@+id/tbxNoteBMI"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tbxResultBMI"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/tbxWeight"
-        android:layout_marginBottom="14dp"
-        android:text="@string/lbNoteBMIString"
-        android:textStyle="italic"
-        android:textColor="#0066CC" /> -->
+
 
     <CheckBox
         android:id="@+id/cbIDIAndWPRO"
@@ -78,7 +68,7 @@
         android:layout_alignLeft="@+id/textView3"
         android:background="@drawable/rounded_edittext"
         android:ems="10"
-        android:numeric="decimal" >
+        android:inputType="numberDecimal" >
         <requestFocus />
     </EditText>
 
@@ -126,17 +116,6 @@
         android:textColor="#0066CC" />
 
     <TextView
-        android:id="@+id/tbxResultBMI"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView4"
-        android:layout_toLeftOf="@+id/btnCalculateBMI"
-        android:text="@string/tbxResultBMIString"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="#FF3333"
-        android:textStyle="bold" />
-
-    <TextView
         android:id="@+id/tbxImpact"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -146,17 +125,35 @@
         android:textColor="#FF3333"
         android:textStyle="italic" />
 
-    <GridView
-        android:id="@+id/gridView1"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="10dp"
+        android:layout_below="@+id/tbxImpact" >
+
+        <TableLayout
+            android:id="@+id/tableDataBMI"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:shrinkColumns="*"
+            android:stretchColumns="*"
+            android:background="@android:color/holo_purple" >
+        </TableLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/tbxResultBMI"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/tbxImpact"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="10dp"
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_below="@+id/textView4"
+        android:text="@string/tbxResultBMIString"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#FF3333"
         android:layout_marginRight="10dp"
-        android:layout_marginLeft="10dp"
-        android:numColumns="3" >
-    </GridView>
+        android:textStyle="bold" />
 
 </RelativeLayout>
