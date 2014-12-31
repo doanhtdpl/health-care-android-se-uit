@@ -34,7 +34,10 @@
       android:name=".StepRunServices"
       android:exported="false"
       />
-      
+       <service
+      android:name=".TimeTableTakeService"
+      android:exported="false"
+      />
     </application>
 
 </manifest>

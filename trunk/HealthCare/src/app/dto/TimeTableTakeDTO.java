@@ -6,7 +6,22 @@ public class TimeTableTakeDTO {
 	String time;
 	String status;
 	Integer userId;
+	Integer countTime;
+	String timeSpacing;
 	
+	
+	public Integer getCountTime() {
+		return countTime;
+	}
+	public void setCountTime(Integer countTime) {
+		this.countTime = countTime;
+	}
+	public String getTimeSpacing() {
+		return timeSpacing;
+	}
+	public void setTimeSpacing(String timeSpacing) {
+		this.timeSpacing = timeSpacing;
+	}
 	public Integer getUserId() {
 		return userId;
 	}

@@ -15,6 +15,8 @@ public class TimeTableTakeDAO extends DbConnectionService {
 	public static final String COLUMN_TIMETABLETAKE_SICK = "Sick";
 	public static final String COLUMN_TIMETABLETAKE_TIME = "Time";
 	public static final String COLUMN_TIMETABLETAKE_STATUS = "Status";
+	public static final String COLUMN_TIMETABLETAKE_COUNTTIME = "CountTime";
+	public static final String COLUMN_TIMETABLETAKE_TIMESPACING = "TimeSpacing";
 
 	public TimeTableTakeDAO(Context context) {
 		super(context);
@@ -23,7 +25,8 @@ public class TimeTableTakeDAO extends DbConnectionService {
 	public boolean insertTimeTableTake(TimeTableTakeDTO timeTableTakeDTO) {
 		try {
 			ContentValues contentValues = new ContentValues();
-			contentValues.put(COLUMN_TIMETABLETAKE_ID, this.getNewTimeTableTakeId());
+			contentValues.put(COLUMN_TIMETABLETAKE_ID,
+					this.getNewTimeTableTakeId());
 			contentValues.put(COLUMN_TIMETABLETAKE_USER_ID,
 					timeTableTakeDTO.getUserId());
 			contentValues.put(COLUMN_TIMETABLETAKE_SICK,
@@ -32,6 +35,10 @@ public class TimeTableTakeDAO extends DbConnectionService {
 					timeTableTakeDTO.getTime());
 			contentValues.put(COLUMN_TIMETABLETAKE_STATUS,
 					timeTableTakeDTO.getStatus());
+			contentValues.put(COLUMN_TIMETABLETAKE_COUNTTIME,
+					timeTableTakeDTO.getCountTime());
+			contentValues.put(COLUMN_TIMETABLETAKE_TIMESPACING,
+					timeTableTakeDTO.getTimeSpacing());
 			myDb.insert(TIMETABLETAKE_TABLE, null, contentValues);
 			return true;
 		} catch (Exception e) {
@@ -41,9 +48,8 @@ public class TimeTableTakeDAO extends DbConnectionService {
 	}
 
 	public Integer deleteTimeTableTake(Integer id) {
-		return myDb.delete(TIMETABLETAKE_TABLE,
-				COLUMN_TIMETABLETAKE_ID + " = ? ",
-				new String[] { Integer.toString(id) });
+		return myDb.delete(TIMETABLETAKE_TABLE, COLUMN_TIMETABLETAKE_ID
+				+ " = ? ", new String[] { Integer.toString(id) });
 	}
 
 	public ArrayList<TimeTableTakeDTO> getListTimeTableTake(Integer userId) {
@@ -63,15 +69,44 @@ public class TimeTableTakeDAO extends DbConnectionService {
 					.getColumnIndex(COLUMN_TIMETABLETAKE_TIME)));
 			item.setStatus(res.getString(res
 					.getColumnIndex(COLUMN_TIMETABLETAKE_STATUS)));
+			item.setCountTime(res.getInt(res
+					.getColumnIndex(COLUMN_TIMETABLETAKE_COUNTTIME)));
+			item.setTime(res.getString(res
+					.getColumnIndex(COLUMN_TIMETABLETAKE_TIMESPACING)));
 			arrayListTimeTableTake.add(item);
 			res.moveToNext();
 		}
 		return arrayListTimeTableTake;
 	}
 
+	public TimeTableTakeDTO getTimeTableTake(Integer id) {
+		TimeTableTakeDTO timeTableTake = new TimeTableTakeDTO();
+		Cursor res = myDb.rawQuery("select * from " + TIMETABLETAKE_TABLE
+				+ " where " + COLUMN_TIMETABLETAKE_ID + " = ?",
+				new String[] { Integer.toString(id) });
+		res.moveToFirst();
+		while (res.isAfterLast() == false) {
+			timeTableTake.setTimeTableTakeId(res.getInt(res
+					.getColumnIndex(COLUMN_TIMETABLETAKE_ID)));
+			timeTableTake.setUserId(id);
+			timeTableTake.setSick(res.getString(res
+					.getColumnIndex(COLUMN_TIMETABLETAKE_SICK)));
+			timeTableTake.setTime(res.getString(res
+					.getColumnIndex(COLUMN_TIMETABLETAKE_TIME)));
+			timeTableTake.setStatus(res.getString(res
+					.getColumnIndex(COLUMN_TIMETABLETAKE_STATUS)));
+			timeTableTake.setCountTime(res.getInt(res
+					.getColumnIndex(COLUMN_TIMETABLETAKE_COUNTTIME)));
+			timeTableTake.setTime(res.getString(res
+					.getColumnIndex(COLUMN_TIMETABLETAKE_TIMESPACING)));
+			return timeTableTake;
+		}
+		return null;
+	}
+
 	public Integer getNewTimeTableTakeId() {
-		Cursor res = myDb.rawQuery("select " + COLUMN_TIMETABLETAKE_ID + " from "
-				+ TIMETABLETAKE_TABLE, null);
+		Cursor res = myDb.rawQuery("select " + COLUMN_TIMETABLETAKE_ID
+				+ " from " + TIMETABLETAKE_TABLE, null);
 		if (res != null) {
 			return res.getCount() + 1;
 		} else

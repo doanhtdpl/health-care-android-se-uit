@@ -10,7 +10,7 @@ public class Database extends SQLiteOpenHelper {
 
 	public Database(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
-		
+
 	}
 
 	@Override
@@ -26,9 +26,7 @@ public class Database extends SQLiteOpenHelper {
 		db.execSQL("create table HEARTRATE "
 				+ "(HeartRateId integer primary key, UserId integer, Time text, HeartRate integer)");
 		db.execSQL("create table TIMETABLETAKE "
-				+ "(TimeTableTakeId integer primary key, UserId integer, Sick text, Time text, Status text)");
-		db.execSQL("create table TIMETABLETAKEDETAIL "
-				+ "(TimeTableTakeDetailId integer primary key, TimeTableTakeId integer, TimeStart text, CountTime integer, TimeSpacing text)");
+				+ "(TimeTableTakeId integer primary key, UserId integer, Sick text, Time text, Status text, CountTime integer, TimeSpacing text)");
 	}
 
 	@Override
@@ -39,7 +37,6 @@ public class Database extends SQLiteOpenHelper {
 		db.execSQL("DROP TABLE IF EXISTS STEPRUN");
 		db.execSQL("DROP TABLE IF EXISTS HEARTRATE");
 		db.execSQL("DROP TABLE IF EXISTS TIMETABLETAKE");
-		db.execSQL("DROP TABLE IF EXISTS TIMETABLETAKEDETAIL");
 		onCreate(db);
 	}
 }
