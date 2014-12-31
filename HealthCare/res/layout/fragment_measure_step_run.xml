@@ -4,12 +4,12 @@
     android:layout_height="match_parent"
     android:background="@drawable/steprun" >
 
-   <ImageView 
+    <ImageView
         android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:src="@drawable/steprun"
-    android:scaleType="centerCrop"
-    />
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/steprun" />
+
     <TextView
         android:id="@+id/tbxYesterday"
         android:layout_width="150dp"
@@ -91,9 +91,9 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/btnReset"
         android:layout_alignBottom="@+id/btnReset"
+        android:layout_marginTop="15dp"
         android:layout_toRightOf="@+id/TextView05"
         android:background="@drawable/button_style"
-        android:layout_marginTop="15dp"
         android:text="@string/btnStopCountStepRun" />
 
     <Button
@@ -103,8 +103,8 @@
         android:layout_alignBaseline="@+id/btnStopService"
         android:layout_alignBottom="@+id/btnStopService"
         android:layout_alignRight="@+id/TextView02"
-        android:background="@drawable/button_style"
         android:layout_marginTop="15dp"
+        android:background="@drawable/button_style"
         android:text="@string/btnStartCountStepRun" />
 
     <ScrollView
