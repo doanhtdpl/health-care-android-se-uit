@@ -24,7 +24,7 @@
     <!-- Keep them in order as the titles are in -->
     <array name="nav_drawer_icons">
         <item>@drawable/heartrate_icon</item>
-        <item>@drawable/icon175x175</item>
+        <item>@drawable/home</item>
         <item>@drawable/whr_icon</item>
         <item>@drawable/bmi_icon</item>
         <item>@drawable/timetable_icon</item>
