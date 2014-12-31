@@ -66,4 +66,8 @@
     <string name="txtBMIStatusString">Chỉ số BMI</string>
     <string name="txtWHRStatusString">Chỉ số WHR</string>
     
+    <string name="txtTargetsString">Chỉ tiêu</string>
+    <string name="txtTodayString">Hôm nay</string>
+    <string name="txtStartString">Chỉ số WHR</string>
+    <string name="txtYesterdayString">Hôm qua</string>
 </resources>

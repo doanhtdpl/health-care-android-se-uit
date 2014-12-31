@@ -11,7 +11,7 @@ public class StepRunDAO extends DbConnectionService {
 	public static final String STEPRUN_TABLE = "STEPRUN";
 	public static final String COLUMN_STEPRUN_ID = "StepRunId";
 	public static final String COLUMN_STEPRUN_USER_ID = "UserId";
-	public static final String COLUMN_STEPRUN_TOTAL_TIME = "TotalTime";
+	public static final String COLUMN_STEPRUN_TOTAL_TIME = "Time";
 	public static final String COLUMN_STEPRUN_TAGETS = "Tagets";
 	public static final String COLUMN_STEPRUN_TOTAL_RUN = "TotalRun";
 
@@ -25,7 +25,7 @@ public class StepRunDAO extends DbConnectionService {
 			contentValues.put(COLUMN_STEPRUN_ID, this.getNewStepRunId());
 			contentValues.put(COLUMN_STEPRUN_USER_ID, stepRunDTO.getUserId());
 			contentValues.put(COLUMN_STEPRUN_TOTAL_TIME,
-					stepRunDTO.getTotalTime());
+					stepRunDTO.getTime());
 			contentValues.put(COLUMN_STEPRUN_TAGETS, stepRunDTO.getTagets());
 			contentValues.put(COLUMN_STEPRUN_TOTAL_RUN,
 					stepRunDTO.getTotalRun());
@@ -53,7 +53,7 @@ public class StepRunDAO extends DbConnectionService {
 			item.setStepRunId(res.getInt(res.getColumnIndex(COLUMN_STEPRUN_ID)));
 			item.setUserId(userId);
 			item.setTagets(res.getInt(res.getColumnIndex(COLUMN_STEPRUN_TAGETS)));
-			item.setTotalTime(res.getString(res
+			item.setTime(res.getString(res
 					.getColumnIndex(COLUMN_STEPRUN_TOTAL_TIME)));
 			item.setTotalRun(res.getInt(res
 					.getColumnIndex(COLUMN_STEPRUN_TOTAL_RUN)));

@@ -52,7 +52,7 @@ public class RatioWHRDAO extends DbConnectionService {
 			item.setUserId(res.getInt(res
 					.getColumnIndex(COLUMN_RATIOWHR_USER_ID)));
 			item.setTime(res.getString(res.getColumnIndex(COLUMN_RATIOWHR_TIME)));
-			item.setRatio(res.getInt(res.getColumnIndex(COLUMN_RATIOWHR_RATIO)));
+			item.setRatio(res.getString(res.getColumnIndex(COLUMN_RATIOWHR_RATIO)));
 			item.setStatus(res.getString(res
 					.getColumnIndex(COLUMN_RATIOWHR_STATUS)));
 			arrayListRatioWHR.add(item);

@@ -2,7 +2,7 @@ package app.dto;
 
 public class StepRunDTO {
 	Integer stepRunId;
-	String totalTime;
+	String time;
 	Integer tagets;
 	Integer userId;
 	Integer totalRun;
@@ -23,12 +23,12 @@ public class StepRunDTO {
 		this.stepRunId = stepRunId;
 	}
 
-	public String getTotalTime() {
-		return totalTime;
+	public String getTime() {
+		return time;
 	}
 
-	public void setTotalTime(String totalTime) {
-		this.totalTime = totalTime;
+	public void setTime(String totalTime) {
+		this.time = totalTime;
 	}
 
 	public Integer getTagets() {

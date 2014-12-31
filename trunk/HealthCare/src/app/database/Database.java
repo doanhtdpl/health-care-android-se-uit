@@ -22,7 +22,7 @@ public class Database extends SQLiteOpenHelper {
 		db.execSQL("create table RATIOWHR "
 				+ "(RatioWHRId integer primary key, UserId integer, Time text, Ratio text, Status text)");
 		db.execSQL("create table STEPRUN "
-				+ "(StepRunId integer primary key, UserId integer, TotalTime text, Tagets integer, TotalRun integer)");
+				+ "(StepRunId integer primary key, UserId integer, Time text, Tagets integer, TotalRun integer)");
 		db.execSQL("create table HEARTRATE "
 				+ "(HeartRateId integer primary key, UserId integer, Time text, HeartRate integer)");
 		db.execSQL("create table TIMETABLETAKE "
