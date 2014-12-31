@@ -17,9 +17,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import android.widget.Toast;
 import app.database.StepRunDAO;
 import app.database.UserDAO;
 import app.dto.StepRunDTO;
@@ -29,7 +31,7 @@ public class MeasureStepRunFragment extends Fragment {
 
 	private TextView tvcountStep;
 	private TextView tvYesterdayStep;
-	private TextView tvChiTieu;
+	EditText tvChiTieu;
 	private Button btnStartStepRun;
 	private Button btnStopStepRun;
 	private Button btnResetStepRun;
@@ -89,7 +91,7 @@ public class MeasureStepRunFragment extends Fragment {
 
 		tvYesterdayStep = (TextView) view.findViewById(R.id.tbxYesterday);
 		tvYesterdayStep.setText(String.valueOf(1000));
-		tvChiTieu = (TextView) view.findViewById(R.id.tbxChiTieu);
+		tvChiTieu = (EditText) view.findViewById(R.id.tbxChiTieu);
 		tvChiTieu.setText(String.valueOf(Constants.getInstance().TARGETS));
 
 		btnStartStepRun = (Button) view.findViewById(R.id.btnStartService);
@@ -113,7 +115,7 @@ public class MeasureStepRunFragment extends Fragment {
 						new Intent(getActivity(), StepRunServices.class));
 				btnStartStepRun.setVisibility(View.VISIBLE);
 				btnResetStepRun.setVisibility(View.VISIBLE);
-				btnStopStepRun.setVisibility(View.INVISIBLE);
+				btnStopStepRun.setVisibility(View.INVISIBLE);				
 			}
 		});
 		btnResetStepRun = (Button) view.findViewById(R.id.btnReset);
@@ -128,8 +130,20 @@ public class MeasureStepRunFragment extends Fragment {
 				btnStartStepRun.setVisibility(View.VISIBLE);
 				btnResetStepRun.setVisibility(View.VISIBLE);
 				btnStopStepRun.setVisibility(View.VISIBLE);
+				StepRunDTO dto = new StepRunDTO();
+				int targets = Integer.parseInt(tvChiTieu.getText().toString());
+				dto.setTagets(targets);
+				Constants.getInstance().getTime().setToNow();
+				dto.setTime(Constants.getInstance().getTime().monthDay + "/"
+						+ Constants.getInstance().getTime().month + "/"
+						+ Constants.getInstance().getTime().year + "");
+				dto.setUserId(1);
+				int totalRun = Integer.parseInt(tvcountStep.getText().toString());
+				dto.setTotalRun(totalRun);
+				dao.insertStepRun(dto);
 			}
 		});
+		buildTableData();
 	}
 
 	public void setHighScore(int score) {
@@ -160,10 +174,10 @@ public class MeasureStepRunFragment extends Fragment {
 					tv.setText(listdata.get(i).getTime());
 				} else if (j == 1) {
 					tv.setGravity(Gravity.CENTER);
-					tv.setText(listdata.get(i).getTagets());
+					tv.setText(listdata.get(i).getTagets()+ "");
 				} else if (j == 2) {
 					tv.setGravity(Gravity.RIGHT);
-					tv.setText(listdata.get(i).getTotalRun());
+					tv.setText(listdata.get(i).getTotalRun() + "");
 				}
 				row.addView(tv);
 			}

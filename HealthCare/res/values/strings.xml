@@ -65,9 +65,22 @@
     <string name="txtStepRunStatusString">Bước chạy</string>
     <string name="txtBMIStatusString">Chỉ số BMI</string>
     <string name="txtWHRStatusString">Chỉ số WHR</string>
-    
     <string name="txtTargetsString">Chỉ tiêu</string>
     <string name="txtTodayString">Hôm nay</string>
     <string name="txtStartString">Chỉ số WHR</string>
     <string name="txtYesterdayString">Hôm qua</string>
+    
+    <!-- timetable -->
+    <string name="txtSickString">Tên bệnh</string>
+    <string name="txtDateSicString">Ngày bệnh</string>
+    <string name="txtStatusString">Tình trạng bệnh</string>
+    <string name="txtTimeStartString">Ngày bắt đầu</string>
+    <string name="txtCountTimeString">Số lần</string>
+    <string name="txtTimeSpacingString">Khoảng cách uống</string>
+    <string name="txtStatusFinishString">Khỏi</string>
+    <string name="txtNotFinishString">Chưa khỏi</string>
+    <string name="buttonSaveString">Lưu lại</string>
+    <string name="buttonDeleteString">Xóa</string>
+    
+    
 </resources>

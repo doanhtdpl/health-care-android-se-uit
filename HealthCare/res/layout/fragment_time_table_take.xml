@@ -3,20 +3,151 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <TextView
-        android:id="@+id/txtLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Home View"
-        android:textSize="16dp" />
-
     <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/uongthuoc" />
+
+    <TextView
+        android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/txtLabel"
-        android:layout_centerHorizontal="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="19dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/txtSickString" />
+
+    <EditText
+        android:id="@+id/tbxSick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView1"
+        android:layout_alignBottom="@+id/textView1"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="135dp"
+        android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
-        android:src="@drawable/timetable_icon" />
+        android:background="@drawable/rounded_edittext"
+        android:ems="10"
+        android:inputType="text" >
+
+        <requestFocus />
+    </EditText>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_below="@+id/tbxSick"
+        android:layout_marginTop="26dp"
+        android:text="@string/txtDateSicString" />
+
+    <EditText
+        android:id="@+id/tbxDateSick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView2"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_alignLeft="@+id/tbxSick"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/rounded_edittext"
+        android:ems="10"
+        android:layout_marginTop="10dp"
+        android:inputType="datetime" />
+
+    <EditText
+        android:id="@+id/tbxCountTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tbxDateSick"
+        android:layout_alignRight="@+id/tbxDateSick"
+        android:layout_below="@+id/tbxDateSick"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/rounded_edittext"
+        android:inputType="number"
+        android:ems="10" />
+
+    
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/tbxTimeSpacing"
+        android:layout_alignLeft="@+id/textView2"
+        android:text="@string/txtCountTimeString" />
+
+    <EditText
+        android:id="@+id/tbxTimeSpacing"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tbxCountTime"
+        android:layout_alignRight="@+id/tbxCountTime"
+        android:layout_below="@+id/tbxCountTime"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_edittext"
+        android:ems="10"
+        android:inputType="number" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tbxTimeSpacing"
+        android:layout_alignBottom="@+id/tbxTimeSpacing"
+        android:layout_toLeftOf="@+id/tbxTimeSpacing"
+        android:text="@string/txtTimeSpacingString" />
+
+    <EditText
+        android:id="@+id/tbxStatus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/tbxTimeSpacing"
+        android:layout_below="@+id/tbxTimeSpacing"
+        android:layout_toRightOf="@+id/textView5"
+        android:background="@drawable/rounded_edittext"
+        android:ems="10"
+        android:layout_marginTop="10dp"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tbxStatus"
+        android:layout_alignBottom="@+id/tbxStatus"
+        android:layout_alignLeft="@+id/textView5"
+        android:text="@string/txtStatusString" />
+
+    <Button
+        android:id="@+id/btnSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tbxStatus"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/button_style"
+        android:text="@string/buttonSaveString" />
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/tbxCountTime"
+        android:layout_margin="10dp" >
+
+        <TableLayout
+            android:id="@+id/tableDataTimeTable"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_purple"
+            android:padding="10dp"
+            android:shrinkColumns="*"
+            android:stretchColumns="*" >
+        </TableLayout>
+    </ScrollView>
 
 </RelativeLayout>

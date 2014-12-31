@@ -5,8 +5,12 @@ import android.text.format.Time;
 public class Constants {
 	public static final String KEY_HISCORE = "hiscore";
 	public static final String CHECK_DATA = "createdata";
+	public static final String CHECK_TIME = "time";
+	public static final String TIME_COUNT = "THIEN1";
+	public static final String COUNT_TIME = "THIEN";
 	public static final String INTENT_GET_BEAT = "INTENT_GET_BEAT";
 	public int TARGETS = 1500;
+
 	Time today = new Time(Time.getCurrentTimezone());
 
 	public static class ActionReceiver {
