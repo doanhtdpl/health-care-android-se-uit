@@ -3,8 +3,6 @@ package app.database;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.CursorIndexOutOfBoundsException;
-import android.util.Log;
 import app.dto.UserDTO;
 
 public class UserDAO extends DbConnectionService {

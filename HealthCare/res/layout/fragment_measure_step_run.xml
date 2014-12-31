@@ -2,8 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/steprun" 
-    >
+    android:background="@drawable/steprun" >
 
     <TextView
         android:id="@+id/tbxYesterday"
@@ -15,7 +14,7 @@
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <TextView
+    <EditText
         android:id="@+id/tbxChiTieu"
         android:layout_width="196dp"
         android:layout_height="wrap_content"
@@ -42,7 +41,7 @@
         android:layout_alignBaseline="@+id/tbxCountStepRun"
         android:layout_alignBottom="@+id/tbxCountStepRun"
         android:layout_alignLeft="@+id/TextView03"
-        android:text="Hôm nay"
+        android:text="@string/txtTodayString"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@android:color/white" />
 
@@ -53,22 +52,9 @@
         android:layout_alignBaseline="@+id/tbxChiTieu"
         android:layout_alignBottom="@+id/tbxChiTieu"
         android:layout_alignLeft="@+id/TextView05"
-        android:text="Chỉ Tiêu"
+        android:text="@string/txtTargetsString"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@android:color/white" />
-
-    <GridView
-        android:id="@+id/gridDataStepRun"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
-        android:layout_below="@+id/btnStopService"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp"
-        android:numColumns="3" >
-    </GridView>
 
     <TextView
         android:id="@+id/TextView03"
@@ -76,9 +62,28 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_toLeftOf="@+id/tbxYesterday"
-        android:text="Hôm qua"
+        android:text="@string/txtYesterdayString"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@android:color/white" />
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_margin="10dp" >
+
+        <TableLayout
+            android:id="@+id/tableDataStepRun"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_purple"
+            android:padding="10dp"
+            android:shrinkColumns="*"
+            android:stretchColumns="*" >
+        </TableLayout>
+    </ScrollView>
 
     <Button
         android:id="@+id/btnStopService"
@@ -86,12 +91,19 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/btnStartService"
         android:layout_alignBottom="@+id/btnStartService"
-        android:layout_toLeftOf="@+id/btnReset"
-        android:layout_marginLeft="10dp"
-        
-        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/TextView05"
         android:background="@drawable/button_style"
         android:text="@string/btnStopCountStepRun" />
+
+    <Button
+        android:id="@+id/btnStartService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/scrollView1"
+        android:layout_alignRight="@+id/TextView02"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/button_style"
+        android:text="@string/btnStartCountStepRun" />
 
     <Button
         android:id="@+id/btnReset"
@@ -99,21 +111,8 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/btnStopService"
         android:layout_alignBottom="@+id/btnStopService"
-        android:layout_alignRight="@+id/gridDataStepRun"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_alignRight="@+id/scrollView1"
         android:background="@drawable/button_style"
         android:text="@string/btnResetCountStepRun" />
-
-    <Button
-        android:id="@+id/btnStartService"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/TextView02"
-        android:layout_marginTop="23dp"
-        android:layout_toLeftOf="@+id/btnStopService"
-        android:background="@drawable/button_style"
-        android:text="@string/btnStartCountStepRun" />
 
 </RelativeLayout>

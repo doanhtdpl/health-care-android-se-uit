@@ -7,6 +7,7 @@ import android.app.Fragment;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -103,24 +104,28 @@ public class RatioBMIFragment extends Fragment {
 	private void buildTableData() {
 		UserDTO userdto = userdao.getUser();
 		List<RatioBMIDTO> listdata = dao.getListRatioBMI(userdto.getUserId());
-
 		int rows = listdata.size();
-		int cols = 32;
+		int cols = 3;
 		for (int i = 0; i < rows; i++) {
 
 			TableRow row = new TableRow(getActivity());
 			row.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,
-					LayoutParams.WRAP_CONTENT));
+					LayoutParams.MATCH_PARENT));
 			for (int j = 0; j < cols; j++) {
-
 				TextView tv = new TextView(getActivity());
 				tv.setTextColor(Color.YELLOW);
-				if (j == 0)
+				if (j == 0) {
+					tv.setGravity(Gravity.LEFT);
 					tv.setText(listdata.get(i).getTime());
-				else if (j == 1)
+				}
+				else if (j == 1) {
+					tv.setGravity(Gravity.CENTER);
 					tv.setText(listdata.get(i).getRatio());
-				else if (j == 2)
+				}
+				else if (j == 2) {
+					tv.setGravity(Gravity.RIGHT);
 					tv.setText(listdata.get(i).getStatus());
+				}
 				row.addView(tv);
 			}
 			tableData.addView(row);

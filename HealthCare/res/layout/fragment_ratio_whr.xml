@@ -2,8 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/whr" 
-    >
+    android:background="@drawable/whr" >
 
     <TextView
         android:id="@+id/textView1"
@@ -11,65 +10,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="62dp"
         android:layout_marginLeft="20dp"
-        android:textColor="#0066CC"
-        android:text="@string/lbCeString" />
-
-    <EditText
-        android:id="@+id/tbxCm"
-        android:layout_width="130dp"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tbxCe"
-        android:layout_below="@+id/tbxCe"
-        android:layout_marginTop="15dp"
-        android:inputType="numberDecimal"
-        android:background="@drawable/rounded_edittext"
-        android:ems="10" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/tbxCe"
-        android:layout_centerHorizontal="true"
-        android:text="@string/lbTitleWHRString"
-        android:textStyle="bold"
-        android:textColor="#0066CC"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <CheckBox
-        android:id="@+id/cbMale"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/cbFeMale"
-        android:layout_alignBottom="@+id/cbFeMale"
-        android:layout_alignRight="@+id/tbxCm"
-        android:button="@drawable/checkbox_style"
-        android:text="@string/cbMaleString" />
-
-
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_below="@+id/btnReinput"
-        android:layout_marginTop="5dp"
-        android:textColor="#0066CC"
-        android:text="@string/lbTitleResultWHRString" />
-
-    <TextView
-        android:id="@+id/tbxResultWHR"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView4"
-        android:layout_below="@+id/textView4"
-        android:text="@string/tbxResultWHRString"
-        android:textColor="#FF3333"
-        android:textStyle="bold"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_marginTop="62dp"
+        android:text="@string/lbCeString"
+        android:textColor="#0066CC" />
 
     <TextView
         android:id="@+id/tbxImpact"
@@ -77,9 +21,9 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/tbxResultWHR"
         android:layout_below="@+id/tbxResultWHR"
-        android:textColor="#FF3333"
         android:text="@string/tbxImpactString"
-        android:textStyle="italic"/>
+        android:textColor="#FF3333"
+        android:textStyle="italic" />
 
     <EditText
         android:id="@+id/tbxCe"
@@ -96,16 +40,6 @@
         <requestFocus />
     </EditText>
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/tbxCm"
-        android:layout_alignBottom="@+id/tbxCm"
-        android:layout_alignLeft="@+id/textView1"
-        android:textColor="#0066CC"
-        android:text="@string/lbCmString" />
-
     <CheckBox
         android:id="@+id/cbFeMale"
         android:layout_width="wrap_content"
@@ -116,14 +50,100 @@
         android:button="@drawable/checkbox_style"
         android:text="@string/cbFeMaleString" />
 
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="@string/lbTitleWHRString"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#0066CC"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tbxResultWHR"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_alignTop="@+id/textView4"
+        android:layout_marginTop="14dp"
+        android:layout_marginRight="14dp"
+        android:text="@string/tbxResultWHRString"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#FF3333"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/tbxCm"
+        android:layout_width="130dp"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tbxCe"
+        android:layout_below="@+id/tbxCe"
+        android:layout_marginTop="14dp"
+        android:background="@drawable/rounded_edittext"
+        android:ems="10"
+        android:inputType="numberDecimal" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/tbxCm"
+        android:layout_alignBottom="@+id/tbxCm"
+        android:layout_alignLeft="@+id/textView1"
+        android:text="@string/lbCmString"
+        android:textColor="#0066CC" />
+
+    <CheckBox
+        android:id="@+id/cbMale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/cbFeMale"
+        android:layout_alignBottom="@+id/cbFeMale"
+        android:layout_alignRight="@+id/tbxCm"
+        android:layout_marginRight="16dp"
+        android:button="@drawable/checkbox_style"
+        android:text="@string/cbMaleString" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_below="@+id/btnCalculateWHR"
+        android:text="@string/lbTitleResultWHRString"
+        android:textColor="#0066CC" />
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/tbxImpact" 
+        android:layout_margin="10dp" >
+
+        <TableLayout
+            android:id="@+id/tableDataWHR"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/holo_purple"
+            android:padding="10dp"
+            android:shrinkColumns="*"
+            android:stretchColumns="*" >
+        </TableLayout>
+    </ScrollView>
+
     <Button
         android:id="@+id/btnCalculateWHR"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/cbFeMale"
-        android:layout_marginTop="5dp"
-        android:layout_toRightOf="@+id/tbxResultWHR"
+        android:layout_alignBaseline="@+id/btnReinput"
+        android:layout_alignBottom="@+id/btnReinput"
+        android:layout_toLeftOf="@+id/tbxCe"
         android:background="@drawable/button_style"
         android:text="@string/btnCalculateWHRString" />
 
@@ -132,28 +152,9 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/btnCalculateWHR"
-        android:layout_alignBottom="@+id/btnCalculateWHR"
-        android:layout_toLeftOf="@+id/cbMale"
+        android:layout_below="@+id/cbFeMale"
+        android:layout_toRightOf="@+id/textView3"
         android:background="@drawable/button_style"
         android:text="@string/btnReinputString" />
-    
-     <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_margin="10dp"
-        android:layout_below="@+id/tbxImpact" >
 
-        <TableLayout
-            android:id="@+id/tableDataWHR"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:shrinkColumns="*"
-            android:stretchColumns="*"
-            android:background="@android:color/holo_purple" >
-        </TableLayout>
-    </ScrollView>
 </RelativeLayout>
