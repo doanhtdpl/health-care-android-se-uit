@@ -59,35 +59,13 @@
         android:inputType="datetime" />
 
     <EditText
-        android:id="@+id/tbxCountTime"
-        android:layout_width="wrap_content"
+        android:id="@+id/tbxTimeSpacing"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/tbxDateSick"
         android:layout_alignRight="@+id/tbxDateSick"
         android:layout_below="@+id/tbxDateSick"
-        android:layout_marginTop="16dp"
-        android:background="@drawable/rounded_edittext"
-        android:inputType="number"
-        android:ems="10" />
-
-    
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/tbxTimeSpacing"
-        android:layout_alignLeft="@+id/textView2"
-        android:text="@string/txtCountTimeString" />
-
-    <EditText
-        android:id="@+id/tbxTimeSpacing"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tbxCountTime"
-        android:layout_alignRight="@+id/tbxCountTime"
-        android:layout_below="@+id/tbxCountTime"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/rounded_edittext"
         android:ems="10"
         android:inputType="number" />
@@ -131,12 +109,14 @@
         android:layout_marginTop="16dp"
         android:background="@drawable/button_style"
         android:text="@string/buttonSaveString" />
+
     <ScrollView
         android:id="@+id/scrollView1"
         android:layout_width="match_parent"
         android:layout_height="140dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/tbxCountTime"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/btnSave"
         android:layout_margin="10dp" >
 
         <TableLayout
