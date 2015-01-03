@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="app.healthcare"
+    package="zulu.app.healthcare"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -21,7 +21,8 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".MainActivity"
+            android:name="app.healthcare.SplashActivity"
+            android:theme="@android:style/Theme.NoTitleBar"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,16 +31,20 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".About"
+            android:name="app.healthcare.MainActivity"
+            android:label="@string/app_name" >
+        </activity>
+        <activity
+            android:name="app.healthcare.About"
             android:label="@string/about_title" >
         </activity>
         <!-- Entry for RegisterActivity.class -->
   <service
-      android:name=".StepRunServices"
+      android:name="app.healthcare.StepRunServices"
       android:exported="false"
       />
        <service
-      android:name=".TimeTableTakeService"
+      android:name="app.healthcare.TimeTableTakeService"
       android:exported="false"
       />
     </application>

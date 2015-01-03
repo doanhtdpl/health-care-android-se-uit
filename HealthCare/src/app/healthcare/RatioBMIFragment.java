@@ -1,7 +1,7 @@
 package app.healthcare;
 
 import java.util.List;
-
+import zulu.app.healthcare.R;
 import android.annotation.SuppressLint;
 import android.app.Fragment;
 import android.graphics.Color;

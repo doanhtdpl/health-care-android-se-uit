@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import zulu.app.healthcare.R;
 
 public class StartAppScreen extends Fragment {
 	RelativeLayout background;

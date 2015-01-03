@@ -11,6 +11,7 @@ import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
 import android.widget.Toast;
+import zulu.app.healthcare.R;
 
 public class TimeTableTakeService extends Service {
 
