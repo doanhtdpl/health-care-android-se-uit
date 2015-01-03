@@ -16,7 +16,7 @@ public class StartAppScreen extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		View rootView = inflater.inflate(R.layout.hello_app, container, false);
+		View rootView = inflater.inflate(R.layout.help, container, false);
 
 		
 		this.background = (RelativeLayout) rootView.findViewById(R.id.backGround);
