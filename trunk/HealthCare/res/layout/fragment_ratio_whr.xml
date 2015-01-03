@@ -51,7 +51,6 @@
         android:layout_alignLeft="@+id/tbxCm"
         android:layout_below="@+id/tbxCm"
         android:layout_marginTop="5dp"
-        android:button="@drawable/checkbox_style"
         android:text="@string/cbFeMaleString" />
 
     <TextView
@@ -100,17 +99,6 @@
         android:text="@string/lbCmString"
         android:textColor="#0066CC" />
 
-    <CheckBox
-        android:id="@+id/cbMale"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/cbFeMale"
-        android:layout_alignBottom="@+id/cbFeMale"
-        android:layout_alignRight="@+id/tbxCm"
-        android:layout_marginRight="16dp"
-        android:button="@drawable/checkbox_style"
-        android:text="@string/cbMaleString" />
-
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
@@ -140,15 +128,23 @@
         </TableLayout>
     </ScrollView>
 
+    <CheckBox
+        android:id="@+id/cbMale"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/cbFeMale"
+        android:layout_below="@+id/cbFeMale"
+        android:text="@string/cbMaleString" />
+
     <Button
         android:id="@+id/btnCalculateWHR"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/btnReinput"
-        android:layout_alignBottom="@+id/btnReinput"
+        android:layout_below="@+id/cbMale"
         android:layout_toLeftOf="@+id/tbxCe"
         android:background="@drawable/button_style"
+        android:layout_marginTop="10dp"
         android:text="@string/btnCalculateWHRString" />
 
     <Button
@@ -156,9 +152,10 @@
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/cbFeMale"
+        android:layout_above="@+id/tbxResultWHR"
         android:layout_toRightOf="@+id/textView3"
         android:background="@drawable/button_style"
+        android:layout_marginTop="10dp"
         android:text="@string/btnReinputString" />
 
 </RelativeLayout>
