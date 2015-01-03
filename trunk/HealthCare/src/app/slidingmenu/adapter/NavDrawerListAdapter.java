@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import app.healthcare.R;
+import zulu.app.healthcare.R;
 import app.slidingmenu.model.NavDrawerItem;
 
 public class NavDrawerListAdapter extends BaseAdapter {

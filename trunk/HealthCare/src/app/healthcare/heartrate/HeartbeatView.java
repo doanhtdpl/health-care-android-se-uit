@@ -9,7 +9,7 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.view.View;
 import app.healthcare.HeartRateFragment;
-import app.healthcare.R;
+import zulu.app.healthcare.R;
 
 public class HeartbeatView extends View {
 

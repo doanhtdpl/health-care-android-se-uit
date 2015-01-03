@@ -1,7 +1,7 @@
 package app.healthcare;
 
 import java.util.List;
-
+import zulu.app.healthcare.R;
 import android.app.Fragment;
 import android.content.BroadcastReceiver;
 import android.content.Context;

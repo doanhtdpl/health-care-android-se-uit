@@ -2,7 +2,7 @@ package app.healthcare;
 
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
-
+import zulu.app.healthcare.R;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.res.Configuration;
@@ -21,7 +21,6 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import app.healthcare.heartrate.ImageProcessing;
-
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.GraphView.GraphViewData;
 import com.jjoe64.graphview.GraphViewSeries;
