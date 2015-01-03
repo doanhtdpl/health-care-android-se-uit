@@ -57,7 +57,7 @@ public class RatioWHRFragment extends Fragment {
 		cbMale.setOnCheckedChangeListener(listener);
 		cbFeMale = (CheckBox) rootView.findViewById(R.id.cbFeMale);
 		cbFeMale.setChecked(true);
-		cbMale.setOnCheckedChangeListener(listener);
+		cbFeMale.setOnCheckedChangeListener(listener);
 		tbxCe = (EditText) rootView.findViewById(R.id.tbxCe);
 		tbxCm = (EditText) rootView.findViewById(R.id.tbxCm);
 		btnCalculateWHR = (Button) rootView.findViewById(R.id.btnCalculateWHR);

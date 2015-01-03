@@ -29,6 +29,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".About"
+            android:label="@string/about_title" >
+        </activity>
         <!-- Entry for RegisterActivity.class -->
   <service
       android:name=".StepRunServices"

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.TypedArray;
@@ -45,8 +46,15 @@ public class MainActivity extends Activity {
 
 	SharedPreferences checkCreateDatabase;
 
-	public static final int FRAG_TEM_BODY = 0;
-	public static final int FRAG_HEART_RATE = 1;
+	
+	public static final int FRAG_HEART_RATE = 0;
+	public static final int FRAG_WHR = 1;
+	public static final int FRAG_BMI = 2;
+	public static final int FRAG_TIMETABLETAKE = 3;
+	public static final int FRAG_STEPRUN = 4;
+	public static final int FRAG_INFO = 5;
+	public static final int FRAG_HELP = 6;
+	
 	Database db;
 
 	@Override
@@ -84,11 +92,11 @@ public class MainActivity extends Activity {
 		navDrawerItems = new ArrayList<NavDrawerItem>();
 
 		// adding nav drawer items to array
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons
-				.getResourceId(1, -1)));
-		// Find People
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[0], navMenuIcons
 				.getResourceId(0, -1)));
+		// Find People
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[1], navMenuIcons
+				.getResourceId(1, -1)));
 		// Photos
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[2], navMenuIcons
 				.getResourceId(2, -1)));
@@ -101,10 +109,10 @@ public class MainActivity extends Activity {
 		// What's hot, We will add a counter here
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons
 				.getResourceId(5, -1)));
-//		navDrawerItems.add(new NavDrawerItem(navMenuTitles[6], navMenuIcons
-//				.getResourceId(6, -1)));
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[6], navMenuIcons
 				.getResourceId(6, -1)));
+		navDrawerItems.add(new NavDrawerItem(navMenuTitles[7], navMenuIcons
+				.getResourceId(7, -1)));
 
 		// Recycle the typed array
 		navMenuIcons.recycle();
@@ -143,7 +151,7 @@ public class MainActivity extends Activity {
 
 		if (savedInstanceState == null) {
 			// on first time display view for first nav item
-			displayView(FRAG_TEM_BODY);
+			displayView(FRAG_HELP);
 		}
 
 	}
@@ -200,28 +208,28 @@ public class MainActivity extends Activity {
 		// update the main content by replacing fragments
 		Fragment fragment = null;
 		switch (position) {
-		case FRAG_TEM_BODY:
+		case FRAG_HELP:
 			fragment = new StartAppScreen();
 			break;
 		case FRAG_HEART_RATE:
 			fragment = new HeartRateFragment();
 			break;
-		case 2:
+		case FRAG_WHR:
 			fragment = new RatioWHRFragment();
 			break;
-		case 3:
+		case FRAG_BMI:
 			fragment = new RatioBMIFragment();
 			break;
-		case 4:
+		case FRAG_TIMETABLETAKE:
 			fragment = new TimeTableTakeFragment();
 			break;
-		case 5:
+		case FRAG_STEPRUN:
 			fragment = new MeasureStepRunFragment();
 			break;
-//		case 6:
-//			fragment = new SleepTimeFragment();
-//			break;
-		case 6:
+		case FRAG_INFO:
+			startActivity(new Intent(this, About.class));
+			break;
+		case 7:
 			this.finish();
 			break;
 		default:
