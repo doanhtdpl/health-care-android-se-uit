@@ -26,7 +26,7 @@ public class Database extends SQLiteOpenHelper {
 		db.execSQL("create table HEARTRATE "
 				+ "(HeartRateId integer primary key, UserId integer, Time text, HeartRate integer)");
 		db.execSQL("create table TIMETABLETAKE "
-				+ "(TimeTableTakeId integer primary key, UserId integer, Sick text, Time text, Status text, CountTime integer, TimeSpacing text)");
+				+ "(TimeTableTakeId integer primary key, UserId integer, Sick text, Time text, Status text, TimeSpacing text)");
 	}
 
 	@Override

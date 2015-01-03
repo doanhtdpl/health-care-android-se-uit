@@ -101,10 +101,10 @@ public class MainActivity extends Activity {
 		// What's hot, We will add a counter here
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[5], navMenuIcons
 				.getResourceId(5, -1)));
+//		navDrawerItems.add(new NavDrawerItem(navMenuTitles[6], navMenuIcons
+//				.getResourceId(6, -1)));
 		navDrawerItems.add(new NavDrawerItem(navMenuTitles[6], navMenuIcons
 				.getResourceId(6, -1)));
-		navDrawerItems.add(new NavDrawerItem(navMenuTitles[7], navMenuIcons
-				.getResourceId(7, -1)));
 
 		// Recycle the typed array
 		navMenuIcons.recycle();
@@ -218,10 +218,10 @@ public class MainActivity extends Activity {
 		case 5:
 			fragment = new MeasureStepRunFragment();
 			break;
+//		case 6:
+//			fragment = new SleepTimeFragment();
+//			break;
 		case 6:
-			fragment = new SleepTimeFragment();
-			break;
-		case 7:
 			this.finish();
 			break;
 		default:

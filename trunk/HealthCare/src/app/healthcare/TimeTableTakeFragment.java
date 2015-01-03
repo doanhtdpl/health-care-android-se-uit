@@ -24,7 +24,6 @@ import android.widget.Toast;
 import app.database.TimeTableTakeDAO;
 import app.database.UserDAO;
 import app.dto.TimeTableTakeDTO;
-import app.dto.UserDTO;
 
 public class TimeTableTakeFragment extends Fragment {
 	public TableLayout tableData;
@@ -32,7 +31,6 @@ public class TimeTableTakeFragment extends Fragment {
 	public CheckBox cbNotFinish;
 	public EditText tbxSickName;
 	public EditText tbxDateSick;
-	public EditText tbxCountTime;
 	public EditText tbxTimeSpacing;
 	public EditText tbxStatus;
 	public UserDAO userDao;
@@ -52,8 +50,6 @@ public class TimeTableTakeFragment extends Fragment {
 
 	@Override
 	public void onDestroy() {
-		getActivity().stopService(
-				new Intent(getActivity(), TimeTableTakeService.class));
 		super.onDestroy();
 	}
 
@@ -61,7 +57,6 @@ public class TimeTableTakeFragment extends Fragment {
 		prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
 		tableData = (TableLayout) rootView
 				.findViewById(R.id.tableDataTimeTable);
-		tbxCountTime = (EditText) rootView.findViewById(R.id.tbxCountTime);
 		tbxDateSick = (EditText) rootView.findViewById(R.id.tbxDateSick);
 		tbxSickName = (EditText) rootView.findViewById(R.id.tbxSick);
 		tbxTimeSpacing = (EditText) rootView.findViewById(R.id.tbxTimeSpacing);
@@ -73,10 +68,7 @@ public class TimeTableTakeFragment extends Fragment {
 			@SuppressLint("ShowToast")
 			@Override
 			public void onClick(View v) {
-				if (tbxCountTime.getText().length() == 0) {
-					Toast.makeText(getActivity(), "Bạn phải nhập đủ thông số",
-							Toast.LENGTH_SHORT).show();
-				} else if (tbxDateSick.getText().length() == 0) {
+				if (tbxDateSick.getText().length() == 0) {
 					Toast.makeText(getActivity(), "Bạn phải nhập đủ thông số",
 							Toast.LENGTH_SHORT).show();
 				} else if (tbxSickName.getText().length() == 0) {
@@ -88,40 +80,38 @@ public class TimeTableTakeFragment extends Fragment {
 				} else if (tbxTimeSpacing.getText().length() == 0) {
 					Toast.makeText(getActivity(), "Bạn phải nhập đủ thông số",
 							Toast.LENGTH_SHORT).show();
+				} else {
+					if (save())
+						getActivity().startService(
+								new Intent(getActivity(),
+										TimeTableTakeService.class));
 				}
-				save();
-				getActivity().startService(
-						new Intent(getActivity(), TimeTableTakeService.class));
 			}
 		});
 		buildTableData();
 	}
 
 	public void buildTableData() {
-		UserDTO userdto = userDao.getUser();
 		List<TimeTableTakeDTO> listdata = timeTableTakeDao
-				.getListTimeTableTake(userdto.getUserId());
+				.getListTimeTableTake();
 		int rows = listdata.size();
 		int cols = 3;
 		for (int i = 0; i < rows; i++) {
 			TableRow row = new TableRow(getActivity());
 			row.setLayoutParams(new LayoutParams(LayoutParams.MATCH_PARENT,
 					LayoutParams.MATCH_PARENT));
-			for (int j = 1; j < cols; j++) {
+			for (int j = 0; j < cols; j++) {
 				TextView tv = new TextView(getActivity());
 				tv.setTextColor(Color.YELLOW);
 				if (j == 0) {
 					tv.setGravity(Gravity.LEFT);
-					tv.setText(listdata.get(i).getTimeTableTakeId());
+					tv.setText(listdata.get(i).getTime().toString());
 				} else if (j == 1) {
-					tv.setGravity(Gravity.LEFT);
-					tv.setText(listdata.get(i).getTime());
-				} else if (j == 2) {
 					tv.setGravity(Gravity.CENTER);
-					tv.setText(listdata.get(i).getSick());
-				} else if (j == 3) {
+					tv.setText(listdata.get(i).getSick().toString());
+				} else if (j == 2) {
 					tv.setGravity(Gravity.RIGHT);
-					tv.setText(listdata.get(i).getStatus());
+					tv.setText(listdata.get(i).getStatus().toString());
 				}
 				final int id = listdata.get(i).getTimeTableTakeId();
 				row.addView(tv);
@@ -140,31 +130,34 @@ public class TimeTableTakeFragment extends Fragment {
 		TimeTableTakeDTO dto = timeTableTakeDao.getTimeTableTake(id);
 		tbxSickName.setText(dto.getSick());
 		tbxDateSick.setText(dto.getTime());
-		tbxCountTime.setText(dto.getCountTime() + "");
 		tbxTimeSpacing.setText(dto.getTimeSpacing());
 		tbxStatus.setText(dto.getStatus());
 	}
 
-	public void save() {
+	public boolean save() {
 		TimeTableTakeDTO dto = new TimeTableTakeDTO();
-		int countTime = Integer.parseInt(tbxCountTime.getText().toString());
-		dto.setCountTime(countTime);
 		dto.setSick(tbxSickName.getText().toString());
 		dto.setStatus(tbxStatus.getText().toString());
 		dto.setTime(tbxDateSick.getText().toString());
 		dto.setTimeSpacing(tbxTimeSpacing.getText().toString());
 		int id = userDao.getUser().getUserId();
 		dto.setUserId(id);
-		timeTableTakeDao.insertTimeTableTake(dto);
+		timeTableTakeDao.insertOrUpdateTimeTableTake(dto);
 		Toast.makeText(getActivity(), "Lưu thành công", Toast.LENGTH_SHORT)
 				.show();
-		int hour = Constants.getInstance().getTime().hour;
-		setTime(countTime, Constants.TIME_COUNT);
-		setTime(hour + Integer.parseInt(tbxTimeSpacing.getText().toString()), Constants.CHECK_TIME);
+		int sec = (Integer.parseInt(dto.getTimeSpacing())) * 3600*1000;
+		setTime(sec, Constants.getInstance().TIME_COUNT);
+		if (Integer.parseInt(tbxTimeSpacing.getText().toString()) == 0) {
+			getActivity().stopService(
+					new Intent(getActivity(), TimeTableTakeService.class));
+			return false;
+		}
+		
+		
+		return true;
 	}
 
 	public void setTime(int score, String s) {
-
 		SharedPreferences.Editor settingsEditor = prefs.edit();
 		settingsEditor.putInt(s, score);
 		settingsEditor.commit();

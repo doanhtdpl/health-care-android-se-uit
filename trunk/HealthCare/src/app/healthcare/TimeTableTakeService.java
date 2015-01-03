@@ -6,15 +6,18 @@ import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Handler;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.support.v4.app.NotificationCompat;
 import android.widget.Toast;
 
 public class TimeTableTakeService extends Service {
+
 	private static final int FM_NOTIFICATION_ID = 1;
 	SharedPreferences prefs;
 	boolean check = true;
+	final Handler mHandler = new Handler();
 
 	@Override
 	public IBinder onBind(Intent intent) {
@@ -32,23 +35,39 @@ public class TimeTableTakeService extends Service {
 	}
 
 	@Override
-	public int onStartCommand(Intent intent, int flags, int startId) {
-		int time = getTime(Constants.CHECK_TIME);
-		if (Constants.getInstance().getTime().hour == time) {
-			setTime(100, Constants.CHECK_TIME);
-			if (getTime(Constants.TIME_COUNT) >= getTime(Constants.COUNT_TIME)) {
-				if (check) {
-					addNotification(intent);
-					check = false;
-					Toast.makeText(this, "Đã tới giờ uống thuốc",
-							Toast.LENGTH_SHORT).show();
-					setTime(getTime(Constants.COUNT_TIME + 1),
-							Constants.COUNT_TIME);
+	public int onStartCommand(final Intent intent, int flags, int startId) {
+		Runnable runnable = new Runnable() {
+			Intent newIntent;
+			boolean first = true;
+			boolean stop = false;
 
+			@Override
+			public void run() {
+				if (!first) {
+					if (!stop) {
+						if (intent != null) {
+							addNotification(intent);
+							int temp = getTime(Constants.getInstance().TIME_COUNT);
+							if (temp == 0) {
+								stop = true;
+							}
+						}
+						else {
+							addNotification(new Intent(getApplicationContext(),
+									TimeTableTakeService.class));
+						}
+					}
+
+				} else {
+					first = false;
 				}
+				
+				mHandler.postDelayed(this, getTime(Constants.getInstance().TIME_COUNT));
 			}
-		}
 
+		};
+		// start handler
+		mHandler.post(runnable);
 		return startId;
 	}
 
