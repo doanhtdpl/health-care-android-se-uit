@@ -50,7 +50,6 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/cbWHO"
         android:layout_below="@+id/cbWHO"
-        android:button="@drawable/checkbox_style"
         android:text="@string/cbIDIAndWPROString" />
 
     <CheckBox
@@ -60,7 +59,6 @@
         android:layout_alignLeft="@+id/textView3"
         android:layout_below="@+id/tbxWeight"
         android:layout_marginTop="5dp"
-        android:button="@drawable/checkbox_style"
         android:text="@string/cbWHOString" />
 
     <EditText
