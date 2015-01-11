@@ -2,9 +2,12 @@ package app.healthcare;
 
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
+
 import zulu.app.healthcare.R;
+import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.hardware.Camera;
@@ -18,9 +21,11 @@ import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import app.healthcare.heartrate.ImageProcessing;
+
 import com.jjoe64.graphview.GraphView;
 import com.jjoe64.graphview.GraphView.GraphViewData;
 import com.jjoe64.graphview.GraphViewSeries;
@@ -28,7 +33,7 @@ import com.jjoe64.graphview.GraphViewSeries.GraphViewSeriesStyle;
 import com.jjoe64.graphview.LineGraphView;
 
 public class HeartRateFragment extends Fragment {
-	
+
 	private static final String TAG = "HeartRateMonitor";
 	private static final AtomicBoolean processing = new AtomicBoolean(false);
 	private static final int RATE_CYCLE = 10;
@@ -38,9 +43,11 @@ public class HeartRateFragment extends Fragment {
 	private static Camera camera = null;
 	private static View image = null;
 	private static TextView text = null;
-
+	private static Button btnStart = null;
+	private static boolean checkHeartRate;
+	private static boolean checkShowDialog;
 	private static WakeLock wakeLock = null;
-
+	static AlertDialog.Builder alertDialog2 ;
 	private static int averageIndex = 0;
 	private static final int averageArraySize = 4;
 	private static final int[] averageArray = new int[averageArraySize];
@@ -71,12 +78,15 @@ public class HeartRateFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
 
-		View rootView = inflater.inflate(R.layout.fragment_heart_rate, container, false);
+		View rootView = inflater.inflate(R.layout.fragment_heart_rate,
+				container, false);
 		initGraph(rootView);
 		initView(rootView);
+		alertDialog2= new AlertDialog.Builder(this.getActivity()
+		        );
 		return rootView;
 	}
-	
+
 	@Override
 	public void onResume() {
 		super.onResume();
@@ -86,7 +96,7 @@ public class HeartRateFragment extends Fragment {
 
 		startTime = System.currentTimeMillis();
 	}
-	
+
 	@Override
 	public void onPause() {
 		super.onPause();
@@ -97,7 +107,7 @@ public class HeartRateFragment extends Fragment {
 		camera.release();
 		camera = null;
 	}
-	
+
 	@Override
 	public void onConfigurationChanged(Configuration newConfig) {
 		// TODO Auto-generated method stub
@@ -105,18 +115,36 @@ public class HeartRateFragment extends Fragment {
 	}
 
 	private void initView(View rootView) {
+		checkHeartRate = false;
+		checkShowDialog = false;
 		preview = (SurfaceView) rootView.findViewById(R.id.preview);
 		previewHolder = preview.getHolder();
 		previewHolder.addCallback(surfaceCallback);
 		previewHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+		btnStart = (Button) rootView.findViewById(R.id.btnStart);
+		btnStart.setText("Start");
+		btnStart.setOnClickListener(new View.OnClickListener() {
 
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				if (btnStart.getText() == "Start") {
+					checkHeartRate = true;
+					btnStart.setText("Stop");
+				} else if (btnStart.getText() == "Stop") {
+					checkHeartRate = false;
+					btnStart.setText("Start");
+				}
+			}
+		});
 		image = rootView.findViewById(R.id.image);
 		text = (TextView) rootView.findViewById(R.id.text);
 
-		PowerManager pm = (PowerManager) getActivity().getSystemService(Context.POWER_SERVICE);
-		wakeLock = pm.newWakeLock(PowerManager.FULL_WAKE_LOCK, "DoNotDimScreen");
+		PowerManager pm = (PowerManager) getActivity().getSystemService(
+				Context.POWER_SERVICE);
+		wakeLock = pm
+				.newWakeLock(PowerManager.FULL_WAKE_LOCK, "DoNotDimScreen");
 	}
-	
+
 	private void initGraph(View rootView) {
 
 		graphView = new LineGraphView(getActivity(), "Graph");
@@ -124,7 +152,8 @@ public class HeartRateFragment extends Fragment {
 		listData = new ArrayList<GraphView.GraphViewData>();
 		GraphViewData[] data = new GraphViewData[listData.size()];
 		listData.toArray(data);
-		graphViewSeries = new GraphViewSeries("", new GraphViewSeriesStyle(Color.RED, 7), data);
+		graphViewSeries = new GraphViewSeries("", new GraphViewSeriesStyle(
+				Color.RED, 7), data);
 
 		// add data
 		graphView.addSeries(graphViewSeries);
@@ -136,19 +165,21 @@ public class HeartRateFragment extends Fragment {
 		// optional - activate scaling / zooming
 		graphView.getGraphViewStyle().setGridColor(Color.TRANSPARENT);
 		graphView.setScalable(true);
-		
+
 		// graphView.setShowLegend(true);
 		graphView.setShowHorizontalLabels(false);
 		graphView.setShowVerticalLabels(false);
 
-		LinearLayout layout = (LinearLayout) rootView.findViewById(R.id.graphLayout);
+		LinearLayout layout = (LinearLayout) rootView
+				.findViewById(R.id.graphLayout);
 		layout.addView(graphView);
 	}
-	
+
 	private static PreviewCallback previewCallback = new PreviewCallback() {
 
 		@Override
 		public void onPreviewFrame(byte[] data, Camera cam) {
+
 			if (data == null)
 				throw new NullPointerException();
 			Camera.Size size = cam.getParameters().getPreviewSize();
@@ -192,8 +223,10 @@ public class HeartRateFragment extends Fragment {
 				newType = TYPE.RED;
 
 				if (newType != currentType) {
-					beats++;
-					Log.d(TAG, "BEAT!! beats=" + beats);
+					if (checkHeartRate) {
+						beats++;
+						Log.d(TAG, "BEAT!! beats=" + beats);
+					}
 				}
 			} else if (imgAvg > rollingAverage) {
 				newType = TYPE.GREEN;
@@ -211,42 +244,72 @@ public class HeartRateFragment extends Fragment {
 			} else {
 			}
 
-			long endTime = System.currentTimeMillis();
-			double totalTimeInSecs = (endTime - startTime) / 1000d;
-			if (totalTimeInSecs >= RATE_CYCLE) {
-				double bps = (beats / totalTimeInSecs);
-				int dpm = (int) (bps * 60d);
-				if (dpm < 30 || dpm > 180) {
+			if (checkHeartRate) {
+				long endTime = System.currentTimeMillis();
+				double totalTimeInSecs = (endTime - startTime) / 1000d;
+				if (totalTimeInSecs >= RATE_CYCLE) {
+					double bps = (beats / totalTimeInSecs);
+					int dpm = (int) (bps * 60d);
+					if (dpm < 30 || dpm > 180) {
+						startTime = System.currentTimeMillis();
+						beats = 0;
+						processing.set(false);
+						return;
+					}
+
+					if (beatsIndex == beatsArraySize)
+						beatsIndex = 0;
+					beatsArray[beatsIndex] = dpm;
+					beatsIndex++;
+
+					int beatsArrayAvg = 0;
+					int beatsArrayCnt = 0;
+					for (int i = 0; i < beatsArray.length; i++) {
+						if (beatsArray[i] > 0) {
+							beatsArrayAvg += beatsArray[i];
+							beatsArrayCnt++;
+						}
+					}
+					beatsAvg = (beatsArrayAvg / beatsArrayCnt);
+
+					text.setText(String.valueOf(beatsAvg));
 					startTime = System.currentTimeMillis();
 					beats = 0;
-					processing.set(false);
-					return;
+					checkHeartRate = false;
+					
+					
+					
+
+					// Setting Dialog Title
+					alertDialog2.setTitle("Chỉ số nhịp tim");
+
+					// Setting Dialog Message
+					alertDialog2.setMessage("Chỉ số nhip tim của bạn là: "+beatsAvg);
+
+					// Setting Icon to Dialog
+
+					// Setting Positive "Yes" Btn
+					alertDialog2.setPositiveButton("Cảm ơn",
+					        new DialogInterface.OnClickListener() {
+					            public void onClick(DialogInterface dialog, int which) {
+					                // Write your code here to execute after dialog
+					                
+					                       
+					            }
+					        });
+				
+
+					// Showing Alert Dialog
+					alertDialog2.show();
+					
+					btnStart.setText("Start");
 				}
-
-				if (beatsIndex == beatsArraySize)
-					beatsIndex = 0;
-				beatsArray[beatsIndex] = dpm;
-				beatsIndex++;
-
-				int beatsArrayAvg = 0;
-				int beatsArrayCnt = 0;
-				for (int i = 0; i < beatsArray.length; i++) {
-					if (beatsArray[i] > 0) {
-						beatsArrayAvg += beatsArray[i];
-						beatsArrayCnt++;
-					}
-				}
-				beatsAvg = (beatsArrayAvg / beatsArrayCnt);
-
-				text.setText(String.valueOf(beatsAvg));
-				startTime = System.currentTimeMillis();
-				beats = 0;
 			}
 
 			processing.set(false);
 			// jijh
-
 		}
+
 	};
 
 	private static double tempValue = 0d;
@@ -274,7 +337,8 @@ public class HeartRateFragment extends Fragment {
 
 		graphViewSeries.resetData(data);
 		graphViewSeries.appendData(listData.get(listData.size() - 1), true);
-		Log.i(TAG, "Beated: " + isBeated + " - data: "
+		Log.i(TAG,
+				"Beated: " + isBeated + " - data: "
 						+ listData.get(listData.size() - 1).getY() + " - size "
 						+ data.length);
 
@@ -293,22 +357,24 @@ public class HeartRateFragment extends Fragment {
 			}
 		}
 
-
 		@Override
 		public void surfaceChanged(SurfaceHolder holder, int format, int width,
 				int height) {
-			Camera.Parameters parameters = camera.getParameters();
-			parameters.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
-			Camera.Size size = getSmallestPreviewSize(width, height, parameters);
-			if (size != null) {
-				parameters.setPreviewSize(size.width, size.height);
-				Log.d(TAG, "Using width=" + size.width + " height=" + size.height);
+			if (!checkHeartRate) {
+				Camera.Parameters parameters = camera.getParameters();
+				parameters.setFlashMode(Camera.Parameters.FLASH_MODE_TORCH);
+				Camera.Size size = getSmallestPreviewSize(width, height,
+						parameters);
+				if (size != null) {
+					parameters.setPreviewSize(size.width, size.height);
+					Log.d(TAG, "Using width=" + size.width + " height="
+							+ size.height);
+				}
+				camera.setParameters(parameters);
+				camera.startPreview();
 			}
-			camera.setParameters(parameters);
-			camera.startPreview();
 		}
 
-	
 		@Override
 		public void surfaceDestroyed(SurfaceHolder holder) {
 			// Ignore
