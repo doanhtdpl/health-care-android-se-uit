@@ -4,11 +4,9 @@ import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import zulu.app.healthcare.R;
-import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.Fragment;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.hardware.Camera;
@@ -23,6 +21,7 @@ import android.view.SurfaceView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import app.healthcare.heartrate.ImageProcessing;
@@ -43,7 +42,6 @@ public class HeartRateFragment extends Fragment {
 	private static SurfaceHolder previewHolder = null;
 	private static Camera camera = null;
 	private static View image = null;
-	private static TextView text = null;
 	private static Button btnStart = null;
 	private static Button btnHelp = null;
 	private static boolean checkHeartRate;
@@ -121,7 +119,7 @@ public class HeartRateFragment extends Fragment {
 		previewHolder = preview.getHolder();
 		previewHolder.addCallback(surfaceCallback);
 		previewHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
-		
+
 		btnHelp = (Button) rootView.findViewById(R.id.btnHelp);
 		btnHelp.setOnClickListener(new View.OnClickListener() {
 
@@ -130,22 +128,23 @@ public class HeartRateFragment extends Fragment {
 				alertDialog2.setTitle("Hướng dẫn");
 
 				// Setting Dialog Message
-				TextView text = (TextView) alertDialog2.findViewById(R.id.textDialog);
-                text.setText("Để có thể có kết quả đo chuẩn xác nhất, bạn phải Đặt ngón tay vào sau camera");
-				
+				TextView text = (TextView) alertDialog2
+						.findViewById(R.id.textDialog);
+				text.setText("Để có thể có kết quả đo chuẩn xác nhất, bạn phải Đặt ngón tay vào sau camera, tùy vào độ sáng của đèn flash, nếu quá sáng, biểu đồ giao động hình ảnh là 1 đường thằng thì thiết bị của bạn sẽ không có kết quả chuẩn xác nhất.\n Khi thấy biểu đồ có sự thay đổi tuần tự, bạn bấm nút Start để bắt đầu đo và chờ kết quá. Trong quá trình đo đề nghị bạn giữ nguyên vị trí tay, tránh giao động làm sai số kết quả");
 
 				// Setting Icon to Dialog
-                Button declineButton = (Button) alertDialog2.findViewById(R.id.declineButton);
-                // if decline button is clicked, close the custom dialog
-                declineButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        // Close dialog
-                    	alertDialog2.dismiss();
-                    }
-                });
+				Button declineButton = (Button) alertDialog2
+						.findViewById(R.id.declineButton);
+				// if decline button is clicked, close the custom dialog
+				declineButton.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						// Close dialog
+						alertDialog2.dismiss();
+					}
+				});
 				alertDialog2.show();
-							}
+			}
 		});
 		btnStart = (Button) rootView.findViewById(R.id.btnStart);
 		btnStart.setText("Start");
@@ -163,7 +162,6 @@ public class HeartRateFragment extends Fragment {
 			}
 		});
 		image = rootView.findViewById(R.id.image);
-		text = (TextView) rootView.findViewById(R.id.text);
 
 		PowerManager pm = (PowerManager) getActivity().getSystemService(
 				Context.POWER_SERVICE);
@@ -298,7 +296,6 @@ public class HeartRateFragment extends Fragment {
 					}
 					beatsAvg = (beatsArrayAvg / beatsArrayCnt);
 
-					text.setText(String.valueOf(beatsAvg));
 					startTime = System.currentTimeMillis();
 					beats = 0;
 					checkHeartRate = false;
@@ -307,20 +304,25 @@ public class HeartRateFragment extends Fragment {
 					alertDialog2.setTitle("Chỉ số");
 
 					// Setting Dialog Message
-					TextView text = (TextView) alertDialog2.findViewById(R.id.textDialog);
-	                text.setText("Chỉ số nhip tim trên phút của bạn là: " +beatsAvg);
-					
+					ImageView image = (ImageView) alertDialog2
+							.findViewById(R.id.imageDialog);
+					image.setImageResource(R.drawable.capture);
 
+					TextView text = (TextView) alertDialog2
+							.findViewById(R.id.textDialog);
+					text.setText("Chỉ số nhip tim trên phút: " + beatsAvg);
 					// Setting Icon to Dialog
-	                Button declineButton = (Button) alertDialog2.findViewById(R.id.declineButton);
-	                // if decline button is clicked, close the custom dialog
-	                declineButton.setOnClickListener(new View.OnClickListener() {
-	                    @Override
-	                    public void onClick(View v) {
-	                        // Close dialog
-	                    	alertDialog2.dismiss();
-	                    }
-	                });
+					Button declineButton = (Button) alertDialog2
+							.findViewById(R.id.declineButton);
+					// if decline button is clicked, close the custom dialog
+					declineButton
+							.setOnClickListener(new View.OnClickListener() {
+								@Override
+								public void onClick(View v) {
+									// Close dialog
+									alertDialog2.dismiss();
+								}
+							});
 					alertDialog2.show();
 
 					btnStart.setText("Start");

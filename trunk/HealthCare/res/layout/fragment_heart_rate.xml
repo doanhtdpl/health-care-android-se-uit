@@ -14,20 +14,11 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp" >
 
-        <TextView
-            android:id="@+id/text"
-            android:layout_width="32dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.41"
-            android:text="hello"
-            android:textSize="32dp" >
-        </TextView>
-
         <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:orientation="horizontal" >
-		
+
             <app.healthcare.heartrate.HeartbeatView
                 android:id="@+id/image"
                 android:layout_width="wrap_content"
@@ -42,8 +33,8 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
-                android:background="@drawable/button_style"
-                android:text="Button" />
+                android:layout_margin="5dp"
+                android:background="@drawable/button_style" />
 
             <Button
                 android:id="@+id/btnHelp"
@@ -52,11 +43,16 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentTop="true"
+                android:layout_margin="5dp"
                 android:background="@drawable/button_style"
                 android:text="Help" />
-
         </RelativeLayout>
     </LinearLayout>
+    
+    <View 
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/holo_red_light"/>
 
     <LinearLayout
         android:id="@+id/graphLayout"
@@ -65,7 +61,6 @@
         android:layout_weight="1"
         android:background="@android:color/white"
         android:orientation="vertical" >
-        
     </LinearLayout>
 
     <SurfaceView
