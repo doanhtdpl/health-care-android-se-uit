@@ -5,6 +5,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import zulu.app.healthcare.R;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -44,10 +45,10 @@ public class HeartRateFragment extends Fragment {
 	private static View image = null;
 	private static TextView text = null;
 	private static Button btnStart = null;
+	private static Button btnHelp = null;
 	private static boolean checkHeartRate;
-	private static boolean checkShowDialog;
 	private static WakeLock wakeLock = null;
-	static AlertDialog.Builder alertDialog2 ;
+	static Dialog alertDialog2;
 	private static int averageIndex = 0;
 	private static final int averageArraySize = 4;
 	private static final int[] averageArray = new int[averageArraySize];
@@ -80,10 +81,10 @@ public class HeartRateFragment extends Fragment {
 
 		View rootView = inflater.inflate(R.layout.fragment_heart_rate,
 				container, false);
+		alertDialog2 = new Dialog(getActivity());
 		initGraph(rootView);
 		initView(rootView);
-		alertDialog2= new AlertDialog.Builder(this.getActivity()
-		        );
+
 		return rootView;
 	}
 
@@ -116,11 +117,36 @@ public class HeartRateFragment extends Fragment {
 
 	private void initView(View rootView) {
 		checkHeartRate = false;
-		checkShowDialog = false;
 		preview = (SurfaceView) rootView.findViewById(R.id.preview);
 		previewHolder = preview.getHolder();
 		previewHolder.addCallback(surfaceCallback);
 		previewHolder.setType(SurfaceHolder.SURFACE_TYPE_PUSH_BUFFERS);
+		
+		btnHelp = (Button) rootView.findViewById(R.id.btnHelp);
+		btnHelp.setOnClickListener(new View.OnClickListener() {
+
+			public void onClick(View v) {
+				alertDialog2.setContentView(R.layout.custom_dialog);
+				alertDialog2.setTitle("Hướng dẫn");
+
+				// Setting Dialog Message
+				TextView text = (TextView) alertDialog2.findViewById(R.id.textDialog);
+                text.setText("Để có thể có kết quả đo chuẩn xác nhất, bạn phải Đặt ngón tay vào sau camera");
+				
+
+				// Setting Icon to Dialog
+                Button declineButton = (Button) alertDialog2.findViewById(R.id.declineButton);
+                // if decline button is clicked, close the custom dialog
+                declineButton.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // Close dialog
+                    	alertDialog2.dismiss();
+                    }
+                });
+				alertDialog2.show();
+							}
+		});
 		btnStart = (Button) rootView.findViewById(R.id.btnStart);
 		btnStart.setText("Start");
 		btnStart.setOnClickListener(new View.OnClickListener() {
@@ -276,32 +302,27 @@ public class HeartRateFragment extends Fragment {
 					startTime = System.currentTimeMillis();
 					beats = 0;
 					checkHeartRate = false;
-					
-					
-					
 
-					// Setting Dialog Title
-					alertDialog2.setTitle("Chỉ số nhịp tim");
+					alertDialog2.setContentView(R.layout.custom_dialog);
+					alertDialog2.setTitle("Chỉ số");
 
 					// Setting Dialog Message
-					alertDialog2.setMessage("Chỉ số nhip tim của bạn là: "+beatsAvg);
+					TextView text = (TextView) alertDialog2.findViewById(R.id.textDialog);
+	                text.setText("Chỉ số nhip tim trên phút của bạn là: " +beatsAvg);
+					
 
 					// Setting Icon to Dialog
-
-					// Setting Positive "Yes" Btn
-					alertDialog2.setPositiveButton("Cảm ơn",
-					        new DialogInterface.OnClickListener() {
-					            public void onClick(DialogInterface dialog, int which) {
-					                // Write your code here to execute after dialog
-					                
-					                       
-					            }
-					        });
-				
-
-					// Showing Alert Dialog
+	                Button declineButton = (Button) alertDialog2.findViewById(R.id.declineButton);
+	                // if decline button is clicked, close the custom dialog
+	                declineButton.setOnClickListener(new View.OnClickListener() {
+	                    @Override
+	                    public void onClick(View v) {
+	                        // Close dialog
+	                    	alertDialog2.dismiss();
+	                    }
+	                });
 					alertDialog2.show();
-					
+
 					btnStart.setText("Start");
 				}
 			}

@@ -16,8 +16,9 @@
 
         <TextView
             android:id="@+id/text"
-            android:layout_width="wrap_content"
+            android:layout_width="32dp"
             android:layout_height="wrap_content"
+            android:layout_weight="0.41"
             android:text="hello"
             android:textSize="32dp" >
         </TextView>
@@ -26,23 +27,33 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:orientation="horizontal" >
-
+		
             <app.healthcare.heartrate.HeartbeatView
                 android:id="@+id/image"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true" >
             </app.healthcare.heartrate.HeartbeatView>
-                 <Button
-        		android:id="@+id/btnStart"
-        		style="?android:attr/buttonStyleSmall"
-        		android:layout_width="wrap_content"
-        		android:layout_height="wrap_content"
-        		
-        		android:background="@drawable/button_style"
+
+            <Button
+                android:id="@+id/btnStart"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
+                android:background="@drawable/button_style"
                 android:text="Button" />
+
+            <Button
+                android:id="@+id/btnHelp"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:background="@drawable/button_style"
+                android:text="Help" />
 
         </RelativeLayout>
     </LinearLayout>
