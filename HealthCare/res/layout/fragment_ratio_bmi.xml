@@ -91,6 +91,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/cbIDIAndWPRO"
         android:layout_toLeftOf="@+id/cbIDIAndWPRO"
+        
         android:background="@drawable/button_style"
         android:layout_marginTop="5dp"
         android:text="@string/btnCalculateBMIString" />
