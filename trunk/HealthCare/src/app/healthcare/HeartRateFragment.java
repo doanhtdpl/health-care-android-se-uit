@@ -230,45 +230,42 @@ public class HeartRateFragment extends Fragment {
 				updateGraph(true, 230);
 			} else
 				updateGraph(true, 250);
-
-			int averageArrayAvg = 0;
-			int averageArrayCnt = 0;
-			for (int i = 0; i < averageArray.length; i++) {
-				if (averageArray[i] > 0) {
-					averageArrayAvg += averageArray[i];
-					averageArrayCnt++;
+			if (checkHeartRate) {
+				int averageArrayAvg = 0;
+				int averageArrayCnt = 0;
+				for (int i = 0; i < averageArray.length; i++) {
+					if (averageArray[i] > 0) {
+						averageArrayAvg += averageArray[i];
+						averageArrayCnt++;
+					}
 				}
-			}
 
-			int rollingAverage = (averageArrayCnt > 0) ? (averageArrayAvg / averageArrayCnt)
-					: 0;
-			TYPE newType = currentType;
-			if (imgAvg < rollingAverage) {
-				newType = TYPE.RED;
+				int rollingAverage = (averageArrayCnt > 0) ? (averageArrayAvg / averageArrayCnt)
+						: 0;
+				TYPE newType = currentType;
+				if (imgAvg < rollingAverage) {
+					newType = TYPE.RED;
 
-				if (newType != currentType) {
-					if (checkHeartRate) {
+					if (newType != currentType) {
 						beats++;
 						Log.d(TAG, "BEAT!! beats=" + beats);
 					}
+				} else if (imgAvg > rollingAverage) {
+					newType = TYPE.GREEN;
 				}
-			} else if (imgAvg > rollingAverage) {
-				newType = TYPE.GREEN;
-			}
 
-			if (averageIndex == averageArraySize)
-				averageIndex = 0;
-			averageArray[averageIndex] = imgAvg;
-			averageIndex++;
+				if (averageIndex == averageArraySize)
+					averageIndex = 0;
+				averageArray[averageIndex] = imgAvg;
+				averageIndex++;
 
-			// Transitioned from one state to another to the same
-			if (newType != currentType) {
-				currentType = newType;
-				image.postInvalidate();
-			} else {
-			}
+				// Transitioned from one state to another to the same
+				if (newType != currentType) {
+					currentType = newType;
+					image.postInvalidate();
+				} else {
+				}
 
-			if (checkHeartRate) {
 				long endTime = System.currentTimeMillis();
 				double totalTimeInSecs = (endTime - startTime) / 1000d;
 				if (totalTimeInSecs >= RATE_CYCLE) {

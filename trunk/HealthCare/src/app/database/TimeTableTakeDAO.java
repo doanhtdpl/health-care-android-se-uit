@@ -14,6 +14,7 @@ public class TimeTableTakeDAO extends DbConnectionService {
 	public static final String COLUMN_TIMETABLETAKE_USER_ID = "UserId";
 	public static final String COLUMN_TIMETABLETAKE_SICK = "Sick";
 	public static final String COLUMN_TIMETABLETAKE_TIME = "Time";
+	public static final String COLUMN_TIMETABLETAKE_COUNTTIME = "CountTime";
 	public static final String COLUMN_TIMETABLETAKE_STATUS = "Status";
 	public static final String COLUMN_TIMETABLETAKE_TIMESPACING = "TimeSpacing";
 
@@ -38,6 +39,8 @@ public class TimeTableTakeDAO extends DbConnectionService {
 						timeTableTakeDTO.getSick());
 				contentValues.put(COLUMN_TIMETABLETAKE_TIME,
 						timeTableTakeDTO.getTime());
+				contentValues.put(COLUMN_TIMETABLETAKE_COUNTTIME,
+						timeTableTakeDTO.getCountTime());
 				contentValues.put(COLUMN_TIMETABLETAKE_STATUS,
 						timeTableTakeDTO.getStatus());
 				contentValues.put(COLUMN_TIMETABLETAKE_TIMESPACING,
@@ -71,6 +74,10 @@ public class TimeTableTakeDAO extends DbConnectionService {
 					.getColumnIndex(COLUMN_TIMETABLETAKE_SICK)));
 			item.setTime(res.getString(res
 					.getColumnIndex(COLUMN_TIMETABLETAKE_TIME)));
+			int temp = 0;
+			temp = Integer.parseInt(res.getString(res
+					.getColumnIndex(COLUMN_TIMETABLETAKE_COUNTTIME)));
+			item.setCountTime(temp);
 			item.setStatus(res.getString(res
 					.getColumnIndex(COLUMN_TIMETABLETAKE_STATUS)));
 			item.setTimeSpacing(res.getString(res
@@ -90,6 +97,8 @@ public class TimeTableTakeDAO extends DbConnectionService {
 					timeTableTakeDTO.getSick());
 			contentValues.put(COLUMN_TIMETABLETAKE_TIME,
 					timeTableTakeDTO.getTime());
+			contentValues.put(COLUMN_TIMETABLETAKE_COUNTTIME,
+					timeTableTakeDTO.getCountTime());
 			contentValues.put(COLUMN_TIMETABLETAKE_STATUS,
 					timeTableTakeDTO.getStatus());
 			contentValues.put(COLUMN_TIMETABLETAKE_TIMESPACING,
@@ -118,6 +127,10 @@ public class TimeTableTakeDAO extends DbConnectionService {
 					.getColumnIndex(COLUMN_TIMETABLETAKE_SICK)));
 			timeTableTake.setTime(res.getString(res
 					.getColumnIndex(COLUMN_TIMETABLETAKE_TIME)));
+			int temp = 0;
+			temp = Integer.parseInt(res.getString(res
+					.getColumnIndex(COLUMN_TIMETABLETAKE_COUNTTIME)));
+			timeTableTake.setCountTime(temp);
 			timeTableTake.setStatus(res.getString(res
 					.getColumnIndex(COLUMN_TIMETABLETAKE_STATUS)));
 			timeTableTake.setTimeSpacing(res.getString(res

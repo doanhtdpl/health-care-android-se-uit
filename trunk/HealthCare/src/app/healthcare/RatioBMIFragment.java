@@ -193,7 +193,7 @@ public class RatioBMIFragment extends Fragment {
 
 		Constants.getInstance().getTime().setToNow();
 		dto.setTime(Constants.getInstance().getTime().monthDay + "/"
-				+ Constants.getInstance().getTime().month + "/"
+				+ Constants.getInstance().getTime().month + 1 + "/"
 				+ Constants.getInstance().getTime().year + "");
 		dto.setUserId(1);
 		dao.insertRatioBMI(dto);

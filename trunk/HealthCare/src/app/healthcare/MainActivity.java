@@ -1,6 +1,7 @@
 package app.healthcare;
 
 import java.util.ArrayList;
+
 import zulu.app.healthcare.R;
 import zulu.app.libraries.ldrawer.ActionBarDrawerToggle;
 import zulu.app.libraries.ldrawer.DrawerArrowDrawable;
@@ -15,7 +16,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.widget.DrawerLayout;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -205,8 +205,6 @@ public class MainActivity extends Activity {
 		}
 		// Handle action bar actions click
 		switch (item.getItemId()) {
-		case R.id.action_settings:
-			return true;
 		default:
 			return super.onOptionsItemSelected(item);
 		}

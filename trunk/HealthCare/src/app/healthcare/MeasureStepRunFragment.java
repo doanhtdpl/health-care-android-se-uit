@@ -1,6 +1,7 @@
 package app.healthcare;
 
 import java.util.List;
+
 import zulu.app.healthcare.R;
 import android.app.Fragment;
 import android.content.BroadcastReceiver;
@@ -21,7 +22,6 @@ import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
-import android.widget.Toast;
 import app.database.StepRunDAO;
 import app.database.UserDAO;
 import app.dto.StepRunDTO;
@@ -30,7 +30,6 @@ import app.dto.UserDTO;
 public class MeasureStepRunFragment extends Fragment {
 
 	private TextView tvcountStep;
-	private TextView tvYesterdayStep;
 	EditText tvChiTieu;
 	private Button btnStartStepRun;
 	private Button btnStopStepRun;
@@ -89,8 +88,6 @@ public class MeasureStepRunFragment extends Fragment {
 		tvcountStep = (TextView) view.findViewById(R.id.tbxCountStepRun);
 		tvcountStep.setText(getHighScore() + "");
 
-		tvYesterdayStep = (TextView) view.findViewById(R.id.tbxYesterday);
-		tvYesterdayStep.setText(String.valueOf(1000));
 		tvChiTieu = (EditText) view.findViewById(R.id.tbxChiTieu);
 		tvChiTieu.setText(String.valueOf(Constants.getInstance().TARGETS));
 
