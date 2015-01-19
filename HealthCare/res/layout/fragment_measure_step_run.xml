@@ -10,16 +10,6 @@
         android:scaleType="centerCrop"
         android:src="@drawable/steprun" />
 
-    <TextView
-        android:id="@+id/tbxYesterday"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/tbxCountStepRun"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentTop="true"
-        android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
     <EditText
         android:id="@+id/tbxChiTieu"
         android:layout_width="196dp"
@@ -38,7 +28,6 @@
         android:layout_width="196dp"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/tbxYesterday"
         android:layout_marginTop="24dp"
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -49,7 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/tbxCountStepRun"
         android:layout_alignBottom="@+id/tbxCountStepRun"
-        android:layout_alignLeft="@+id/TextView03"
+        android:layout_alignLeft="@+id/scrollView1"
         android:text="@string/txtTodayString"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="@android:color/white" />
@@ -96,24 +85,14 @@
         </TableLayout>
     </ScrollView>
 
-    <TextView
-        android:id="@+id/TextView03"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/tbxCountStepRun"
-        android:layout_alignLeft="@+id/scrollView1"
-        android:text="@string/txtYesterdayString"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textColor="@android:color/white" />
-
     <Button
         android:id="@+id/btnReset"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/scrollView1"
         android:layout_below="@+id/TextView02"
-        android:layout_marginTop="21dp"
         android:layout_marginRight="0dp"
+        android:layout_marginTop="21dp"
         android:background="@drawable/button_style"
         android:text="@string/btnResetCountStepRun" />
 

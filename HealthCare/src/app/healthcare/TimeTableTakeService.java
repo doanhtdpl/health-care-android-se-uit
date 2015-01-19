@@ -48,10 +48,11 @@ public class TimeTableTakeService extends Service {
 					if (!stop) {
 						if (intent != null) {
 							addNotification(intent);
-							int temp = getTime(Constants.getInstance().TIME_COUNT);
+							int temp = getCountTime("count_time");
 							if (temp == 0) {
 								stop = true;
 							}
+							setCountTime(temp -1, "count_time");
 						}
 						else {
 							addNotification(new Intent(getApplicationContext(),
@@ -113,4 +114,15 @@ public class TimeTableTakeService extends Service {
 	public int getTime(String s) {
 		return prefs.getInt(s, 0);
 	}
+	
+	public int getCountTime(String s) {
+		return prefs.getInt(s, 0);
+	}
+	
+	public void setCountTime(int countTime, String s) {
+		SharedPreferences.Editor settingsEditor = prefs.edit();
+		settingsEditor.putInt(s, countTime);
+		settingsEditor.commit();
+	}
+	
 }

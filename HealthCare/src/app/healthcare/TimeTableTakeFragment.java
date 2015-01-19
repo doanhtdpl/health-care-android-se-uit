@@ -33,6 +33,7 @@ public class TimeTableTakeFragment extends Fragment {
 	public EditText tbxDateSick;
 	public EditText tbxTimeSpacing;
 	public EditText tbxStatus;
+	public EditText tbxCountTime;
 	public UserDAO userDao;
 	public Button btnSave;
 	public TimeTableTakeDAO timeTableTakeDao;
@@ -64,6 +65,7 @@ public class TimeTableTakeFragment extends Fragment {
 		timeTableTakeDao = new TimeTableTakeDAO(getActivity());
 		tbxStatus = (EditText) rootView.findViewById(R.id.tbxStatus);
 		btnSave = (Button) rootView.findViewById(R.id.btnSave);
+		tbxCountTime = (EditText)rootView.findViewById(R.id.tbxCountTime);
 		btnSave.setOnClickListener(new View.OnClickListener() {
 			@SuppressLint("ShowToast")
 			@Override
@@ -132,6 +134,7 @@ public class TimeTableTakeFragment extends Fragment {
 		tbxDateSick.setText(dto.getTime());
 		tbxTimeSpacing.setText(dto.getTimeSpacing());
 		tbxStatus.setText(dto.getStatus());
+		tbxCountTime.setText(String.valueOf(dto.getCountTime()));
 	}
 
 	public boolean save() {
@@ -139,6 +142,8 @@ public class TimeTableTakeFragment extends Fragment {
 		dto.setSick(tbxSickName.getText().toString());
 		dto.setStatus(tbxStatus.getText().toString());
 		dto.setTime(tbxDateSick.getText().toString());
+		int temp = Integer.parseInt(tbxCountTime.getText().toString());
+		dto.setCountTime(temp);
 		dto.setTimeSpacing(tbxTimeSpacing.getText().toString());
 		int id = userDao.getUser().getUserId();
 		dto.setUserId(id);
@@ -147,13 +152,12 @@ public class TimeTableTakeFragment extends Fragment {
 				.show();
 		int sec = (Integer.parseInt(dto.getTimeSpacing())) * 3600*1000;
 		setTime(sec, Constants.getInstance().TIME_COUNT);
+		setCountTime(temp, "count_time");
 		if (Integer.parseInt(tbxTimeSpacing.getText().toString()) == 0) {
 			getActivity().stopService(
 					new Intent(getActivity(), TimeTableTakeService.class));
 			return false;
 		}
-		
-		
 		return true;
 	}
 
@@ -163,6 +167,11 @@ public class TimeTableTakeFragment extends Fragment {
 		settingsEditor.commit();
 	}
 
+	public void setCountTime(int countTime, String s) {
+		SharedPreferences.Editor settingsEditor = prefs.edit();
+		settingsEditor.putInt(s, countTime);
+		settingsEditor.commit();
+	}
 	public int getTime(String s) {
 		return prefs.getInt(s, 0);
 	}
