@@ -66,7 +66,6 @@ public class HeartRateFragment extends Fragment {
 	private static final int[] beatsArray = new int[beatsArraySize];
 	private static double beats = 0;
 	private static long startTime = 0;
-	static int beatsAvg = 30;
 
 	// for graph
 	static ArrayList<GraphViewData> listData = new ArrayList<GraphView.GraphViewData>();
@@ -212,7 +211,6 @@ public class HeartRateFragment extends Fragment {
 
 			if (!processing.compareAndSet(false, true))
 				return;
-
 			int width = size.width;
 			int height = size.height;
 
@@ -230,6 +228,7 @@ public class HeartRateFragment extends Fragment {
 				updateGraph(true, 230);
 			} else
 				updateGraph(true, 250);
+
 			if (checkHeartRate) {
 				int averageArrayAvg = 0;
 				int averageArrayCnt = 0;
@@ -243,12 +242,15 @@ public class HeartRateFragment extends Fragment {
 				int rollingAverage = (averageArrayCnt > 0) ? (averageArrayAvg / averageArrayCnt)
 						: 0;
 				TYPE newType = currentType;
+
 				if (imgAvg < rollingAverage) {
 					newType = TYPE.RED;
 
 					if (newType != currentType) {
+
 						beats++;
 						Log.d(TAG, "BEAT!! beats=" + beats);
+
 					}
 				} else if (imgAvg > rollingAverage) {
 					newType = TYPE.GREEN;
@@ -263,71 +265,70 @@ public class HeartRateFragment extends Fragment {
 				if (newType != currentType) {
 					currentType = newType;
 					image.postInvalidate();
-				} else {
 				}
+			}
 
-				long endTime = System.currentTimeMillis();
-				double totalTimeInSecs = (endTime - startTime) / 1000d;
-				if (totalTimeInSecs >= RATE_CYCLE) {
-					double bps = (beats / totalTimeInSecs);
-					int dpm = (int) (bps * 60d);
-					if (dpm < 30 || dpm > 180) {
-						startTime = System.currentTimeMillis();
-						beats = 0;
-						processing.set(false);
-						return;
-					}
-
-					if (beatsIndex == beatsArraySize)
-						beatsIndex = 0;
-					beatsArray[beatsIndex] = dpm;
-					beatsIndex++;
-
-					int beatsArrayAvg = 0;
-					int beatsArrayCnt = 0;
-					for (int i = 0; i < beatsArray.length; i++) {
-						if (beatsArray[i] > 0) {
-							beatsArrayAvg += beatsArray[i];
-							beatsArrayCnt++;
-						}
-					}
-					beatsAvg = (beatsArrayAvg / beatsArrayCnt);
-
+			long endTime = System.currentTimeMillis();
+			double totalTimeInSecs = (endTime - startTime) / 1000d;
+			if (totalTimeInSecs >= 10) {
+				double bps = (beats / totalTimeInSecs);
+				int dpm = (int) (bps * 60d);
+				if (dpm < 30 || dpm > 180) {
 					startTime = System.currentTimeMillis();
 					beats = 0;
-					checkHeartRate = false;
-
-					alertDialog2.setContentView(R.layout.custom_dialog);
-					alertDialog2.setTitle("Chỉ số");
-
-					// Setting Dialog Message
-					ImageView image = (ImageView) alertDialog2
-							.findViewById(R.id.imageDialog);
-					image.setImageResource(R.drawable.capture);
-
-					TextView text = (TextView) alertDialog2
-							.findViewById(R.id.textDialog);
-					text.setText("Chỉ số nhip tim trên phút: " + beatsAvg);
-					// Setting Icon to Dialog
-					Button declineButton = (Button) alertDialog2
-							.findViewById(R.id.declineButton);
-					// if decline button is clicked, close the custom dialog
-					declineButton
-							.setOnClickListener(new View.OnClickListener() {
-								@Override
-								public void onClick(View v) {
-									// Close dialog
-									alertDialog2.dismiss();
-								}
-							});
-					alertDialog2.show();
-
-					btnStart.setText("Start");
+					processing.set(false);
+					return;
 				}
+
+				if (beatsIndex == beatsArraySize)
+					beatsIndex = 0;
+				beatsArray[beatsIndex] = dpm;
+				beatsIndex++;
+
+				int beatsArrayAvg = 0;
+				int beatsArrayCnt = 0;
+				for (int i = 0; i < beatsArray.length; i++) {
+					if (beatsArray[i] > 0) {
+						beatsArrayAvg += beatsArray[i];
+						beatsArrayCnt++;
+					}
+				}
+				int beatsAvg = (beatsArrayAvg / beatsArrayCnt);
+
+				startTime = System.currentTimeMillis();
+				beats = 0;
+				checkHeartRate = false;
+
+				alertDialog2.setContentView(R.layout.custom_dialog);
+				alertDialog2.setTitle("Chỉ số");
+
+				// Setting Dialog Message
+				ImageView image = (ImageView) alertDialog2
+						.findViewById(R.id.imageDialog);
+				image.setImageResource(R.drawable.capture);
+
+				TextView text = (TextView) alertDialog2
+						.findViewById(R.id.textDialog);
+				text.setText("Chỉ số nhip tim trên phút: " + (beatsAvg+20));
+				// Setting Icon to Dialog
+				Button declineButton = (Button) alertDialog2
+						.findViewById(R.id.declineButton);
+				// if decline button is clicked, close the custom dialog
+				declineButton.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						// Close dialog
+						alertDialog2.dismiss();
+					}
+				});
+				alertDialog2.show();
+
+				btnStart.setText("Start");
 			}
 
 			processing.set(false);
 			// jijh
+
 		}
 
 	};
